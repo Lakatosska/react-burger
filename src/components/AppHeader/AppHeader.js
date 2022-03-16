@@ -6,12 +6,12 @@ import './AppHeader.css';
 
 const AppHeader = () => {
   return(
-    <div>
+    <>
       <BurgerIcon />
       <ListIcon />
       <Logo />
-      <ProfileIcon />
-    </div>
+      <ProfileIcon text={'Личный кабинет'}/>
+    </>
     
   );
 }
