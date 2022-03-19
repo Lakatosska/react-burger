@@ -1,6 +1,11 @@
 import React from "react";
 
-import { Box, Button, Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { 
+  Logo, 
+  BurgerIcon, 
+  ListIcon, 
+  ProfileIcon 
+} from '@ya.praktikum/react-developer-burger-ui-components';
 
 import appHeaderStyles from './app-header.module.css';
 
@@ -12,21 +17,21 @@ const AppHeader = () => {
 
           <button className={appHeaderStyles.button} type='button'>
             <BurgerIcon type='primary'/>
-            <span>Конструктор</span>
+            <span className='ml-2'>Конструктор</span>
           </button>
 
           <button className={appHeaderStyles.button} type='button'>
             <ListIcon type='primary'/>
-            <span>Лента заказов</span>
+            <span className='ml-2'>Лента заказов</span>
           </button>
 
         </div>
 
-        <Logo />
+        <Logo className={appHeaderStyles.logo}/>
 
         <button className={appHeaderStyles.button} type='button'>
           <ProfileIcon type='primary'/>
-          <span>Личный кабинет</span>
+          <span className='ml-2'>Личный кабинет</span>
         </button>
 
       </nav>

@@ -34,5 +34,17 @@
   border: 1px dashed #4C4CFF;
   box-sizing: border-box;
   color: #F2F2F3;
-
 }
+
+.logo {
+  margin-right: 288.85px;
+}
+
+
+/*
+.logo {
+  margin: 0 auto;
+  justify-self: center;
+}
+*/
+
