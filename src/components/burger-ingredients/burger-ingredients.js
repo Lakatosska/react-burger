@@ -1,6 +1,8 @@
 import React from "react";
 
-import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+
+import burgerIngredientsStyles from './burger-ingredients.module.css';
 
 
 
@@ -20,7 +22,22 @@ const BurgerTabs = () => {
           </Tab>
         </div>
       </>
-    )
+    );
+}
+
+const Card = () => {
+  return(
+    <li className={burgerIngredientsStyles.card}>
+      <Counter />
+      <img />
+      <div>
+        <p>20</p>
+        <CurrencyIcon type="primary" />
+      </div>
+      <p>Краторная булка</p>
+      
+    </li>
+  );
 }
 
 const BurgerIngredients = () => {
@@ -28,6 +45,8 @@ const BurgerIngredients = () => {
     <>
       <h1>Соберите бургер</h1>
       <BurgerTabs />
+      <h2>Булки</h2>
+      <Card />
     </>
   );
 }
