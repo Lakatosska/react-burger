@@ -40,7 +40,7 @@ const Card = () => {
   );
 }
 
-const BurgerIngredients = () => {
+const BurgerIngredients = ({ data }) => {
   return(
     <>
       <h1>Соберите бургер</h1>

@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
    "_id":"60666c42cc7b410027a1a9b1",
    "name":"Краторная булка N-200i",
@@ -209,6 +209,4 @@ const data = [
    "image_large":"https://code.s3.yandex.net/react/code/bun-01-large.png",
    "__v":0
   }
-] 
-
-export { data };
+]
