@@ -49,20 +49,32 @@ const BurgerIngredients = ({ data }) => {
       <h1>Соберите бургер</h1>
       <BurgerTabs />
       <ul className={burgerIngredientsStyles.menuList}>
-        <li className={burgerIngredientsStyles.menuItem}>
+        <li>
           <h2>Булки</h2>
-          <Card />
-          <Card />
+          <div className={burgerIngredientsStyles.menuItems}>
+            <Card />
+            <Card />
+          </div>
         </li>
-        <li className={burgerIngredientsStyles.menuItem}>
+        <li>
           <h2>Соусы</h2>
-          <Card />
-          <Card />
+          <div className={burgerIngredientsStyles.menuItems}>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
         </li>
-        <li className={burgerIngredientsStyles.menuItem}>
+        <li>
           <h2>Начинки</h2>
-          <Card />
-          <Card />
+          <div className={burgerIngredientsStyles.menuItems}>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
         </li>
       </ul>
     </>

@@ -1,12 +1,32 @@
+.app {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 40px 0;
+  font-family: 'Jet Brains Mono', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  color: #F2F2F3;
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
   display: grid;
   gap: 40px;
-  grid-template-columns: 1fr 1f;
+  grid-template-columns: 1fr 1fr;
   max-width: 1280px;
   margin: 0 auto;
 }
 
-/*
+
+/*.main {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+
 .main {
   display: flex;
   justify-content: space-between;

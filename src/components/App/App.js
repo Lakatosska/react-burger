@@ -9,13 +9,13 @@ import { data } from '../../utils/data.js';
 
 const App = () => {
   return(
-    <>
+    <div className={appStyles.app}>
       <AppHeader />
       <main className={appStyles.main}>
         <BurgerIngredients data={data}/>
         <BurgerConstructor data={data}/>
       </main>
-    </>
+    </div>
   );
 }
 
