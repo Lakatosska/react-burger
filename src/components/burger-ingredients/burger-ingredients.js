@@ -4,6 +4,8 @@ import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger
 
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 
+import bun02 from '../../images/bun-02.png'
+
 
 
 const BurgerTabs = () => {
@@ -11,13 +13,13 @@ const BurgerTabs = () => {
     return (
       <>
         <div style={{ display: 'flex' }}>
-          <Tab value="one" active={current === 'one'} onClick={setCurrent}>
+          <Tab value='one' active={current === 'one'} onClick={setCurrent}>
             Булки
           </Tab>
-          <Tab value="two" active={current === 'two'} onClick={setCurrent}>
+          <Tab value='two' active={current === 'two'} onClick={setCurrent}>
             Соусы
           </Tab>
-          <Tab value="three" active={current === 'three'} onClick={setCurrent}>
+          <Tab value='three' active={current === 'three'} onClick={setCurrent}>
             Начинки
           </Tab>
         </div>
@@ -25,20 +27,21 @@ const BurgerTabs = () => {
     );
 }
 
-const Card = () => {
+const Card = ({ image, price, name }) => {
   return(
-    <li className={burgerIngredientsStyles.card}>
-      <Counter />
-      <img />
-      <div>
-        <p>20</p>
-        <CurrencyIcon type="primary" />
-      </div>
-      <p>Краторная булка</p>
+    <article className={burgerIngredientsStyles.card}>
       
-    </li>
+      <img src={bun02} alt={name} className='ml-4 mr-4 mb-1'/>
+      <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>
+        <span className='mr-1'>{price}20</span>
+        <CurrencyIcon type='primary' />
+      </div>
+      <span className={burgerIngredientsStyles.name}>{name}Краторная булка</span>
+      <Counter count={1} size="default" />
+    </article>
   );
 }
+
 
 const BurgerIngredients = ({ data }) => {
   return(

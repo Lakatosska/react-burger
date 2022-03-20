@@ -3,4 +3,15 @@
   width: 272px;
   height: 208px;
   border: 1px dashed #4C4CFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.priceItem {
+  display: flex;
+  align-items: center;
+}
+
+
