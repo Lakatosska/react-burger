@@ -3,6 +3,8 @@ import React from "react";
 import { ConstructorElement, CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import bun02 from '../../images/bun-02.png'
 
+import burgerConstructorStyles from './burger-constructor.module.css';
+
 const ConstructorItems = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -51,7 +53,7 @@ const ConstructorItems = () => {
 
 const Order = () => {
   return(
-    <>
+    <div className={`${burgerConstructorStyles.order} mt-10`}>
       <div>
         <span>610</span>
         <CurrencyIcon type="primary" />
@@ -59,17 +61,16 @@ const Order = () => {
       <Button type="primary" size="large">
         Оформить заказ
       </Button>
-    </>
-
+    </div>
   );
 }
 
 const BurgerConstructor = () => {
   return(
-    <>
+    <div className={`${burgerConstructorStyles.main} mt-25`}>
       <ConstructorItems />
       <Order />
-    </>
+    </div>
   );
 }
 

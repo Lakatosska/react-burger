@@ -45,7 +45,7 @@ const Card = ({ image, price, name }) => {
 
 const BurgerIngredients = ({ data }) => {
   return(
-    <>
+    <div className={burgerIngredientsStyles.main}>
       <h1>Соберите бургер</h1>
       <BurgerTabs />
       <ul className={burgerIngredientsStyles.menuList}>
@@ -77,7 +77,7 @@ const BurgerIngredients = ({ data }) => {
           </div>
         </li>
       </ul>
-    </>
+    </div>
   );
 }
 

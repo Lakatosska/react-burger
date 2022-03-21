@@ -3,7 +3,6 @@
   max-width: 1280px;
   padding: 40px 0;
   font-family: 'Jet Brains Mono', 'Helvetica Neue', sans-serif;
-  font-style: normal;
   color: #F2F2F3;
   display: flex;
   flex-direction: column;
@@ -13,7 +12,7 @@
   display: grid;
   gap: 40px;
   grid-template-columns: 1fr 1fr;
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
