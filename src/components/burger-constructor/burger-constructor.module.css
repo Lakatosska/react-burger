@@ -3,3 +3,26 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+.price {
+  display: flex;
+  align-items: center;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
