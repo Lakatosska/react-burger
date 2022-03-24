@@ -5,15 +5,15 @@ import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 
 import appStyles from './app.module.css';
-import { data } from '../../utils/data.js';
+//import { data } from '../../utils/data.js';
 
 const App = () => {
   return(
     <div className={appStyles.app}>
       <AppHeader />
       <main className={appStyles.main}>
-        <BurgerIngredients data={data}/>
-        <BurgerConstructor data={data}/>
+        <BurgerIngredients />
+        <BurgerConstructor />
       </main>
     </div>
   );

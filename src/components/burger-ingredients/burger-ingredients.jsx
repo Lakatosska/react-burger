@@ -7,10 +7,6 @@ import burgerIngredientsStyles from './burger-ingredients.module.css';
 import { data } from '../../utils/data.js';
 import { cardPropTypes } from '../../utils/prop-types';
 
-//import bun02 from '../../images/bun-02.png'
-
-
-
 
 const BurgerTabs = () => {
   const [current, setCurrent] = React.useState('one')

@@ -13,6 +13,33 @@ const AppHeader = () => {
   return(
     <header className={appHeaderStyles.header}>
       <nav className={appHeaderStyles.nav}>
+        <button className={`${appHeaderStyles.button} mr-2`} type='button'>
+          <BurgerIcon type='primary'/>
+          <span className='ml-2'>Конструктор</span>
+        </button>
+
+        <button className={appHeaderStyles.button} type='button'>
+          <ListIcon type='primary'/>
+          <span className='ml-2'>Лента заказов</span>
+        </button>
+      </nav>
+        
+      <Logo />
+
+      <button className={appHeaderStyles.button} type='button'>
+        <ProfileIcon type='primary'/>
+        <span className='ml-2'>Личный кабинет</span>
+      </button>
+      
+    </header>
+  );
+}
+
+/*
+const AppHeader = () => {
+  return(
+    <header className={appHeaderStyles.header}>
+      <nav className={appHeaderStyles.nav}>
         <div className={appHeaderStyles.navItem}>
 
           <button className={appHeaderStyles.button} type='button'>
@@ -39,5 +66,6 @@ const AppHeader = () => {
     
   );
 }
+*/
 
 export default AppHeader;
