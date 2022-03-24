@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 
 import { data } from '../../utils/data.js';
+import { cardPropTypes } from '../../utils/prop-types';
 
 //import bun02 from '../../images/bun-02.png'
 
@@ -43,6 +45,10 @@ const Card = ({ cardData }) => {
   );
 }
 
+Card.propTypes = {
+  cardData: cardPropTypes.isRequired,
+};
+
 const MenuList = (props) => {
   const typeData = data.filter(item => item.type === props.type);
   return(
@@ -53,6 +59,8 @@ const MenuList = (props) => {
     </ul>
   );
 }
+
+
 
 const BurgerIngredients = () => {
   return(

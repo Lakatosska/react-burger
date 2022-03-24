@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import burgerConstructorStyles from './burger-constructor.module.css';
 
 import { data } from '../../utils/data.js';
+import { cardPropTypes } from '../../utils/prop-types';
 
 
 const ConstructorItem = ({ cardData }) => {
@@ -21,6 +23,11 @@ const ConstructorItem = ({ cardData }) => {
     </div> 
   )
 }
+
+ConstructorItem.propTypes = {
+  cardData: cardPropTypes.isRequired,
+};
+
 
 const ConstructorItems = () => {
 
