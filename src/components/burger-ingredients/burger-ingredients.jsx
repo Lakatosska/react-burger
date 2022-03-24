@@ -47,7 +47,7 @@ Card.propTypes = {
 const MenuList = (props) => {
   const typeData = data.filter(item => item.type === props.type);
   return(
-    <ul className={burgerIngredientsStyles.menuItems}>
+    <ul className={`${burgerIngredientsStyles.menuItems} pl-4 pr-4`}>
       {typeData.map(item => (
         <Card key={item._id} cardData={item} />
       ))}
@@ -56,23 +56,22 @@ const MenuList = (props) => {
 }
 
 
-
 const BurgerIngredients = () => {
   return(
     <section className={burgerIngredientsStyles.main}>
-      <h1>Соберите бургер</h1>
+      <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
       <BurgerTabs />
-      <ul className={burgerIngredientsStyles.menuList}>
+      <ul className={burgerIngredientsStyles.menu}>
         <li>
-          <h2>Булки</h2>
+          <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
           <MenuList type='bun' />
         </li>
         <li>
-          <h2>Соусы</h2>
+          <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
           <MenuList type='sauce' />
         </li>
         <li>
-          <h2>Начинки</h2>
+          <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
           <MenuList type='main' />
         </li>
       </ul>

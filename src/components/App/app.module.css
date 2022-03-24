@@ -17,19 +17,3 @@
 }
 
 
-/*.main {
-  display: grid;
-  gap: 40px;
-  grid-template-columns: 1fr 1fr;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-
-.main {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  margin: 0 auto;
-}
-*/
