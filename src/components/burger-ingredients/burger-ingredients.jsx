@@ -61,20 +61,22 @@ const BurgerIngredients = () => {
     <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
       <BurgerTabs />
-      <ul className={burgerIngredientsStyles.menu}>
-        <li>
-          <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
-          <MenuList type='bun' />
-        </li>
-        <li>
-          <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
-          <MenuList type='sauce' />
-        </li>
-        <li>
-          <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
-          <MenuList type='main' />
-        </li>
-      </ul>
+      <div className={`${burgerIngredientsStyles.window} custom-scroll`}>
+        <ul className={burgerIngredientsStyles.menu}>
+          <li>
+            <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
+            <MenuList type='bun' />
+          </li>
+          <li>
+            <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
+            <MenuList type='sauce' />
+          </li>
+          <li>
+            <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
+            <MenuList type='main' />
+          </li>
+        </ul>
+      </div>
     </section>
   );
 }

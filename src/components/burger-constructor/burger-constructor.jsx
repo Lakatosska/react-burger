@@ -44,7 +44,7 @@ const ConstructorItems = () => {
           thumbnail={bunData[0].image}
         />
       </li>
-      <li className={burgerConstructorStyles.items}>
+      <li className={`${burgerConstructorStyles.list} ${burgerConstructorStyles.window} custom-scroll`}>
         {sauceMainData.map(item => (
         <ConstructorItem key={item._id} cardData={item}/>
         ))}
