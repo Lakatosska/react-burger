@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.tab {
+  display: flex;
+}
+
 .menu {
   list-style: none;
   padding: 0;

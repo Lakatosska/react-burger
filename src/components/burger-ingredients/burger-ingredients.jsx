@@ -11,7 +11,7 @@ import { cardPropTypes } from '../../utils/prop-types';
 const BurgerTabs = () => {
   const [current, setCurrent] = React.useState('one')
     return (
-      <div style={{ display: 'flex' }}>
+      <div className={burgerIngredientsStyles.tab}>
         <Tab value='one' active={current === 'one'} onClick={setCurrent}>
           Булки
         </Tab>
