@@ -35,7 +35,7 @@ const ConstructorItems = () => {
 
   return (
     <ul className={burgerConstructorStyles.items}>
-      <li className='ml-5'>
+      <li className='ml-3'>
         <ConstructorElement
           type="top"
           isLocked={true}
@@ -49,7 +49,7 @@ const ConstructorItems = () => {
         <ConstructorItem key={item._id} cardData={item}/>
         ))}
       </li>
-      <li className='ml-5'>
+      <li className='ml-3'>
         <ConstructorElement
           type="bottom"
           isLocked={true}

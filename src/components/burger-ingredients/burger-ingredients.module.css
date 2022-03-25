@@ -6,9 +6,7 @@
 .menu {
   list-style: none;
   padding: 0;
-
 }
-
 
 .menuItems {
   list-style: none; 
@@ -17,7 +15,6 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 32px 24px;
   padding: 0 16px;
-  
 }
 
 .card {

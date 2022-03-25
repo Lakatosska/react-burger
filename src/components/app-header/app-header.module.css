@@ -1,12 +1,13 @@
 .header {
-  padding: 0 320px;
-  min-height: 88px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   align-items: center;
-  background-color: #1C1C21;
+  width: 100%;
+  background: #1C1C21;
   border: 2px solid #4C4CFF;
   box-sizing: border-box;
+  min-height: 88px;
   box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
