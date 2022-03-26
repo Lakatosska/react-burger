@@ -1,0 +1,19 @@
+.app {
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 40px;
+  font-family: 'Jet Brains Mono', 'Helvetica Neue', sans-serif;
+  color: #F2F2F3;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+

@@ -1,0 +1,49 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  display: flex;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItems {
+  list-style: none; 
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+  padding: 0 16px;
+}
+
+.card {
+  list-style: none;
+  max-width: 272px;
+  min-height: 208px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.priceItem {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  text-align: center;
+}
+
+.window {
+  height: calc(100vh - 290px);
+  overflow-y: auto;
+}
+
+
