@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
@@ -18,6 +18,16 @@ function checkResponse(res) {
 }
 
 const App = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://norma.nomoreparties.space/api/ingredients')
+    .then(checkResponse)
+    .then((data) => {
+      console.log(data);
+    })
+  }, [])
+
   return(
     <div className={appStyles.app}>
       <AppHeader />
