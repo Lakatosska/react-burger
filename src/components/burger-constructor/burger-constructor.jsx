@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 

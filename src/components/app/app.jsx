@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import AppHeader from "../app-header/app-header";
-import BurgerIngredients from "../burger-ingredients/burger-ingredients";
-import BurgerConstructor from "../burger-constructor/burger-constructor";
+import AppHeader from '../app-header/app-header';
+import BurgerIngredients from '../burger-ingredients/burger-ingredients';
+import BurgerConstructor from '../burger-constructor/burger-constructor';
+import OrderDetails from '../order-details/order-details';
 
 import appStyles from './app.module.css';
 
@@ -31,6 +32,7 @@ const App = () => {
   return(
     <div className={appStyles.app}>
       <AppHeader />
+      <OrderDetails />
       <main className={appStyles.main}>
         <BurgerIngredients ingredients={data}/>
         <BurgerConstructor ingredients={data}/> 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import { 
   Logo, 
@@ -10,7 +10,7 @@ import {
 import appHeaderStyles from './app-header.module.css';
 
 const AppHeader = () => {
-  
+
   return(
     <header className={appHeaderStyles.header}>
       <nav className={appHeaderStyles.nav}>
