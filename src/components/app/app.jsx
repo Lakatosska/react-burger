@@ -6,9 +6,6 @@ import BurgerConstructor from "../burger-constructor/burger-constructor";
 
 import appStyles from './app.module.css';
 
-// https://norma.nomoreparties.space/api/ingredients
-
-const baseUrl = 'https://norma.nomoreparties.space/api/ingredients';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -18,26 +15,30 @@ function checkResponse(res) {
 }
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
+
+  const baseUrl = 'https://norma.nomoreparties.space/api/ingredients';
 
   useEffect(() => {
-    fetch('https://norma.nomoreparties.space/api/ingredients')
+    fetch(`${baseUrl}`)
     .then(checkResponse)
-    .then((data) => {
-      console.log(data);
+    .then((res) => {
+      setData(res.data);
     })
-  }, [])
+    .catch((err) => console.log(err));
+  }, []); // передаем пустой массив, чтобы запустить useEffect на момент первого рендера
 
   return(
     <div className={appStyles.app}>
       <AppHeader />
       <main className={appStyles.main}>
-        <BurgerIngredients />
-        <BurgerConstructor />
+        <BurgerIngredients ingredients={data}/>
+        <BurgerConstructor ingredients={data}/> 
       </main>
     </div>
   );
 }
 
 export default App;
+
 

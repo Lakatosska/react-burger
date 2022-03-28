@@ -4,7 +4,7 @@ import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger
 
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 
-import { data } from '../../utils/data.js';
+//import { data } from '../../utils/data.js';
 import { cardPropTypes } from '../../utils/prop-types';
 
 
@@ -45,7 +45,8 @@ Card.propTypes = {
 };
 
 const MenuList = (props) => {
-  const typeData = data.filter(item => item.type === props.type);
+  const typeData = props.ingredients.filter(item => item.type === props.type);
+
   return(
     <ul className={`${burgerIngredientsStyles.menuItems} pl-4 pr-4`}>
       {typeData.map(item => (
@@ -56,7 +57,7 @@ const MenuList = (props) => {
 }
 
 
-const BurgerIngredients = () => {
+const BurgerIngredients = (props) => {
   return(
     <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
@@ -65,15 +66,15 @@ const BurgerIngredients = () => {
         <ul className={burgerIngredientsStyles.menu}>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
-            <MenuList type='bun' />
+            <MenuList type='bun' ingredients={props.ingredients} />
           </li>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
-            <MenuList type='sauce' />
+            <MenuList type='sauce' ingredients={props.ingredients} />
           </li>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
-            <MenuList type='main' />
+            <MenuList type='main' ingredients={props.ingredients} />
           </li>
         </ul>
       </div>
