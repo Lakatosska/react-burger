@@ -4,6 +4,7 @@ import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import OrderDetails from '../order-details/order-details';
+import IngredientDetails from '../ingredient-details/ingredient-details';
 
 import appStyles from './app.module.css';
 
@@ -33,9 +34,11 @@ const App = () => {
     <div className={appStyles.app}>
       <AppHeader />
       <OrderDetails />
+      <h1>111</h1>
+      <IngredientDetails ingredients={data} />
       <main className={appStyles.main}>
-        <BurgerIngredients ingredients={data}/>
-        <BurgerConstructor ingredients={data}/> 
+        <BurgerIngredients ingredients={data} />
+        <BurgerConstructor ingredients={data} /> 
       </main>
     </div>
   );

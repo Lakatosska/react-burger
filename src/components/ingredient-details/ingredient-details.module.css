@@ -1,0 +1,36 @@
+.container {
+  width: 720px;
+  height: 539px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  background-color: midnightblue;
+}
+
+.title {
+  align-self: flex-start;
+}
+
+.nutrients {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  list-style: none;
+}
+
+.nutrient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  top: 60px;
+  right: 40px;
+}
