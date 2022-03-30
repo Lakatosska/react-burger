@@ -3,9 +3,9 @@ import React from 'react';
 import modalOverlayStyles from './modal-overlay.module.css';
 
 
-export const ModalOverlay = ()=> {
+export const ModalOverlay = (props)=> {
   return (
-    <div className={modalOverlayStyles.overlay}>
+    <div className={modalOverlayStyles.overlay} onClick={props.closing}>
     </div>
   );
 };
