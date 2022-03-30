@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
+import ingredientDetails from '../ingredient-details/ingredient-details';
+
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 
 //import { data } from '../../utils/data.js';
@@ -27,16 +29,22 @@ const BurgerTabs = () => {
 
 const Card = ({ cardData }) => {
   const { image, price, name } = cardData;
+  
+
+
   return(
-    <article className={burgerIngredientsStyles.card}>
-      <Counter count={1} size="default" />
-      <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
-      <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>
-        <span className='mr-1'>{price}</span>
-        <CurrencyIcon type='primary' />
-      </div>
-      <span className={burgerIngredientsStyles.name}>{name}</span>
-    </article>
+    
+      <article className={burgerIngredientsStyles.card}>
+        <Counter count={1} size="default" />
+        <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
+        <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>
+          <span className='mr-1'>{price}</span>
+          <CurrencyIcon type='primary' />
+        </div>
+        <span className={burgerIngredientsStyles.name}>{name}</span>
+      </article>
+      
+    
   );
 }
 
