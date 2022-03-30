@@ -5,9 +5,8 @@ import modalStyles from './modal.module.css';
 
 import { ModalOverlay } from '../modal-overlay/modal-overlay';
 
+
 const modalRoot = document.getElementById('react-modals');
-
-
 
 const Modal = (props) => {
   
@@ -16,7 +15,10 @@ const Modal = (props) => {
     (
       <>
         <ModalOverlay />
-        <div>{props.children}</div>
+        <div className={modalStyles.modal}>
+          {props.children}
+        </div>
+        
       </>
     ), 
     modalRoot

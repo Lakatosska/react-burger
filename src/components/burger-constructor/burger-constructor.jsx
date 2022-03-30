@@ -83,17 +83,21 @@ const OrderTotal = (props) => {
     setModalActive(true);
   };
 
+  const closeModal = () => {
+    setModalActive(false);
+  };
+
   const modal = (
     <Modal >
       <OrderDetails  />
-    </Modal>
+    </Modal >
   );
 
   const total = props.ingredients.reduce((acc, item) => acc + item.price, 0);
 
 
   return(
-    <div style={{overflow: 'hidden'}}>
+    <>
       <div className={`${burgerConstructorStyles.order} mt-10`}>
         <div className={`${burgerConstructorStyles.price} mr-10`}>
           <span className="text text_type_digits-medium mr-4">{total}</span>
@@ -104,7 +108,7 @@ const OrderTotal = (props) => {
         </Button>
       </div>
       {modalActive && modal}
-    </div>
+    </>
   );
 }
 

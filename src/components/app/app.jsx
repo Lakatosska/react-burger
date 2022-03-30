@@ -33,8 +33,7 @@ const App = () => {
   return(
     <div className={appStyles.app}>
       <AppHeader />
-      <OrderDetails />
-      <h1>111</h1>
+      
       <IngredientDetails ingredients={data} />
       <main className={appStyles.main}>
         <BurgerIngredients ingredients={data} />
