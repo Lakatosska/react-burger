@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+//import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
@@ -9,7 +9,7 @@ const IngredientDetails = ({ ingredients }) => {
  
   return(
     <article className={`${ingredientDetailsStyles.container} p-10`}>
-      <h1 className={`${ingredientDetailsStyles.title} text text_type_main-large mt-3`}>Детали ингредиента</h1>
+      <h1 className={`${ingredientDetailsStyles.title} text text_type_main-large mt-4`}>Детали ингредиента</h1>
       <img src={image_large} alt={name} />
       <span className='text text_type_main-medium mt-4 mb-8'>{name}</span>
       <ul className={ingredientDetailsStyles.nutrients}>
@@ -30,7 +30,6 @@ const IngredientDetails = ({ ingredients }) => {
           <span className='text text_type_main-default text_color_inactive'>{carbohydrates}</span>
         </li>
       </ul>
-    
     </article>
   );
 }
