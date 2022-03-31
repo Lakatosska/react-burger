@@ -87,14 +87,13 @@ const OrderTotal = (props) => {
     setModalActive(false);
   };
 
-  const modal = (
+  const modalOrder = (
     <Modal closing={closeModal}>
       <OrderDetails  />
     </Modal >
   );
 
   const total = props.ingredients.reduce((acc, item) => acc + item.price, 0);
-
 
   return(
     <>
@@ -107,7 +106,7 @@ const OrderTotal = (props) => {
           Оформить заказ
         </Button>
       </div>
-      {modalActive && modal}
+      {modalActive && modalOrder}
     </>
   );
 }
