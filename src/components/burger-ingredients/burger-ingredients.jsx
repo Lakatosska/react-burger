@@ -39,7 +39,7 @@ const Card = ({ cardData }) => {
 
   const modalIngredients = (
     <Modal closing={closeModal}>
-      <IngredientDetails card={cardData}/>
+      <IngredientDetails ingredients={cardData}/>
     </Modal >
   );
 

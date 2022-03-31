@@ -4,15 +4,16 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
-const IngredientDetails = () => {
-  //const { image_large, name, calories, proteins, fat, carbohydrates } = ingredients;
+const IngredientDetails = ({ ingredients }) => {
+  const { image, name, calories, proteins, fat, carbohydrates } = ingredients;
   //console.log(ingredients[0]);
  
 
   return(
     <article className={`${ingredientDetailsStyles.container} p-10`}>
       <h1 className={`${ingredientDetailsStyles.title} text text_type_main-large mt-3`}>Детали ингредиента</h1>
-     
+      <img src={image} alt={name} />
+      <span className={'text text_type_main-medium mt-4 mb-8'}>{name}</span>
       
     </article>
   );
