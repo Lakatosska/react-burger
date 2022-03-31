@@ -1,14 +1,8 @@
 import React from 'react';
-
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-
 import burgerConstructorStyles from './burger-constructor.module.css';
-
-//import { data } from '../../utils/data.js';
 import { cardPropTypes } from '../../utils/prop-types';
-
 import Modal from '../modal/modal';
-
 import OrderDetails from '../order-details/order-details'
 
 

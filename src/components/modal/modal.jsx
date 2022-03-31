@@ -7,7 +7,7 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 
 const modalRoot = document.getElementById('react-modals');
 
-const Modal = (props) => {
+const Modal = (props) => { 
        
   return ReactDOM.createPortal(
     (

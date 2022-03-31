@@ -3,7 +3,6 @@ import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
-//import { data } from '../../utils/data.js';
 import { cardPropTypes } from '../../utils/prop-types';
 
 
@@ -74,7 +73,6 @@ const MenuList = (props) => {
     </ul>
   );
 }
-
 
 const BurgerIngredients = (props) => {
   return(
