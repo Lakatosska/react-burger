@@ -33,7 +33,6 @@ const App = () => {
     <div className={appStyles.app}>
       <AppHeader />
       
-      <IngredientDetails ingredients={data} />
       <main className={appStyles.main}>
         <BurgerIngredients ingredients={data} />
         <BurgerConstructor ingredients={data} /> 
