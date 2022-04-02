@@ -33,8 +33,8 @@ const ConstructorItems = (props) => {
   const sauceMainData = props.ingredients.filter(item => item.type !== 'bun');
 
   return (
-    <ul className={burgerConstructorStyles.items}>
-      <li className={`${burgerConstructorStyles.list} ml-3`}>
+    <ul className={`${burgerConstructorStyles.items} pl-4`}>
+      <li className={`${burgerConstructorStyles.list} ml-6`}>
         {bunData.map(item => (
           <ConstructorElement
           type="top"
