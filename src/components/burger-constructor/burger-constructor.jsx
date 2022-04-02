@@ -5,6 +5,7 @@ import burgerConstructorStyles from './burger-constructor.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details'
+import bun02 from '../../images/bun-02.png'
 
 
 const ConstructorItem = ({ cardData }) => {
@@ -29,22 +30,18 @@ ConstructorItem.propTypes = {
 
 const ConstructorItems = (props) => {
 
-  const bunData = props.ingredients.filter(item => item.type === 'bun');
   const sauceMainData = props.ingredients.filter(item => item.type !== 'bun');
 
   return (
     <ul className={`${burgerConstructorStyles.items} pl-4`}>
       <li className={`${burgerConstructorStyles.list} ml-6`}>
-        {bunData.map(item => (
           <ConstructorElement
           type="top"
           isLocked={true}
-          text={item.name + ' (верх)'}
-          price={item.price}
-          thumbnail={item.image}
-          key={item._id}
-        />
-        ))}
+          text='Краторная булка N-200i (верх)'
+          price={20}
+          thumbnail={bun02}
+          />
       </li>
       
       <li className={`${burgerConstructorStyles.list} ${burgerConstructorStyles.window} custom-scroll`}>
@@ -53,17 +50,14 @@ const ConstructorItems = (props) => {
         ))}
       </li>
 
-      <li className={`${burgerConstructorStyles.list} ml-3`}>
-        {bunData.map(item => (
+      <li className={`${burgerConstructorStyles.list} ml-6`}>
           <ConstructorElement
           type="bottom"
           isLocked={true}
-          text={item.name + ' (низ)'}
-          price={item.price}
-          thumbnail={item.image}
-          key={item._id}
+          text='Краторная булка N-200i (низ)'
+          price={20}
+          thumbnail={bun02}
         />
-        ))}
       </li>
       
     </ul>
