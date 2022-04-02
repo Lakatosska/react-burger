@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
@@ -15,10 +15,10 @@ function checkResponse(res) {
 const App = () => {
   const [data, setData] = useState([]);
 
-  const baseUrl = 'https://norma.nomoreparties.space/api/ingredients';
+  const BASEURL = 'https://norma.nomoreparties.space/api/ingredients';
 
   useEffect(() => {
-    fetch(`${baseUrl}`)
+    fetch(`${BASEURL}`)
     .then(checkResponse)
     .then((res) => {
       setData(res.data);

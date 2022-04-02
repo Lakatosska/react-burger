@@ -66,11 +66,11 @@ const MenuList = (props) => {
   const typeData = props.ingredients.filter(item => item.type === props.type);
 
   return(
-    <ul className={`${burgerIngredientsStyles.menuItems} pl-4 pr-4`}>
+    <div className={`${burgerIngredientsStyles.menuItems} pl-3`}>
       {typeData.map(item => (
         <Card key={item._id} cardData={item} />
       ))}
-    </ul>
+    </div>
   );
 }
 

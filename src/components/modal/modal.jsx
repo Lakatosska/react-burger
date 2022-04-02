@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import modalStyles from './modal.module.css';
@@ -10,13 +10,12 @@ const modalRoot = document.getElementById('react-modals');
 const Modal = (props) => { 
   
   useEffect(() => {
-
     const closeEsc = (evt) => {
-      if (evt.key === "Escape" || evt.key === "Esc")  {
+      if (evt.key === 'Escape')  {
         props.closing();
       }
     }
-    document.addEventListener('keyup', closeEsc); 
+    document.addEventListener('keydown', closeEsc); 
   }, [props]);
 
   return ReactDOM.createPortal(

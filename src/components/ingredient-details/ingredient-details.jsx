@@ -1,5 +1,6 @@
-import React from 'react';
 import ingredientDetailsStyles from './ingredient-details.module.css';
+import { cardPropTypes } from '../../utils/prop-types';
+
 
 const IngredientDetails = ({ ingredients }) => {
   const { image_large, name, calories, proteins, fat, carbohydrates } = ingredients;
@@ -30,5 +31,9 @@ const IngredientDetails = ({ ingredients }) => {
     </article>
   );
 }
+
+IngredientDetails.propTypes = {
+  ingredients: cardPropTypes.isRequired,
+};
 
 export default IngredientDetails;

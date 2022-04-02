@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
@@ -69,6 +70,10 @@ const ConstructorItems = (props) => {
   );
 }
 
+ConstructorItems.propTypes = {
+  ingredients: PropTypes.arrayOf(cardPropTypes).isRequired,
+};
+
 const OrderTotal = (props) => {
 
   const [modalActive, setModalActive] = React.useState(false);
@@ -113,5 +118,9 @@ const BurgerConstructor = (props) => {
     </section>
   );
 }
+
+BurgerConstructor.propTypes = {
+  ingredients: PropTypes.arrayOf(cardPropTypes).isRequired,
+};
 
 export default BurgerConstructor;
