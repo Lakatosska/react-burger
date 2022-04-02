@@ -48,7 +48,7 @@ const Card = ({ cardData }) => {
         <Counter count={1} size="default" />
         <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
         <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>
-          <span className='mr-1'>{price}</span>
+          <span className='text text_type_digits-default mr-1'>{price}</span>
           <CurrencyIcon type='primary' />
         </div>
         <span className={burgerIngredientsStyles.name}>{name}</span>

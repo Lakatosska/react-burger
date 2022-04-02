@@ -18,7 +18,7 @@ const AppHeader = () => {
         </button>
 
         <button className={appHeaderStyles.button} type='button'>
-          <ListIcon type='primary'/>
+          <ListIcon type="secondary" />
           <span className='ml-2 text text_type_main-default text_color_inactive'>Лента заказов</span>
         </button>
       </nav>
@@ -26,7 +26,7 @@ const AppHeader = () => {
       <Logo />
 
       <button className={appHeaderStyles.button} type='button'>
-        <ProfileIcon type='primary'/>
+        <ProfileIcon type="secondary" />
         <span className='ml-2 text text_type_main-default text_color_inactive'>Личный кабинет</span>
       </button>
       
