@@ -2,8 +2,8 @@ import ingredientDetailsStyles from './ingredient-details.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 
 
-const IngredientDetails = ({ ingredients }) => {
-  const { image_large, name, calories, proteins, fat, carbohydrates } = ingredients;
+const IngredientDetails = ({ ingredient }) => {
+  const { image_large, name, calories, proteins, fat, carbohydrates } = ingredient;
  
   return(
     <article className={ingredientDetailsStyles.container}>
@@ -32,7 +32,7 @@ const IngredientDetails = ({ ingredients }) => {
 }
 
 IngredientDetails.propTypes = {
-  ingredients: cardPropTypes.isRequired,
+  ingredient: cardPropTypes.isRequired,
 };
 
 export default IngredientDetails;

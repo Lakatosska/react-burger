@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
+
 
 
 const BurgerTabs = () => {
@@ -38,7 +40,7 @@ const Card = ({ cardData }) => {
 
   const modalIngredients = (
     <Modal title='Детали ингредиента' closing={closeModal}>
-      <IngredientDetails ingredients={cardData}/>
+      <IngredientDetails ingredient={cardData}/>
     </Modal >
   );
 
@@ -62,8 +64,8 @@ Card.propTypes = {
   cardData: cardPropTypes.isRequired,
 };
 
-const MenuList = (props) => {
-  const typeData = props.ingredients.filter(item => item.type === props.type);
+const MenuList = ({ ingredientData, type }) => {
+  const typeData = ingredientData.filter(item => item.type === type);
 
   return(
     <div className={`${burgerIngredientsStyles.menuItems}`}>
@@ -74,7 +76,12 @@ const MenuList = (props) => {
   );
 }
 
-const BurgerIngredients = (props) => {
+MenuList.propTypes = {
+  ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
+  type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
+};
+
+const BurgerIngredients = ({ ingredients }) => {
   return(
     <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
@@ -83,20 +90,24 @@ const BurgerIngredients = (props) => {
         <ul className={burgerIngredientsStyles.menu}>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
-            <MenuList type='bun' ingredients={props.ingredients} />
+            <MenuList type='bun' ingredientData={ingredients} />
           </li>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
-            <MenuList type='sauce' ingredients={props.ingredients} />
+            <MenuList type='sauce' ingredientData={ingredients} />
           </li>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
-            <MenuList type='main' ingredients={props.ingredients} />
+            <MenuList type='main' ingredientData={ingredients} />
           </li>
         </ul>
       </div>
     </section>
   );
+}
+
+BurgerIngredients.propTypes = {
+  ingredients: PropTypes.arrayOf(cardPropTypes).isRequired,
 }
 
 export default BurgerIngredients;
