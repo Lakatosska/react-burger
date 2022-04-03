@@ -37,7 +37,7 @@ const Card = ({ cardData }) => {
   };
 
   const modalIngredients = (
-    <Modal closing={closeModal}>
+    <Modal title='Детали ингредиента' closing={closeModal}>
       <IngredientDetails ingredients={cardData}/>
     </Modal >
   );
