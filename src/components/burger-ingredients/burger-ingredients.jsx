@@ -62,6 +62,7 @@ const Card = ({ cardData }) => {
 
 Card.propTypes = {
   cardData: cardPropTypes.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 const MenuList = ({ ingredientData, type }) => {

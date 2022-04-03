@@ -28,9 +28,9 @@ ConstructorItem.propTypes = {
 };
 
 
-const ConstructorItems = (props) => {
+const ConstructorItems = ({ ingredientData }) => {
 
-  const sauceMainData = props.ingredients.filter(item => item.type !== 'bun');
+  const sauceMainData = ingredientData.filter(item => item.type !== 'bun');
 
   return (
     <ul className={`${burgerConstructorStyles.items} pl-4`}>
@@ -65,10 +65,10 @@ const ConstructorItems = (props) => {
 }
 
 ConstructorItems.propTypes = {
-  ingredients: PropTypes.arrayOf(cardPropTypes).isRequired,
+  ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
 };
 
-const OrderTotal = (props) => {
+const OrderTotal = ({ ingredientData }) => {
 
   const [modalActive, setModalActive] = React.useState(false);
 
@@ -85,8 +85,13 @@ const OrderTotal = (props) => {
       <OrderDetails  />
     </Modal >
   );
+  
+  const total = React.useMemo(
+    () => 
+    ingredientData.reduce((acc, item) => acc + item.price, 0),
+  [ingredientData]
+  );
 
-  const total = props.ingredients.reduce((acc, item) => acc + item.price, 0);
 
   return(
     <>
@@ -104,11 +109,16 @@ const OrderTotal = (props) => {
   );
 }
 
-const BurgerConstructor = (props) => {
+OrderTotal.propTypes = {
+  ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
+  openModal: PropTypes.func.isRequired,
+};
+
+const BurgerConstructor = ({ ingredients }) => {
   return(
     <section className={`${burgerConstructorStyles.main} mt-25`}>
-      <ConstructorItems ingredients={props.ingredients} />
-      <OrderTotal ingredients={props.ingredients} />
+      <ConstructorItems ingredientData={ingredients} />
+      <OrderTotal ingredientData={ingredients} />
     </section>
   );
 }

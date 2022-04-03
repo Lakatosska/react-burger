@@ -4,6 +4,7 @@ import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
 
+const BASEURL= 'https://norma.nomoreparties.space/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -15,10 +16,10 @@ function checkResponse(res) {
 const App = () => {
   const [data, setData] = useState([]);
 
-  const BASEURL = 'https://norma.nomoreparties.space/api/ingredients';
+ 
 
   useEffect(() => {
-    fetch(`${BASEURL}`)
+    fetch(`${BASEURL}/ingredients`)
     .then(checkResponse)
     .then((res) => {
       setData(res.data);
