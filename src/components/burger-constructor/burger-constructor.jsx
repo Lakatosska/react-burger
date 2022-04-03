@@ -111,7 +111,6 @@ const OrderTotal = ({ ingredientData }) => {
 
 OrderTotal.propTypes = {
   ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
-  openModal: PropTypes.func.isRequired,
 };
 
 const BurgerConstructor = ({ ingredients }) => {
