@@ -5,7 +5,6 @@ import burgerConstructorStyles from './burger-constructor.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details'
-import bun02 from '../../images/bun-02.png'
 
 
 const ConstructorItem = ({ cardData }) => {
@@ -30,18 +29,23 @@ ConstructorItem.propTypes = {
 
 const ConstructorItems = ({ ingredientData }) => {
 
+  const bunData = ingredientData.find(item => item.type === 'bun');
   const sauceMainData = ingredientData.filter(item => item.type !== 'bun');
 
   return (
     <ul className={`${burgerConstructorStyles.items} pl-4`}>
-      <li className={`${burgerConstructorStyles.list} ml-6`}>
+      <li className={`${burgerConstructorStyles.list} ml-5`}>
+        {bunData
+        ? 
           <ConstructorElement
-          type="top"
-          isLocked={true}
-          text='Краторная булка N-200i (верх)'
-          price={20}
-          thumbnail={bun02}
+            type="top"
+            isLocked={true}
+            text={bunData.name + ' (верх)'}
+            price={bunData.price}
+            thumbnail={bunData.image}
+            key={bunData._id}
           />
+          : ''}
       </li>
       
       <li className={`${burgerConstructorStyles.list} ${burgerConstructorStyles.window} custom-scroll`}>
@@ -50,16 +54,19 @@ const ConstructorItems = ({ ingredientData }) => {
         ))}
       </li>
 
-      <li className={`${burgerConstructorStyles.list} ml-6`}>
+      <li className={`${burgerConstructorStyles.list} ml-5`}>
+        {bunData
+        ? 
           <ConstructorElement
-          type="bottom"
-          isLocked={true}
-          text='Краторная булка N-200i (низ)'
-          price={20}
-          thumbnail={bun02}
+            type="bottom"
+            isLocked={true}
+            text={bunData.name + ' (низ)'}
+            price={bunData.price}
+            thumbnail={bunData.image}
+            key={bunData._id}
         />
+        : ''}
       </li>
-      
     </ul>
   );
 }
@@ -67,6 +74,7 @@ const ConstructorItems = ({ ingredientData }) => {
 ConstructorItems.propTypes = {
   ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
 };
+
 
 const OrderTotal = ({ ingredientData }) => {
 
