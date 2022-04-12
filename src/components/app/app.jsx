@@ -3,6 +3,7 @@ import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
+import { DataContext } from '../../services/app-context';
 
 const BASEURL= 'https://norma.nomoreparties.space/api';
 
@@ -30,8 +31,10 @@ const App = () => {
       <AppHeader />
       
       <main className={appStyles.main}>
-        <BurgerIngredients ingredients={data} />
-        <BurgerConstructor ingredients={data} /> 
+        <DataContext.Provider value={data}>
+          <BurgerIngredients />
+          <BurgerConstructor ingredients={data} /> 
+        </DataContext.Provider>
       </main>
     </div>
   );
@@ -39,4 +42,18 @@ const App = () => {
 
 export default App;
 
+/*
+return(
+    <div className={appStyles.app}>
+      <AppHeader />
+      
+      <main className={appStyles.main}>
+        <DataContext.Provider value={data}>
+          <BurgerIngredients ingredients={data} />
+          <BurgerConstructor ingredients={data} /> 
+        </DataContext.Provider>
+      </main>
+    </div>
+  );
+*/
 

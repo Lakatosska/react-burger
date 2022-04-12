@@ -4,7 +4,9 @@ import orderDoneImg from '../../images/order-done.png';
 import { PlaceOrderContext } from '../../services/burger-constructor-context';
 
 const OrderDetails = () => {
+
   const orderNumber = useContext(PlaceOrderContext);
+  
   return(
     <div className={`${orderDetailsStyles.container} pt-15`}>
       <h1 className='text text_type_digits-large mb-10'>{orderNumber}</h1>

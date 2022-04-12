@@ -6,6 +6,7 @@ import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import { OrderTotalContext, PlaceOrderContext } from '../../services/burger-constructor-context';
+import { DataContext } from '../../services/app-context';
 
 const BASEURL= 'https://norma.nomoreparties.space/api';
 
@@ -113,14 +114,14 @@ const OrderTotal = ({ ingredientData }) => {
 
   const openModal = () => {
     setModalActive(true);
-    placeOrder(); // отправляем данные заказа на сервер
+    placeOrder(); // отправляем данные заказа (айдишки) на сервер
   };
 
   const closeModal = () => {
     setModalActive(false);
   };
   
-  // сюда надо как-то передать контекст-провайдер заказа
+  // сюда передаю контекст-провайдер заказа
   const modalOrder = (
     <Modal closing={closeModal}>
       <PlaceOrderContext.Provider value={order}>

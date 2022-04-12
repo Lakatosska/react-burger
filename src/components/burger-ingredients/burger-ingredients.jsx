@@ -1,15 +1,16 @@
-import React from 'react';
+import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
+import { DataContext } from '../../services/app-context';
 
 
 
 const BurgerTabs = () => {
-  const [current, setCurrent] = React.useState('one')
+  const [current, setCurrent] = useState('one')
     return (
       <div className={burgerIngredientsStyles.tab}>
         <Tab value='one' active={current === 'one'} onClick={setCurrent}>
@@ -28,7 +29,7 @@ const BurgerTabs = () => {
 const Card = ({ cardData }) => {
   const { image, price, name } = cardData;
   
-  const [modalActive, setModalActive] = React.useState(false);
+  const [modalActive, setModalActive] = useState(false);
 
   const openModal = () => {
     setModalActive(true);
@@ -81,7 +82,10 @@ MenuList.propTypes = {
   type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
 };
 
-const BurgerIngredients = ({ ingredients }) => {
+const BurgerIngredients = () => {
+
+  const ingredients = useContext(DataContext);
+
   return(
     <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
