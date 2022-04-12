@@ -1,10 +1,11 @@
 import { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ConstructorElement, CurrencyIcon, DragIcon, Button, EditIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
-import OrderDetails from '../order-details/order-details'
+import OrderDetails from '../order-details/order-details';
+import { OrderTotalContext, PlaceOrderContext } from '../../services/burger-constructor-context';
 
 const BASEURL= 'https://norma.nomoreparties.space/api';
 
@@ -83,25 +84,64 @@ ConstructorItems.propTypes = {
   ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
 };
 
+/*
+const getOrderData = ingredients => {
+  return fetch(`${BASEURL}/orders`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ingredients})
+  })
+  .then((res) => console.log(res))
+
+}
+getOrderData();
+
+
+const placeOrder = () => {
+  fetch(`${BASEURL}/orders`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      ingredients: ["609646e4dc916e00276b286e","609646e4dc916e00276b2870"]
+    })
+  })
+  .then(checkResponse)
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err))
+  
+};
+
+placeOrder();
+*/
 
 const OrderTotal = ({ ingredientData }) => {
 
   const [modalActive, setModalActive] = useState(false);
+
   const [order, setOrder] = useState(null);
 
+  const ingredientsId = ingredientData.map(el => el._id)
+    
   const placeOrder = () => {
     fetch(`${BASEURL}/orders`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        ingredients: ingredientData
+        ingredients: ingredientsId
       })
     })
     .then(checkResponse)
     .then((res) => {
       setOrder(res.order.number);
+      console.log(res)
     })
     .catch((err) => console.log(err))
   };
+  
 
   const openModal = () => {
     setModalActive(true);
@@ -115,7 +155,9 @@ const OrderTotal = ({ ingredientData }) => {
   // сюда надо как-то передать контекст-провайдер заказа
   const modalOrder = (
     <Modal closing={closeModal}>
-      <OrderDetails  />
+      <PlaceOrderContext.Provider value={order}>
+        <OrderDetails  />
+      </PlaceOrderContext.Provider>
     </Modal >
   );
   
