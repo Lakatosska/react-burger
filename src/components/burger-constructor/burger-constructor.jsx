@@ -1,11 +1,11 @@
-import { useEffect, useState, useMemo, useContext } from 'react';
+import { useState, useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ConstructorElement, CurrencyIcon, DragIcon, Button, EditIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
-import { OrderTotalContext, PlaceOrderContext } from '../../services/burger-constructor-context';
+import { PlaceOrderContext } from '../../services/burger-constructor-context';
 import { DataContext } from '../../services/app-context';
 
 const BASEURL= 'https://norma.nomoreparties.space/api';
@@ -88,9 +88,7 @@ ConstructorItems.propTypes = {
 const OrderTotal = ({ ingredientData }) => {
 
   const [modalActive, setModalActive] = useState(false);
-
   const [order, setOrder] = useState(null);
-
   const ingredientsId = ingredientData.map(el => el._id);
     
   const placeOrder = () => {
@@ -129,12 +127,18 @@ const OrderTotal = ({ ingredientData }) => {
       </PlaceOrderContext.Provider>
     </Modal >
   );
+
+  const bunData = ingredientData.find(item => item.type === 'bun');
+  const sauceMainData = ingredientData.filter(item => item.type !== 'bun');
   
+  const bunDataPrice = bunData ? bunData.price*2 : 0;
+
   const total = useMemo(
     () => 
-    ingredientData.reduce((acc, item) => acc + item.price, 0),
-  [ingredientData]
-  );
+    sauceMainData.reduce((acc, item) => acc + item.price, 0),
+  [sauceMainData]
+  ) + bunDataPrice;
+
 
   return(
     <>
@@ -168,8 +172,5 @@ const BurgerConstructor = () => {
   );
 }
 
-BurgerConstructor.propTypes = {
-  ingredients: PropTypes.arrayOf(cardPropTypes).isRequired,
-};
 
 export default BurgerConstructor;
