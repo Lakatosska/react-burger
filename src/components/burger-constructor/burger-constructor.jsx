@@ -84,45 +84,13 @@ ConstructorItems.propTypes = {
   ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
 };
 
-/*
-const getOrderData = ingredients => {
-  return fetch(`${BASEURL}/orders`, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ingredients})
-  })
-  .then((res) => console.log(res))
-
-}
-getOrderData();
-
-
-const placeOrder = () => {
-  fetch(`${BASEURL}/orders`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      ingredients: ["609646e4dc916e00276b286e","609646e4dc916e00276b2870"]
-    })
-  })
-  .then(checkResponse)
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err))
-  
-};
-
-placeOrder();
-*/
-
 const OrderTotal = ({ ingredientData }) => {
 
   const [modalActive, setModalActive] = useState(false);
 
   const [order, setOrder] = useState(null);
 
-  const ingredientsId = ingredientData.map(el => el._id)
+  const ingredientsId = ingredientData.map(el => el._id);
     
   const placeOrder = () => {
     fetch(`${BASEURL}/orders`, {
@@ -166,9 +134,6 @@ const OrderTotal = ({ ingredientData }) => {
     ingredientData.reduce((acc, item) => acc + item.price, 0),
   [ingredientData]
   );
-
- 
-
 
   return(
     <>
