@@ -33,7 +33,7 @@ const App = () => {
       <main className={appStyles.main}>
         <DataContext.Provider value={data}>
           <BurgerIngredients />
-          <BurgerConstructor ingredients={data} /> 
+          <BurgerConstructor /> 
         </DataContext.Provider>
       </main>
     </div>

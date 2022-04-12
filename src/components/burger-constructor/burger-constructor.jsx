@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button, EditIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
@@ -156,7 +156,10 @@ OrderTotal.propTypes = {
   ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
 };
 
-const BurgerConstructor = ({ ingredients }) => {
+const BurgerConstructor = () => {
+
+  const ingredients = useContext(DataContext);
+
   return(
     <section className={`${burgerConstructorStyles.main} mt-25`}>
       <ConstructorItems ingredientData={ingredients} />
