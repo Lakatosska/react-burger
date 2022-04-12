@@ -16,8 +16,6 @@ function checkResponse(res) {
 const App = () => {
   const [data, setData] = useState([]);
 
- 
-
   useEffect(() => {
     fetch(`${BASEURL}/ingredients`)
     .then(checkResponse)

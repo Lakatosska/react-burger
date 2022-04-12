@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
@@ -6,6 +6,14 @@ import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details'
 
+const BASEURL= 'https://norma.nomoreparties.space/api';
+
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json()
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+}
 
 const ConstructorItem = ({ cardData }) => {
   const { image, price, name } = cardData;
@@ -78,27 +86,46 @@ ConstructorItems.propTypes = {
 
 const OrderTotal = ({ ingredientData }) => {
 
-  const [modalActive, setModalActive] = React.useState(false);
+  const [modalActive, setModalActive] = useState(false);
+  const [order, setOrder] = useState(null);
+
+  const placeOrder = () => {
+    fetch(`${BASEURL}/orders`, {
+      method: 'POST',
+      body: JSON.stringify({
+        ingredients: ingredientData
+      })
+    })
+    .then(checkResponse)
+    .then((res) => {
+      setOrder(res.order.number);
+    })
+    .catch((err) => console.log(err))
+  };
 
   const openModal = () => {
     setModalActive(true);
+    placeOrder(); // отправляем данные заказа на сервер
   };
 
   const closeModal = () => {
     setModalActive(false);
   };
-
+  
+  // сюда надо как-то передать контекст-провайдер заказа
   const modalOrder = (
     <Modal closing={closeModal}>
       <OrderDetails  />
     </Modal >
   );
   
-  const total = React.useMemo(
+  const total = useMemo(
     () => 
     ingredientData.reduce((acc, item) => acc + item.price, 0),
   [ingredientData]
   );
+
+ 
 
 
   return(
