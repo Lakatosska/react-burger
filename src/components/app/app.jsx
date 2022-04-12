@@ -4,8 +4,7 @@ import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
 import { DataContext } from '../../services/app-context';
-
-const BASEURL= 'https://norma.nomoreparties.space/api';
+import { BASEURL } from '../../utils/constants';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -41,19 +40,3 @@ const App = () => {
 }
 
 export default App;
-
-/*
-return(
-    <div className={appStyles.app}>
-      <AppHeader />
-      
-      <main className={appStyles.main}>
-        <DataContext.Provider value={data}>
-          <BurgerIngredients ingredients={data} />
-          <BurgerConstructor ingredients={data} /> 
-        </DataContext.Provider>
-      </main>
-    </div>
-  );
-*/
-

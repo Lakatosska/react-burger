@@ -7,8 +7,8 @@ import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import { PlaceOrderContext } from '../../services/burger-constructor-context';
 import { DataContext } from '../../services/app-context';
+import { BASEURL } from '../../utils/constants';
 
-const BASEURL= 'https://norma.nomoreparties.space/api';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -138,7 +138,6 @@ const OrderTotal = ({ ingredientData }) => {
     sauceMainData.reduce((acc, item) => acc + item.price, 0),
   [sauceMainData]
   ) + bunDataPrice;
-
 
   return(
     <>
