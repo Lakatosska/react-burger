@@ -82,9 +82,11 @@ const OrderTotal = ({ ingredientData }) => {
 
   const [modalActive, setModalActive] = useState(false);
   const [order, setOrder] = useState(null);
-  const ingredientsId = ingredientData.map(el => el._id);
-    
+      
   const placeOrder = () => {
+
+    const ingredientsId = ingredientData.map(el => el._id);
+    
     fetch(`${BASEURL}/orders`, {
       method: 'POST',
       headers: {
@@ -128,9 +130,9 @@ const OrderTotal = ({ ingredientData }) => {
 
   const total = useMemo(
     () => 
-    sauceMainData.reduce((acc, item) => acc + item.price, 0),
-  [sauceMainData]
-  ) + bunDataPrice;
+    sauceMainData.reduce((acc, item) => acc + item.price, 0) + bunDataPrice,
+  [sauceMainData, bunDataPrice]
+  )
 
   return(
     <>
