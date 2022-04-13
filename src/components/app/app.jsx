@@ -3,20 +3,13 @@ import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
+import { DataContext } from '../../services/app-context';
+import { BASEURL, checkResponse } from '../../utils/constants';
 
-const BASEURL= 'https://norma.nomoreparties.space/api';
 
-function checkResponse(res) {
-  if (res.ok) {
-    return res.json()
-  }
-  return Promise.reject(`Ошибка: ${res.status}`);
-}
 
 const App = () => {
   const [data, setData] = useState([]);
-
- 
 
   useEffect(() => {
     fetch(`${BASEURL}/ingredients`)
@@ -32,13 +25,13 @@ const App = () => {
       <AppHeader />
       
       <main className={appStyles.main}>
-        <BurgerIngredients ingredients={data} />
-        <BurgerConstructor ingredients={data} /> 
+        <DataContext.Provider value={data}>
+          <BurgerIngredients />
+          <BurgerConstructor /> 
+        </DataContext.Provider>
       </main>
     </div>
   );
 }
 
 export default App;
-
-
