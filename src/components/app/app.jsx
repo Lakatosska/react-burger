@@ -4,14 +4,9 @@ import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
 import { DataContext } from '../../services/app-context';
-import { BASEURL } from '../../utils/constants';
+import { BASEURL, checkResponse } from '../../utils/constants';
 
-function checkResponse(res) {
-  if (res.ok) {
-    return res.json()
-  }
-  return Promise.reject(`Ошибка: ${res.status}`);
-}
+
 
 const App = () => {
   const [data, setData] = useState([]);
