@@ -6,8 +6,7 @@ import IngredientDetails from '../ingredient-details/ingredient-details';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 import { DataContext } from '../../services/app-context';
-
-
+import { useSelector } from 'react-redux';
 
 const BurgerTabs = () => {
   const [current, setCurrent] = useState('one')
@@ -84,7 +83,9 @@ MenuList.propTypes = {
 
 const BurgerIngredients = () => {
 
-  const ingredients = useContext(DataContext);
+ // const ingredients = useContext(DataContext);
+  
+  const ingredients = useSelector(store => store.ingredients.ingredients);
 
   return(
     <section className={burgerIngredientsStyles.main}>

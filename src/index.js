@@ -12,6 +12,7 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose; 
 
+// расширитель хранилища
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
 // инициализируем хранилище
