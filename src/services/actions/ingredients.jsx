@@ -13,13 +13,11 @@ export function getIngredients() {
     .then(checkResponse)
     .then( res  => {
       if (res && res.success) {
-
         dispatch({
           type: GET_INGREDIENTS_SUCCESS,
           ingredients: res.data
         })
       } else {
-
         dispatch({
           type: GET_INGREDIENTS_FAILED
         })

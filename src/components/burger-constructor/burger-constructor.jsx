@@ -8,6 +8,7 @@ import OrderDetails from '../order-details/order-details';
 import { PlaceOrderContext } from '../../services/burger-constructor-context';
 import { DataContext } from '../../services/app-context';
 import { BASEURL, checkResponse } from '../../utils/constants';
+import { useSelector } from 'react-redux';
 
 
 const ConstructorItem = ({ cardData }) => {
@@ -156,7 +157,8 @@ OrderTotal.propTypes = {
 
 const BurgerConstructor = () => {
 
-  const ingredients = useContext(DataContext);
+  // const ingredients = useContext(DataContext);
+  const ingredients = useSelector(store => store.ingredients.ingredients);
 
   return(
     <section className={`${burgerConstructorStyles.main} mt-25`}>

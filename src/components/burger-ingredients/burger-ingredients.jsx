@@ -85,6 +85,8 @@ const BurgerIngredients = () => {
 
  // const ingredients = useContext(DataContext);
   
+ // сохраняем в переменную данные из функции getIngredients в actions:
+ // 'type: GET_INGREDIENTS_SUCCESS, ingredients: res.data'
   const ingredients = useSelector(store => store.ingredients.ingredients);
 
   return(
