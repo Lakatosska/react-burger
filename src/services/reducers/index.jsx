@@ -1,4 +1,5 @@
-// ingredientsReducer
+
+import { CLOSE_MODAL, OPEN_MODAL } from '../actions/currentIngredient';
 
 import {
   GET_INGREDIENTS_REQUEST,
@@ -11,6 +12,8 @@ import {
   GET_ORDER_SUCCESS,
   GET_ORDER_FAILED,
 } from '../actions/order';
+
+// ingredientsReducer
 
 const initialState2 = {
   ingredients: [],
@@ -83,5 +86,32 @@ export const orderReducer = (state = initialState, action) => {
   }
 }
 
-// constructorReducer
 // currentIngredientReducer
+
+
+
+const initialState3 = {
+  currentIngredient: null,
+  
+};
+
+export const currentIngredientReducer = (state = initialState3, action) => {
+
+  switch (action.type) {
+    case OPEN_MODAL: {
+      return {
+        ...state,
+        //
+      }
+    }
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        //
+      }
+    }
+    
+    default:
+      return state;
+  }
+}

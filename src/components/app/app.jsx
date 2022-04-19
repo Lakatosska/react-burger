@@ -30,31 +30,3 @@ const App = () => {
 }
 
 export default App;
-
-/*
-const App = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch(`${BASEURL}/ingredients`)
-    .then(checkResponse)
-    .then((res) => {
-      setData(res.data);
-    })
-    .catch((err) => console.log(err));
-  }, []); // передаем пустой массив, чтобы запустить useEffect на момент первого рендера
-
-  return(
-    <div className={appStyles.app}>
-      <AppHeader />
-      
-      <main className={appStyles.main}>
-        <DataContext.Provider value={data}>
-          <BurgerIngredients />
-          <BurgerConstructor /> 
-        </DataContext.Provider>
-      </main>
-    </div>
-  );
-}
-*/

@@ -1,9 +1,15 @@
 import ingredientDetailsStyles from './ingredient-details.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
+import { useSelector } from 'react-redux';
 
 
-const IngredientDetails = ({ ingredient }) => {
-  const { image_large, name, calories, proteins, fat, carbohydrates } = ingredient;
+const IngredientDetails = () => {
+
+  const { currentIngredient } = useSelector(store => store.currentIngredient);
+
+  const { image_large, name, calories, proteins, fat, carbohydrates } = currentIngredient;
+
+
  
   return(
     <article className={ingredientDetailsStyles.container}>
