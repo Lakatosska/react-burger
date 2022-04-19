@@ -1,4 +1,4 @@
-import { useState, useMemo, useContext } from 'react';
+import { useState, useMemo, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
@@ -8,7 +8,8 @@ import OrderDetails from '../order-details/order-details';
 import { PlaceOrderContext } from '../../services/burger-constructor-context';
 import { DataContext } from '../../services/app-context';
 import { BASEURL, checkResponse } from '../../utils/constants';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { postOrder } from '../../services/actions/order';
 
 
 const ConstructorItem = ({ cardData }) => {
@@ -79,15 +80,24 @@ ConstructorItems.propTypes = {
   ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
 };
 
+
 const OrderTotal = ({ ingredientData }) => {
 
   const [modalActive, setModalActive] = useState(false);
   const [order, setOrder] = useState(null);
-      
-  const placeOrder = () => {
 
+  /*
+  const PlaceOrder = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getOrder());
+      },
+      [dispatch]
+    ); 
+  };
+
+  const placeOrder = () => {
     const ingredientsId = ingredientData.map(el => el._id);
-    
     fetch(`${BASEURL}/orders`, {
       method: 'POST',
       headers: {
@@ -104,11 +114,13 @@ const OrderTotal = ({ ingredientData }) => {
     })
     .catch((err) => console.log(err))
   };
-  
+  */
+
+  const dispatch = useDispatch();
 
   const openModal = () => {
     setModalActive(true);
-    placeOrder(); // отправляем данные заказа (айдишки) на сервер
+    dispatch(postOrder(ingredientData));; // отправляем данные заказа
   };
 
   const closeModal = () => {
@@ -118,9 +130,9 @@ const OrderTotal = ({ ingredientData }) => {
   // сюда передаю контекст-провайдер заказа
   const modalOrder = (
     <Modal closing={closeModal}>
-      <PlaceOrderContext.Provider value={order}>
+      
         <OrderDetails  />
-      </PlaceOrderContext.Provider>
+     
     </Modal >
   );
 
@@ -158,7 +170,7 @@ OrderTotal.propTypes = {
 const BurgerConstructor = () => {
 
   // const ingredients = useContext(DataContext);
-  
+
   const ingredients = useSelector(store => store.ingredients.ingredients);
 
   return(

@@ -8,7 +8,7 @@ const OrderDetails = () => {
 
   //const orderNumber = useContext(PlaceOrderContext);
 
-  const orderNumber = useSelector(store => store.order.number);
+  const orderNumber = useSelector(store => store.order.order);
 
   return(
     <div className={`${orderDetailsStyles.container} pt-15`}>

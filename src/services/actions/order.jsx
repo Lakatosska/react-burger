@@ -4,12 +4,23 @@ export const GET_ORDER_REQUEST = 'GET_ORDER_REQUEST';
 export const GET_ORDER_SUCCESS = 'GET_ORDER_SUCCESS';
 export const GET_ORDER_FAILED = 'GET_ORDER_FAILED';
 
-export function getOrder() {
+export function postOrder(ingredientData) {
+
+  const ingredientsId = ingredientData.map(el => el._id);
+
   return function(dispatch) {
     dispatch({
       type: GET_ORDER_REQUEST
     })
-    fetch(`${BASEURL}/orders`)
+    fetch(`${BASEURL}/orders`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ingredients: ingredientsId
+      })
+    })
     .then(checkResponse)
     .then( res  => {
       if (res && res.success) {
@@ -33,3 +44,24 @@ export function getOrder() {
     })
   }
 };
+
+ /*
+  const placeOrder = () => {
+    const ingredientsId = ingredientData.map(el => el._id);
+    fetch(`${BASEURL}/orders`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ingredients: ingredientsId
+      })
+    })
+    .then(checkResponse)
+    .then((res) => {
+      setOrder(res.order.number);
+      console.log(res)
+    })
+    .catch((err) => console.log(err))
+  };
+  */

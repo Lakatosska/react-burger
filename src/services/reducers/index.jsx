@@ -12,13 +12,13 @@ import {
   GET_ORDER_FAILED,
 } from '../actions/order';
 
-const initialState = {
+const initialState2 = {
   ingredients: [],
   ingredientsRequest: false,
   ingredientsFailed: false,
 };
 
-export const ingredientsReducer = (state = initialState, action) => {
+export const ingredientsReducer = (state = initialState2, action) => {
   switch (action.type) {
     case GET_INGREDIENTS_REQUEST: {
       return {
@@ -48,13 +48,13 @@ export const ingredientsReducer = (state = initialState, action) => {
 
 // orderReducer
 
-const initialState2 = {
+const initialState = {
   order: null,
   orderRequest: false,
   orderFailed: false,
 };
 
-export const orderReducer = (state = initialState2, action) => {
+export const orderReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case GET_ORDER_REQUEST: {
