@@ -158,6 +158,7 @@ OrderTotal.propTypes = {
 const BurgerConstructor = () => {
 
   // const ingredients = useContext(DataContext);
+  
   const ingredients = useSelector(store => store.ingredients.ingredients);
 
   return(
