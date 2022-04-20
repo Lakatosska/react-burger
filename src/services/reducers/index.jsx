@@ -13,6 +13,12 @@ import {
   GET_ORDER_FAILED,
 } from '../actions/order';
 
+import {
+  ADD_INGREDIENT,
+  DELETE_INGREDIENT,
+  RESET_INGREDIENT,
+} from '../actions/constructor';
+
 // ingredientsReducer
 
 const initialState2 = {
@@ -89,8 +95,7 @@ export const orderReducer = (state = initialState, action) => {
 // currentIngredientReducer
 
 const initialState3 = {
-  currentIngredient: null,
-  
+  currentIngredient: null, 
 };
 
 export const currentIngredientReducer = (state = initialState3, action) => {
@@ -112,3 +117,37 @@ export const currentIngredientReducer = (state = initialState3, action) => {
       return state;
   }
 }
+
+// constructorReducer
+
+const initialState4 = {
+  constructor: [], 
+};
+
+
+export const constructorReducer = (state = initialState4, action) => {
+
+  switch (action.type) {
+    case ADD_INGREDIENT: {
+      return {
+        ...state,
+        //
+      }
+    }
+    case DELETE_INGREDIENT: {
+      return {
+        ...state,
+        //
+      }
+    }
+    case RESET_INGREDIENT: {
+      return {
+        ...state,
+        //
+      }
+    }
+    default:
+      return state;
+  }
+}
+
