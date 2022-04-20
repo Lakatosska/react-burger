@@ -89,14 +89,13 @@ const OrderTotal = ({ ingredientData }) => {
 
   const openModal = () => {
     setModalActive(true);
-    dispatch(postOrder(ingredientData));; // отправляем данные заказа
+    dispatch(postOrder(ingredientData)); // отправляем данные заказа
   };
 
   const closeModal = () => {
     setModalActive(false);
   };
   
-  // сюда передаю контекст-провайдер заказа
   const modalOrder = (
     <Modal closing={closeModal}>
         <OrderDetails  />

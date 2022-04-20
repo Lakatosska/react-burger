@@ -88,8 +88,6 @@ export const orderReducer = (state = initialState, action) => {
 
 // currentIngredientReducer
 
-
-
 const initialState3 = {
   currentIngredient: null,
   
@@ -101,16 +99,15 @@ export const currentIngredientReducer = (state = initialState3, action) => {
     case OPEN_MODAL: {
       return {
         ...state,
-        //
+        currentIngredient: action.cardData
       }
     }
     case CLOSE_MODAL: {
       return {
         ...state,
-        //
+        currentIngredient: ''
       }
     }
-    
     default:
       return state;
   }
