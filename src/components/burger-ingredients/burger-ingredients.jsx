@@ -9,6 +9,7 @@ import { DataContext } from '../../services/app-context';
 import { useSelector, useDispatch } from 'react-redux';
 import { OPEN_MODAL, CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCurrentIngredient } from '../../services/actions/currentIngredient';
+import { useDrag } from "react-dnd";
 
 const BurgerTabs = () => {
   const [current, setCurrent] = useState('one')
@@ -28,9 +29,16 @@ const BurgerTabs = () => {
 }
 
 const Card = ({ cardData }) => {
-  const { image, price, name } = cardData;
+  const { image, price, name, type, id } = cardData;
   
   const [modalActive, setModalActive] = useState(false);
+
+  
+  const [, dragRef] = useDrag({
+    type: 'ingredient',
+    item: { id, type },
+    
+  });
 
   const dispatch = useDispatch();
 
@@ -52,7 +60,10 @@ const Card = ({ cardData }) => {
 
   return(
     <>
-      <article className={burgerIngredientsStyles.card} onClick={openModal}>
+      <article className={burgerIngredientsStyles.card} 
+        onClick={openModal}
+        ref={dragRef}
+      >
         <Counter count={1} size="default" />
         <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
         <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>

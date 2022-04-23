@@ -7,6 +7,8 @@ import { DataContext } from '../../services/app-context';
 import { BASEURL, checkResponse } from '../../utils/constants';
 import { useDispatch } from 'react-redux';
 import { getIngredients } from '../../services/actions/ingredients';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const App = () => {
   //const [data, setData] = useState([]);
@@ -21,10 +23,12 @@ const App = () => {
   return(
     <div className={appStyles.app}>
       <AppHeader />
-      <main className={appStyles.main}>
-        <BurgerIngredients />
-        <BurgerConstructor /> 
-      </main>
+      <DndProvider backend={HTML5Backend}>
+        <main className={appStyles.main}>
+          <BurgerIngredients />
+          <BurgerConstructor /> 
+        </main>
+      </DndProvider>
     </div>
   );
 }
