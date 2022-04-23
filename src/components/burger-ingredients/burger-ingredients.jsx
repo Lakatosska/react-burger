@@ -31,14 +31,12 @@ const BurgerTabs = () => {
 const Card = ({ cardData }) => {
   const { image, price, name, type, id } = cardData;
   
-  const [modalActive, setModalActive] = useState(false);
-
-  
   const [, dragRef] = useDrag({
     type: 'ingredient',
     item: { id, type },
-    
   });
+
+  const [modalActive, setModalActive] = useState(false);
 
   const dispatch = useDispatch();
 

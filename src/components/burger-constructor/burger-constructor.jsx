@@ -10,10 +10,21 @@ import { DataContext } from '../../services/app-context';
 import { BASEURL, checkResponse } from '../../utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { postOrder } from '../../services/actions/order';
+import { DELETE_INGREDIENT } from '../../services/actions/constructor';
 
 
 const ConstructorItem = ({ cardData }) => {
   const { image, price, name } = cardData;
+
+  const dispatch = useDispatch();
+
+  const deleteIngredient = () => {
+    dispatch({
+      type: DELETE_INGREDIENT,
+    })
+  }
+
+
   return(
     <div 
       className={burgerConstructorStyles.item}>
@@ -22,6 +33,7 @@ const ConstructorItem = ({ cardData }) => {
           text={name}
           price={price}
           thumbnail={image}
+          handleClose={() => console.log('иконка удаления')}
         />
     </div> 
   )
