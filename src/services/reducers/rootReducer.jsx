@@ -10,5 +10,5 @@ export const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
   order: orderReducer,
   currentIngredient: currentIngredientReducer,
-  // constructor: constructorReducer
+  constructorItems: constructorReducer
 });

@@ -9,7 +9,7 @@ import { DataContext } from '../../services/app-context';
 import { useSelector, useDispatch } from 'react-redux';
 import { OPEN_MODAL, CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCurrentIngredient } from '../../services/actions/currentIngredient';
-import { useDrag } from "react-dnd";
+import { useDrag } from 'react-dnd';
 
 const BurgerTabs = () => {
   const [current, setCurrent] = useState('one')
@@ -29,11 +29,11 @@ const BurgerTabs = () => {
 }
 
 const Card = ({ cardData }) => {
-  const { image, price, name, type, id } = cardData;
+  const { image, price, name, type, _id } = cardData;
   
   const [, dragRef] = useDrag({
     type: 'ingredient',
-    item: { id, type },
+    item: { _id, type },
   });
 
   const [modalActive, setModalActive] = useState(false);

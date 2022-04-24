@@ -24,7 +24,6 @@ export function getIngredients() {
       }
     })
     .catch( err => {
-
       dispatch({
           type: GET_INGREDIENTS_FAILED
       })

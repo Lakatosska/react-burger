@@ -17,7 +17,10 @@ import {
   ADD_INGREDIENT,
   DELETE_INGREDIENT,
   RESET_INGREDIENT,
+  REPLACE_BUN
 } from '../actions/constructor';
+
+import { burgerBoilerplate } from '../../utils/constants';
 
 // ingredientsReducer
 
@@ -121,9 +124,9 @@ export const currentIngredientReducer = (state = initialState3, action) => {
 // constructorReducer
 
 const initialState4 = {
-  constructor: [], 
+  constructorLayout: [...burgerBoilerplate],  
+  constructorItems: [],  
 };
-
 
 export const constructorReducer = (state = initialState4, action) => {
 
@@ -131,19 +134,39 @@ export const constructorReducer = (state = initialState4, action) => {
     case ADD_INGREDIENT: {
       return {
         ...state,
-        //
-      }
-    }
+        constructorItems: [
+          ...state.constructorLayout,
+          [...state.constructorItems, action.item],
+        ]
+      };
+  }
+  /*
+  case ADD_INGREDIENT: {
+      return {
+        ...state,
+        constructorLayout: [
+          ...state.constructorLayout,
+          [...state.constructorItems].find(item => item._id === action.id),
+        ],
+      };
+
+  */
     case DELETE_INGREDIENT: {
       return {
         ...state,
-        //
+        constructorItems: [...state.constructorItems].filter(item => item.key !== action.key)
       }
     }
     case RESET_INGREDIENT: {
       return {
-        ...state,
-        //
+        ...state,      
+        constructorItems: []
+      }
+    }
+    case REPLACE_BUN: {
+      return {
+        ...state,      
+        // constructorItems: []
       }
     }
     default:
@@ -151,3 +174,38 @@ export const constructorReducer = (state = initialState4, action) => {
   }
 }
 
+/*
+const initialState4 = {
+  constructorLayout: [...burgerBoilerplate],  
+  constructorItems: [],  
+};
+
+export const constructorReducer = (state = initialState4, action) => {
+
+  switch (action.type) {
+    case ADD_INGREDIENT: {
+      return {
+        ...state,
+        constructorItems: [
+          ...state.constructorLayout,
+          [...state.constructorItems].find(item => item.key === action.key),
+        ],
+      };
+  }
+    case DELETE_INGREDIENT: {
+      return {
+        ...state,
+        constructorItems: [...state.constructorItems].filter(item => item.key !== action.key)
+      }
+    }
+    case RESET_INGREDIENT: {
+      return {
+        ...state,      
+        constructorItems: []
+      }
+    }
+    default:
+      return state;
+  }
+}
+*/
