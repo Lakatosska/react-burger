@@ -124,8 +124,10 @@ export const currentIngredientReducer = (state = initialState3, action) => {
 // constructorReducer
 
 const initialState4 = {
-  constructorLayout: [...burgerBoilerplate],  
-  constructorItems: [],  
+
+  constructorItems: [], 
+  constructorBun: []
+
 };
 
 export const constructorReducer = (state = initialState4, action) => {
@@ -134,78 +136,32 @@ export const constructorReducer = (state = initialState4, action) => {
     case ADD_INGREDIENT: {
       return {
         ...state,
-        constructorItems: [
-          ...state.constructorLayout,
-          [...state.constructorItems, action.item],
-        ]
+        constructorItems: state.constructorItems.concat({
+          id: action.id,
+          key: action.key,
+        }),
       };
   }
-  /*
-  case ADD_INGREDIENT: {
-      return {
-        ...state,
-        constructorLayout: [
-          ...state.constructorLayout,
-          [...state.constructorItems].find(item => item._id === action.id),
-        ],
-      };
 
-  */
     case DELETE_INGREDIENT: {
       return {
         ...state,
-        constructorItems: [...state.constructorItems].filter(item => item.key !== action.key)
-      }
+        constructorItems: state.constructorItems.filter(item => item.key !== action.key)
+      };
     }
     case RESET_INGREDIENT: {
       return {
-        ...state,      
-        constructorItems: []
+        constructorItems: [], 
+        constructorBun: []
       }
     }
     case REPLACE_BUN: {
       return {
         ...state,      
-        // constructorItems: []
+        constructorBun: action.id
       }
     }
     default:
       return state;
   }
 }
-
-/*
-const initialState4 = {
-  constructorLayout: [...burgerBoilerplate],  
-  constructorItems: [],  
-};
-
-export const constructorReducer = (state = initialState4, action) => {
-
-  switch (action.type) {
-    case ADD_INGREDIENT: {
-      return {
-        ...state,
-        constructorItems: [
-          ...state.constructorLayout,
-          [...state.constructorItems].find(item => item.key === action.key),
-        ],
-      };
-  }
-    case DELETE_INGREDIENT: {
-      return {
-        ...state,
-        constructorItems: [...state.constructorItems].filter(item => item.key !== action.key)
-      }
-    }
-    case RESET_INGREDIENT: {
-      return {
-        ...state,      
-        constructorItems: []
-      }
-    }
-    default:
-      return state;
-  }
-}
-*/

@@ -9,7 +9,7 @@ import { DataContext } from '../../services/app-context';
 import { useSelector, useDispatch } from 'react-redux';
 import { OPEN_MODAL, CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCurrentIngredient } from '../../services/actions/currentIngredient';
-import { useDrag } from 'react-dnd';
+import { useDrag,  useDrop } from 'react-dnd';
 
 const BurgerTabs = () => {
   const [current, setCurrent] = useState('one')
@@ -28,12 +28,14 @@ const BurgerTabs = () => {
     );
 }
 
-const Card = ({ cardData }) => {
-  const { image, price, name, type, _id } = cardData;
+const Card = ({ card }) => {
+  const { image, price, name, type, _id: id, __v } = card;
+  const { constructorItems, constructorBun } = useSelector(store => store.constructorItems);
+  const { ingredients } = useSelector(store => store.ingredients);
   
   const [, dragRef] = useDrag({
     type: 'ingredient',
-    item: { _id, type },
+    item: { id, type },
   });
 
   const [modalActive, setModalActive] = useState(false);
@@ -42,7 +44,7 @@ const Card = ({ cardData }) => {
 
   const openModal = () => {
     setModalActive(true);
-    dispatch(getCurrentIngredient(cardData))    
+    dispatch(getCurrentIngredient(card))    
   };
 
   const closeModal = () => {
@@ -52,7 +54,7 @@ const Card = ({ cardData }) => {
 
   const modalIngredients = (
     <Modal title='Детали ингредиента' closing={closeModal}>
-      <IngredientDetails ingredient={cardData}/>
+      <IngredientDetails/>
     </Modal >
   );
 
@@ -75,26 +77,22 @@ const Card = ({ cardData }) => {
   );
 }
 
-Card.propTypes = {
-  cardData: cardPropTypes.isRequired,
-};
 
-const MenuList = ({ ingredientData, type }) => {
-  const typeData = ingredientData.filter(item => item.type === type);
+
+const MenuList = ({  type }) => {
+  const { ingredients } = useSelector(store => store.ingredients);
+  const typeData = ingredients.filter(item => item.type === type);
 
   return(
     <div className={`${burgerIngredientsStyles.menuItems}`}>
       {typeData.map(item => (
-        <Card key={item._id} cardData={item} />
+        <Card key={item._id} card={item} />
       ))}
     </div>
   );
 }
 
-MenuList.propTypes = {
-  ingredientData: PropTypes.arrayOf(cardPropTypes).isRequired,
-  type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
-};
+
 
 const BurgerIngredients = () => {
 
@@ -104,23 +102,25 @@ const BurgerIngredients = () => {
  // 'type: GET_INGREDIENTS_SUCCESS, ingredients: res.data'
   const ingredients = useSelector(store => store.ingredients.ingredients);
 
+  const [, drop] = useDrop(() => ({ accept: 'item' }));
+
   return(
-    <section className={burgerIngredientsStyles.main}>
+    <section className={burgerIngredientsStyles.main} ref={drop}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
       <BurgerTabs />
       <div className={`${burgerIngredientsStyles.window} custom-scroll`}>
         <ul className={burgerIngredientsStyles.menu}>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
-            <MenuList type='bun' ingredientData={ingredients} />
+            <MenuList type='bun' />
           </li>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
-            <MenuList type='sauce' ingredientData={ingredients} />
+            <MenuList type='sauce' />
           </li>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
-            <MenuList type='main' ingredientData={ingredients} />
+            <MenuList type='main' />
           </li>
         </ul>
       </div>
