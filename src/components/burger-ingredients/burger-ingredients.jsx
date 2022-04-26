@@ -35,7 +35,7 @@ const Card = ({ cardData }) => {
   
   const [, dragRef] = useDrag({
     type: 'ingredient',
-    item: { id, type },
+    item: cardData,
   });
 
   const [modalActive, setModalActive] = useState(false);
@@ -75,8 +75,7 @@ const Card = ({ cardData }) => {
       {modalActive && modalIngredients}
     </>
   );
-}
-
+};
 
 
 const MenuList = ({  type }) => {
@@ -96,16 +95,8 @@ const MenuList = ({  type }) => {
 
 const BurgerIngredients = () => {
 
- // const ingredients = useContext(DataContext);
-  
- // сохраняем в переменную данные из функции getIngredients в actions:
- // 'type: GET_INGREDIENTS_SUCCESS, ingredients: res.data'
-  const ingredients = useSelector(store => store.ingredients.ingredients);
-
-  const [, drop] = useDrop(() => ({ accept: 'item' }));
-
   return(
-    <section className={burgerIngredientsStyles.main} ref={drop}>
+    <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
       <BurgerTabs />
       <div className={`${burgerIngredientsStyles.window} custom-scroll`}>

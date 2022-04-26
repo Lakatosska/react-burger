@@ -126,7 +126,7 @@ export const currentIngredientReducer = (state = initialState3, action) => {
 const initialState4 = {
 
   constructorItems: [], 
-  constructorBun: []
+  bun: null,
 
 };
 
@@ -134,18 +134,18 @@ export const constructorReducer = (state = initialState4, action) => {
 
   switch (action.type) {
     case ADD_INGREDIENT: {
+      if (action.payload.type === 'bun') {
+        return {...state, bun: action.payload}
+      }
       return {
         ...state,
-        constructorItems: state.constructorItems.concat({
-          id: action.id,
-          key: action.key,
-        }),
+        constructorItems:[...state.constructorItems, action.payload],
       };
-  }
+    }
     case DELETE_INGREDIENT: {
       return {
         ...state,
-        constructorItems: state.constructorItems.filter(item => item.key !== action.key)
+        constructorItems: [...state.constructorItems].filter((_, index) => index !== action.payload),
       };
     }
     case RESET_INGREDIENT: {

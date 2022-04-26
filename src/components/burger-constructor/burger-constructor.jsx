@@ -10,43 +10,30 @@ import { DataContext } from '../../services/app-context';
 import { BASEURL, checkResponse } from '../../utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { postOrder } from '../../services/actions/order';
-import { ADD_INGREDIENT, DELETE_INGREDIENT, REPLACE_BUN } from '../../services/actions/constructor';
+import { ADD_INGREDIENT, DELETE_INGREDIENT, REPLACE_BUN, addToConstructor } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const ConstructorItem = ({ cardData, cardKey, index, moveCard }) => {
-  const { image, price, name, type } = cardData;
-
-  /*
-  const [, dragRef] = useDrag({
-    type: 'item',
-    item: { card, index },
-    
-  });
-  */
+const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
 
-  const deleteIngredient = () => {
-    dispatch({
-      type: DELETE_INGREDIENT,
-      key: cardKey
-    })
+   const deleteIngredient = (index) => {
+    dispatch(deleteIngredient(index))
   };
+
 
   return(
     <div 
-    //ref={dragRef}
+      key={cardData.id}
       className={burgerConstructorStyles.item}>
         <DragIcon type="primary"/>
         <ConstructorElement
-          text={name}
-          price={price}
-          thumbnail={image}
-          //_id={_id}
-          index={index}
-          handleClose={() => deleteIngredient()}
+          text={cardData.name}
+          price={cardData.price}
+          thumbnail={cardData.image}
+          handleClose={() => deleteIngredient(index)}
         />
     </div> 
   )
@@ -55,86 +42,54 @@ const ConstructorItem = ({ cardData, cardKey, index, moveCard }) => {
 
 const ConstructorItems = () => {
 
-  const { ingredients } = useSelector(store => store.ingredients);
-  const { constructorItems, constructorBun } = useSelector(store => store.constructorItems);
-  console.log(constructorItems)
-  console.log(constructorBun)
-  
-  const bunData = ingredients.find(item => item.type === 'bun');
-
-
   const dispatch = useDispatch();
+  const { constructorItems, bun } = useSelector(store => store.constructorItems);
 
-  const onDropHandler = (item) => {
-    console.log(item)
-    const isBun = item.type === 'bun';
-    dispatch({ 
-      type: isBun ? REPLACE_BUN : ADD_INGREDIENT, 
-      id: item.id,
-      key: uuidv4()
-    });
-  };
-
-  const [, dropTarget] = useDrop({
+  const [, dropTarget] = useDrop(() => ({
     accept: 'ingredient',
-    drop(item) {
-      onDropHandler(item);
-    },
-  });
-
-  /*
-  const sauceMainData = constructorItems.filter(item => item.type !== 'bun');
-  */
-
-  const sauceMainData = constructorItems.map((item, index) => {
-    const ingredient = ingredients.find(
-      el => el.type !== 'bun' && el._id === item.id
-    );
-    return (
-      ingredient &&
-      <ConstructorItem
-        key={item.key}
-        cardData={ingredient}
-        cardKey={item.key}
-        index={index}
-      />
-    )
-  });
-
+    drop: (item) => dispatch(addToConstructor(item)),
+  }));
 
   return (
     <ul className={`${burgerConstructorStyles.items} pl-4`} ref={dropTarget}>
       <li className={`${burgerConstructorStyles.list} ml-5`}>
-        {bunData
+        {bun
         ? 
           <ConstructorElement
             type='top'
             isLocked={true}
-            text={bunData.name + ' (верх)'}
-            price={bunData.price}
-            thumbnail={bunData.image}
-            key={bunData._id}
+            text={bun.name + ' (верх)'}
+            price={bun.price}
+            thumbnail={bun.image}
           />
           : ''}
       </li>
       
-      
       <li className={`${burgerConstructorStyles.list} ${burgerConstructorStyles.window} custom-scroll`}>
-        {sauceMainData}
+        {constructorItems.length > 0 
+        ? (
+            constructorItems.map((item, index) => {
+              return (
+                <ConstructorItem
+                  cardData={item}
+                  index={index}
+                  key={item.id}
+                />
+              );
+            })
+          )
+        : ''}
       </li>
       
-
       <li className={`${burgerConstructorStyles.list} ml-5`}>
-        {bunData
+        {bun
         ? 
           <ConstructorElement
             type='bottom'
             isLocked={true}
-            text={bunData.name + ' (низ)'}
-            price={bunData.price}
-            thumbnail={bunData.image}
-            //key={bunData._id}
-            key={bunData._id + 'bottom'}
+            text={bun.name + ' (низ)'}
+            price={bun.price}
+            thumbnail={bun.image}
         />
         : ''}
       </li>
@@ -146,6 +101,8 @@ const ConstructorItems = () => {
 const OrderTotal = () => {
 
   const ingredients = useSelector(store => store.ingredients.ingredients);
+  const { constructorItems, bun } = useSelector(store => store.constructorItems);
+
   const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -164,16 +121,13 @@ const OrderTotal = () => {
     </Modal >
   );
 
-  const bunData = ingredients.find(item => item.type === 'bun');
-  const sauceMainData = ingredients.filter(item => item.type !== 'bun');
-  
-  const bunDataPrice = bunData ? bunData.price*2 : 0;
+  const total = useMemo(() => {
+    const bunPrice = bun ? bun.price*2 : 0;
 
-  const total = useMemo(
-    () => 
-    sauceMainData.reduce((acc, item) => acc + item.price, 0) + bunDataPrice,
-  [sauceMainData, bunDataPrice]
-  )
+    return (
+      constructorItems.reduce((acc, item) => acc + item.price, 0) + bunPrice
+    );
+  }, [constructorItems, bun]);
 
   return(
     <>
@@ -191,11 +145,7 @@ const OrderTotal = () => {
   );
 }
 
-
 const BurgerConstructor = () => {
-
-  //const ingredients = useContext(DataContext);
-  //const ingredients = useSelector(store => store.ingredients.ingredients);
 
   return(
     <section className={`${burgerConstructorStyles.main} mt-25`}>
@@ -204,6 +154,5 @@ const BurgerConstructor = () => {
     </section>
   );
 }
-
 
 export default BurgerConstructor;
