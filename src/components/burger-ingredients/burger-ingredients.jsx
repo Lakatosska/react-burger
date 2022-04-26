@@ -28,8 +28,8 @@ const BurgerTabs = () => {
     );
 }
 
-const Card = ({ card }) => {
-  const { image, price, name, type, _id: id, __v } = card;
+const Card = ({ cardData }) => {
+  const { image, price, name, type, _id: id, __v } = cardData;
   const { constructorItems, constructorBun } = useSelector(store => store.constructorItems);
   const { ingredients } = useSelector(store => store.ingredients);
   
@@ -44,7 +44,7 @@ const Card = ({ card }) => {
 
   const openModal = () => {
     setModalActive(true);
-    dispatch(getCurrentIngredient(card))    
+    dispatch(getCurrentIngredient(cardData))    
   };
 
   const closeModal = () => {
@@ -86,7 +86,7 @@ const MenuList = ({  type }) => {
   return(
     <div className={`${burgerIngredientsStyles.menuItems}`}>
       {typeData.map(item => (
-        <Card key={item._id} card={item} />
+        <Card key={item._id} cardData={item} />
       ))}
     </div>
   );

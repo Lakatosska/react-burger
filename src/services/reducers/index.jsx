@@ -20,7 +20,7 @@ import {
   REPLACE_BUN
 } from '../actions/constructor';
 
-import { burgerBoilerplate } from '../../utils/constants';
+//import { burgerBoilerplate } from '../../utils/constants';
 
 // ingredientsReducer
 
@@ -142,7 +142,6 @@ export const constructorReducer = (state = initialState4, action) => {
         }),
       };
   }
-
     case DELETE_INGREDIENT: {
       return {
         ...state,

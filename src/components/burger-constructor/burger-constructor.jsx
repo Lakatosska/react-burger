@@ -15,8 +15,8 @@ import { useDrag, useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const ConstructorItem = ({ card, cardKey, index, moveCard }) => {
-  const { image, price, name, type } = card;
+const ConstructorItem = ({ cardData, cardKey, index, moveCard }) => {
+  const { image, price, name, type } = cardData;
 
   /*
   const [, dragRef] = useDrag({
@@ -25,6 +25,15 @@ const ConstructorItem = ({ card, cardKey, index, moveCard }) => {
     
   });
   */
+
+  const dispatch = useDispatch();
+
+  const deleteIngredient = () => {
+    dispatch({
+      type: DELETE_INGREDIENT,
+      key: cardKey
+    })
+  };
 
   return(
     <div 
@@ -37,7 +46,7 @@ const ConstructorItem = ({ card, cardKey, index, moveCard }) => {
           thumbnail={image}
           //_id={_id}
           index={index}
-          //handleClose={() => deleteIngredient()}
+          handleClose={() => deleteIngredient()}
         />
     </div> 
   )
@@ -85,7 +94,7 @@ const ConstructorItems = () => {
       ingredient &&
       <ConstructorItem
         key={item.key}
-        card={ingredient}
+        cardData={ingredient}
         cardKey={item.key}
         index={index}
       />
