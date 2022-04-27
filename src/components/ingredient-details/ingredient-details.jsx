@@ -37,8 +37,5 @@ const IngredientDetails = () => {
   );
 }
 
-IngredientDetails.propTypes = {
-  ingredient: cardPropTypes.isRequired,
-};
 
 export default IngredientDetails;

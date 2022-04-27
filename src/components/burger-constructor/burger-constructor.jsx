@@ -13,16 +13,19 @@ import { postOrder } from '../../services/actions/order';
 import { ADD_INGREDIENT, DELETE_INGREDIENT, REPLACE_BUN, addToConstructor } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
+import { deleteIngredient } from '../../services/actions/constructor';
 
 
 const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
 
-   const deleteIngredient = (index) => {
-    dispatch(deleteIngredient(index))
+   const handleDeleteIngredient = (index) => {
+    dispatch({
+      type: DELETE_INGREDIENT,
+      payload: index
+    })
   };
-
 
   return(
     <div 
@@ -33,7 +36,7 @@ const ConstructorItem = ({ cardData, index }) => {
           text={cardData.name}
           price={cardData.price}
           thumbnail={cardData.image}
-          handleClose={() => deleteIngredient(index)}
+          handleClose={() => handleDeleteIngredient(index)}
         />
     </div> 
   )
@@ -72,8 +75,8 @@ const ConstructorItems = () => {
               return (
                 <ConstructorItem
                   cardData={item}
-                  index={index}
                   key={item.id}
+                  index={index}
                 />
               );
             })

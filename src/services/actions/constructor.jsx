@@ -12,16 +12,7 @@ export const addToConstructor = (ingredient, index) => {
     payload: {
       ...ingredient,
       id: uuid4(),
-      index,
-    }
-  }
-}
-
-export const deleteIngredient = (index) => (
-  {
-    type: DELETE_INGREDIENT,
-    payload: {
       index
     }
   }
-)
+}
