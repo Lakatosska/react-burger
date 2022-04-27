@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal/modal';
@@ -28,9 +28,9 @@ const BurgerTabs = () => {
     );
 }
 
-const Card = ({ cardData }) => {
+const Card = ({ cardData, count }) => {
   const { image, price, name, type, _id: id, __v } = cardData;
-  const { constructorItems, constructorBun } = useSelector(store => store.constructorItems);
+  const { constructorItems, bun } = useSelector(store => store.constructorItems);
   const { ingredients } = useSelector(store => store.ingredients);
   
   const [, dragRef] = useDrag({
@@ -64,7 +64,7 @@ const Card = ({ cardData }) => {
         onClick={openModal}
         ref={dragRef}
       >
-        <Counter count={1} size="default" />
+        {(count > 0) && (<Counter count={count} size="default" />)}
         <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
         <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>
           <span className='text text_type_digits-default mr-1'>{price}</span>
@@ -79,18 +79,37 @@ const Card = ({ cardData }) => {
 
 
 const MenuList = ({  type }) => {
+
+  const { constructorItems, bun } = useSelector(store => store.constructorItems);
+
+  const counter = useMemo(() => {
+    
+    const counts = {};
+
+    constructorItems.forEach((item) => {
+      if (!counts[item._id]) counts[item._id] = 0;
+      
+      counts[item._id]++;
+    });
+
+      if (bun) counts[bun._id] = 2;
+      
+      return counts;
+  }, [constructorItems, bun]);
+
+
+
   const { ingredients } = useSelector(store => store.ingredients);
   const typeData = ingredients.filter(item => item.type === type);
 
   return(
     <div className={`${burgerIngredientsStyles.menuItems}`}>
       {typeData.map(item => (
-        <Card key={item._id} cardData={item} />
+        <Card key={item._id} cardData={item} count={counter[item._id]}/>
       ))}
     </div>
   );
 }
-
 
 
 const BurgerIngredients = () => {
