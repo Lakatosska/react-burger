@@ -11,22 +11,7 @@ import { OPEN_MODAL, CLOSE_MODAL } from '../../services/actions/currentIngredien
 import { getCurrentIngredient } from '../../services/actions/currentIngredient';
 import { useDrag,  useDrop } from 'react-dnd';
 
-const BurgerTabs = () => {
-  const [current, setCurrent] = useState('one')
-    return (
-      <div className={burgerIngredientsStyles.tab}>
-        <Tab value='one' active={current === 'one'} onClick={setCurrent}>
-          Булки
-        </Tab>
-        <Tab value='two' active={current === 'two'} onClick={setCurrent}>
-          Соусы
-        </Tab>
-        <Tab value='three' active={current === 'three'} onClick={setCurrent}>
-          Начинки
-        </Tab>
-      </div>
-    );
-}
+
 
 const Card = ({ cardData, count }) => {
   const { image, price, name, type, _id: id, __v } = cardData;
@@ -97,8 +82,6 @@ const MenuList = ({  type }) => {
       return counts;
   }, [constructorItems, bun]);
 
-
-
   const { ingredients } = useSelector(store => store.ingredients);
   const typeData = ingredients.filter(item => item.type === type);
 
@@ -114,10 +97,23 @@ const MenuList = ({  type }) => {
 
 const BurgerIngredients = () => {
 
+  const [current, setCurrent] = useState('Булки')
+
   return(
     <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
-      <BurgerTabs />
+      
+      <div className={burgerIngredientsStyles.tab}>
+        <Tab value="Булки" active={current === 'Булки'} onClick={setCurrent}>
+          Булки
+        </Tab>
+        <Tab value="Соусы" active={current === 'Соусы'} onClick={setCurrent}>
+          Соусы
+        </Tab>
+        <Tab value="Начинки" active={current === 'Начинки'} onClick={setCurrent}>
+          Начинки
+        </Tab>
+      </div>
       <div className={`${burgerIngredientsStyles.window} custom-scroll`}>
         <ul className={burgerIngredientsStyles.menu}>
           <li>
