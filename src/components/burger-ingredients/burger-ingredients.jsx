@@ -99,6 +99,21 @@ const BurgerIngredients = () => {
 
   const [current, setCurrent] = useState('Булки')
 
+  const setTabScroll = (evt) => {
+
+    let element = evt.target;
+   
+    if (element.scrollTop >= 0 && element.scrollTop <= 250) {
+        setCurrent('Булки');
+    }
+    else if (element.scrollTop > 250 && element.scrollTop <= 750) {
+        setCurrent('Соусы');
+    }
+    else {
+        setCurrent('Начинки');
+    }
+}
+
   return(
     <section className={burgerIngredientsStyles.main}>
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
@@ -114,7 +129,7 @@ const BurgerIngredients = () => {
           Начинки
         </Tab>
       </div>
-      <div className={`${burgerIngredientsStyles.window} custom-scroll`}>
+      <div className={`${burgerIngredientsStyles.window} custom-scroll`} onScroll={setTabScroll}>
         <ul className={burgerIngredientsStyles.menu}>
           <li>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
