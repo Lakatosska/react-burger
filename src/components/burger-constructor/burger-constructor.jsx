@@ -1,4 +1,4 @@
-import { useState, useMemo, useContext, useEffect } from 'react';
+import { useState, useMemo, useContext, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerConstructorStyles from './burger-constructor.module.css';
@@ -10,7 +10,7 @@ import { DataContext } from '../../services/app-context';
 import { BASEURL, checkResponse } from '../../utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { postOrder } from '../../services/actions/order';
-import { ADD_INGREDIENT, DELETE_INGREDIENT, REPLACE_BUN, addToConstructor } from '../../services/actions/constructor';
+import { ADD_INGREDIENT, DELETE_INGREDIENT, REPLACE_BUN, SHIFT_INGREDIENT, addToConstructor } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import { deleteIngredient } from '../../services/actions/constructor';
@@ -20,6 +20,16 @@ const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
 
+  const handleSortIngredient = (fromIndex, toIndex) => (
+    dispatch({
+      type: SHIFT_INGREDIENT,
+      payload: {
+        from: fromIndex, 
+        to: toIndex,
+      },
+    })
+  )
+
    const handleDeleteIngredient = (index) => {
     dispatch({
       type: DELETE_INGREDIENT,
@@ -27,9 +37,35 @@ const ConstructorItem = ({ cardData, index }) => {
     })
   };
 
+  const [{ isDragging }, dragRef] = useDrag({
+    type: 'item',
+    item: { index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  
+  });
+
+  const [{ isHover }, dropRef] = useDrop({
+    accept: 'item',
+    collect: monitor => ({
+      isHover: monitor.isOver()
+    }),
+    drop(dragObject) {
+      if (dragObject.index === index) {
+        return
+      }
+      dispatch(handleSortIngredient(dragObject.index, index))
+    }
+  })
+
+  const ref = useRef(null);
+  const dragDropRef = dragRef(dropRef(ref));
+
   return(
     <div 
       key={cardData.id}
+      ref={dragDropRef}
       className={burgerConstructorStyles.item}>
         <DragIcon type="primary"/>
         <ConstructorElement

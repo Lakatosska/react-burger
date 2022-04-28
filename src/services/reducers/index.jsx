@@ -16,8 +16,8 @@ import {
 import {
   ADD_INGREDIENT,
   DELETE_INGREDIENT,
-  RESET_INGREDIENT,
-  REPLACE_BUN
+  REPLACE_BUN,
+  SHIFT_INGREDIENT
 } from '../actions/constructor';
 
 //import { burgerBoilerplate } from '../../utils/constants';
@@ -148,10 +148,12 @@ export const constructorReducer = (state = initialState4, action) => {
         constructorItems: [...state.constructorItems].filter((_, index) => index !== action.payload),
       };
     }
-    case RESET_INGREDIENT: {
+    case SHIFT_INGREDIENT: {
+      const array = [...state.constructorItems];
+      array.splice(action.payload.to, 0, ...array.splice(action.payload.from, 1))
       return {
-        constructorItems: [], 
-        constructorBun: []
+        ...state,
+        constructorItems: [...array],
       }
     }
     case REPLACE_BUN: {
@@ -160,6 +162,7 @@ export const constructorReducer = (state = initialState4, action) => {
         constructorBun: action.id
       }
     }
+
     default:
       return state;
   }
