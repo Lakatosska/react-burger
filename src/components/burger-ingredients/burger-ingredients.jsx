@@ -101,12 +101,12 @@ const BurgerIngredients = () => {
 
   const setTabScroll = (evt) => {
 
-    let element = evt.target;
+    const scrollTop = evt.target.scrollTop;
    
-    if (element.scrollTop >= 0 && element.scrollTop <= 250) {
+    if (scrollTop <= 250) {
         setCurrent('Булки');
     }
-    else if (element.scrollTop > 250 && element.scrollTop <= 750) {
+    else if (scrollTop > 250 && scrollTop <= 750) {
         setCurrent('Соусы');
     }
     else {
