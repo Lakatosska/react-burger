@@ -13,5 +13,22 @@ export const addToConstructor = (ingredient, index) => {
       id: uuid4(),
       index
     }
+  };
+};
+
+export const handleSortIngredient = (fromIndex, toIndex) => {
+  return {
+    type: SHIFT_INGREDIENT,
+    payload: {
+      from: fromIndex, 
+      to: toIndex,
+    },
+  };
+};
+
+export const handleDeleteIngredient = (index) => (
+  {
+    type: DELETE_INGREDIENT,
+    payload: index
   }
-}
+);

@@ -107,7 +107,7 @@ export const currentIngredientReducer = (state = initialCurrentIngredientState, 
     case OPEN_MODAL: {
       return {
         ...state,
-        currentIngredient: action.cardData
+        currentIngredient: action.payload
       }
     }
     case CLOSE_MODAL: {
@@ -124,10 +124,8 @@ export const currentIngredientReducer = (state = initialCurrentIngredientState, 
 // constructorReducer
 
 const initialConstructorState = {
-
   constructorItems: [], 
   bun: null,
-
 };
 
 export const constructorReducer = (state = initialConstructorState, action) => {

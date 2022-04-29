@@ -31,20 +31,3 @@ export function getIngredients() {
     })
   }
 }
-
-
-/*
-export function getIngredients() {
-  return function(dispatch) {
-    dispatch({
-      type: GET_INGREDIENTS_REQUEST
-    })
-    fetch(`${BASEURL}/ingredients`)
-    .then(checkResponse)
-    .then((res) => {
-      setData(res.data);
-    })
-    .catch((err) => console.log(err)); 
-  }
-}
-*/

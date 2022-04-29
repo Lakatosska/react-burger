@@ -38,31 +38,10 @@ export function postOrder(ingredientData) {
       }
     })
     .catch( err => {
-
       dispatch({
-          type: GET_ORDER_FAILED
+          type: GET_ORDER_FAILED,
+          payload: err
       })
     })
   }
 };
-
- /*
-  const placeOrder = () => {
-    const ingredientsId = ingredientData.map(el => el._id);
-    fetch(`${BASEURL}/orders`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        ingredients: ingredientsId
-      })
-    })
-    .then(checkResponse)
-    .then((res) => {
-      setOrder(res.order.number);
-      console.log(res)
-    })
-    .catch((err) => console.log(err))
-  };
-  */

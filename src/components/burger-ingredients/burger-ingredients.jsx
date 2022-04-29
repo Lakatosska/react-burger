@@ -11,7 +11,6 @@ import { getCurrentIngredient } from '../../services/actions/currentIngredient';
 import { useDrag } from 'react-dnd';
 
 
-
 const Card = ({ cardData, count }) => {
   const { image, price, name, _id: id } = cardData;
   
@@ -21,7 +20,6 @@ const Card = ({ cardData, count }) => {
   });
 
   const [modalActive, setModalActive] = useState(false);
-
   const dispatch = useDispatch();
 
   const openModal = () => {
@@ -63,7 +61,7 @@ const Card = ({ cardData, count }) => {
 
 Card.propTypes = {
   cardData: cardPropTypes.isRequired,
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
 };
 
 
@@ -99,11 +97,10 @@ const MenuList = ({ type }) => {
 }
 
 MenuList.propTypes = {
-  type: cardPropTypes.isRequired,
+  type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
 };
 
 const BurgerIngredients = () => {
-
   const [current, setCurrent] = useState('Булки')
 
   const setTabScroll = (evt) => {
@@ -118,7 +115,7 @@ const BurgerIngredients = () => {
     else {
         setCurrent('Начинки');
     }
-}
+  }
 
   return(
     <section className={burgerIngredientsStyles.main}>

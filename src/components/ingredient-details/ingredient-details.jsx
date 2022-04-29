@@ -1,5 +1,4 @@
 import ingredientDetailsStyles from './ingredient-details.module.css';
-import { cardPropTypes } from '../../utils/prop-types';
 import { useSelector } from 'react-redux';
 
 
