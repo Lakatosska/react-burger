@@ -2,8 +2,7 @@ import { combineReducers } from 'redux';
 import { ingredientsReducer, 
         orderReducer, 
         currentIngredientReducer,
-        constructorReducer
-        
+        constructorReducer 
 } from './index';
 
 export const rootReducer = combineReducers({

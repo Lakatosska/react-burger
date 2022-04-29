@@ -1,22 +1,19 @@
-import { useState, useContext, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
-import { DataContext } from '../../services/app-context';
 import { useSelector, useDispatch } from 'react-redux';
-import { OPEN_MODAL, CLOSE_MODAL } from '../../services/actions/currentIngredient';
+import { CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCurrentIngredient } from '../../services/actions/currentIngredient';
-import { useDrag,  useDrop } from 'react-dnd';
+import { useDrag } from 'react-dnd';
 
 
 
 const Card = ({ cardData, count }) => {
-  const { image, price, name, type, _id: id, __v } = cardData;
-  const { constructorItems, bun } = useSelector(store => store.constructorItems);
-  const { ingredients } = useSelector(store => store.ingredients);
+  const { image, price, name, _id: id } = cardData;
   
   const [, dragRef] = useDrag({
     type: 'ingredient',
@@ -34,7 +31,9 @@ const Card = ({ cardData, count }) => {
 
   const closeModal = () => {
     setModalActive(false);
-    dispatch({type: CLOSE_MODAL}); 
+    dispatch({
+      type: CLOSE_MODAL
+    }); 
   };
 
   const modalIngredients = (
@@ -63,22 +62,22 @@ const Card = ({ cardData, count }) => {
 };
 
 
-const MenuList = ({  type }) => {
+const MenuList = ({ type }) => {
 
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
 
   const counter = useMemo(() => {
-    
     const counts = {};
 
     constructorItems.forEach((item) => {
-      if (!counts[item._id]) counts[item._id] = 0;
-      
+      if (!counts[item._id]) {
+        counts[item._id] = 0;
+      }
       counts[item._id]++;
     });
-
-      if (bun) counts[bun._id] = 2;
-      
+      if (bun) {
+        counts[bun._id] = 2;
+      }
       return counts;
   }, [constructorItems, bun]);
 
@@ -100,7 +99,6 @@ const BurgerIngredients = () => {
   const [current, setCurrent] = useState('Булки')
 
   const setTabScroll = (evt) => {
-
     const scrollTop = evt.target.scrollTop;
    
     if (scrollTop <= 250) {

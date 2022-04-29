@@ -5,15 +5,10 @@ import burgerConstructorStyles from './burger-constructor.module.css';
 import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
-import { PlaceOrderContext } from '../../services/burger-constructor-context';
-import { DataContext } from '../../services/app-context';
-import { BASEURL, checkResponse } from '../../utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { postOrder } from '../../services/actions/order';
-import { ADD_INGREDIENT, DELETE_INGREDIENT, REPLACE_BUN, SHIFT_INGREDIENT, addToConstructor } from '../../services/actions/constructor';
+import { DELETE_INGREDIENT, SHIFT_INGREDIENT, addToConstructor } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
-import { v4 as uuidv4 } from 'uuid';
-import { deleteIngredient } from '../../services/actions/constructor';
 
 
 const ConstructorItem = ({ cardData, index }) => {
@@ -37,20 +32,13 @@ const ConstructorItem = ({ cardData, index }) => {
     })
   };
 
-  const [{ isDragging }, dragRef] = useDrag({
+  const [, dragRef] = useDrag({
     type: 'item',
-    item: { index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  
+    item: { index }  
   });
 
-  const [{ isHover }, dropRef] = useDrop({
+  const [, dropRef] = useDrop({
     accept: 'item',
-    collect: monitor => ({
-      isHover: monitor.isOver()
-    }),
     drop(dragObject) {
       if (dragObject.index === index) {
         return

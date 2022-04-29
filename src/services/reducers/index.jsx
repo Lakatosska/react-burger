@@ -1,5 +1,8 @@
 
-import { CLOSE_MODAL, OPEN_MODAL } from '../actions/currentIngredient';
+import { 
+  CLOSE_MODAL, 
+  OPEN_MODAL 
+} from '../actions/currentIngredient';
 
 import {
   GET_INGREDIENTS_REQUEST,
@@ -16,21 +19,18 @@ import {
 import {
   ADD_INGREDIENT,
   DELETE_INGREDIENT,
-  REPLACE_BUN,
   SHIFT_INGREDIENT
 } from '../actions/constructor';
 
-//import { burgerBoilerplate } from '../../utils/constants';
-
 // ingredientsReducer
 
-const initialState2 = {
+const initialIngredientsState = {
   ingredients: [],
   ingredientsRequest: false,
   ingredientsFailed: false,
 };
 
-export const ingredientsReducer = (state = initialState2, action) => {
+export const ingredientsReducer = (state = initialIngredientsState, action) => {
   switch (action.type) {
     case GET_INGREDIENTS_REQUEST: {
       return {
@@ -60,13 +60,13 @@ export const ingredientsReducer = (state = initialState2, action) => {
 
 // orderReducer
 
-const initialState = {
+const initialOrderState = {
   order: null,
   orderRequest: false,
   orderFailed: false,
 };
 
-export const orderReducer = (state = initialState, action) => {
+export const orderReducer = (state = initialOrderState, action) => {
 
   switch (action.type) {
     case GET_ORDER_REQUEST: {
@@ -97,11 +97,11 @@ export const orderReducer = (state = initialState, action) => {
 
 // currentIngredientReducer
 
-const initialState3 = {
+const initialCurrentIngredientState = {
   currentIngredient: null, 
 };
 
-export const currentIngredientReducer = (state = initialState3, action) => {
+export const currentIngredientReducer = (state = initialCurrentIngredientState, action) => {
 
   switch (action.type) {
     case OPEN_MODAL: {
@@ -123,14 +123,14 @@ export const currentIngredientReducer = (state = initialState3, action) => {
 
 // constructorReducer
 
-const initialState4 = {
+const initialConstructorState = {
 
   constructorItems: [], 
   bun: null,
 
 };
 
-export const constructorReducer = (state = initialState4, action) => {
+export const constructorReducer = (state = initialConstructorState, action) => {
 
   switch (action.type) {
     case ADD_INGREDIENT: {
@@ -156,13 +156,6 @@ export const constructorReducer = (state = initialState4, action) => {
         constructorItems: [...array],
       }
     }
-    case REPLACE_BUN: {
-      return {
-        ...state,      
-        constructorBun: action.id
-      }
-    }
-
     default:
       return state;
   }
