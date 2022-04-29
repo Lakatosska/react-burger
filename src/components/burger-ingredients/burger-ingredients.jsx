@@ -61,6 +61,11 @@ const Card = ({ cardData, count }) => {
   );
 };
 
+Card.propTypes = {
+  cardData: cardPropTypes.isRequired,
+  count: PropTypes.number.isRequired,
+};
+
 
 const MenuList = ({ type }) => {
 
@@ -93,6 +98,9 @@ const MenuList = ({ type }) => {
   );
 }
 
+MenuList.propTypes = {
+  type: cardPropTypes.isRequired,
+};
 
 const BurgerIngredients = () => {
 

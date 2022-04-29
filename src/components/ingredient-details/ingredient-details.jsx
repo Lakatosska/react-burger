@@ -6,10 +6,7 @@ import { useSelector } from 'react-redux';
 const IngredientDetails = () => {
 
   const { currentIngredient } = useSelector(store => store.currentIngredient);
-
   const { image_large, name, calories, proteins, fat, carbohydrates } = currentIngredient;
-
-
  
   return(
     <article className={ingredientDetailsStyles.container}>

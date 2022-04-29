@@ -66,6 +66,11 @@ const ConstructorItem = ({ cardData, index }) => {
   )
 }
 
+ConstructorItem.propTypes = {
+  cardData: cardPropTypes.isRequired,
+  index: PropTypes.number.isRequired,
+};
+
 
 const ConstructorItems = () => {
 
