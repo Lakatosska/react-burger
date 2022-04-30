@@ -14,6 +14,7 @@ import {
   GET_ORDER_REQUEST,
   GET_ORDER_SUCCESS,
   GET_ORDER_FAILED,
+  RESET_ORDER,
 } from '../actions/order';
 
 import {
@@ -87,6 +88,14 @@ export const orderReducer = (state = initialOrderState, action) => {
     case GET_ORDER_FAILED: {
       return {
         ...state,
+        orderFailed: true,
+        orderRequest: false,
+      }
+    }
+    case RESET_ORDER: {
+      return {
+        ...state,
+        order: null,
         orderFailed: true,
         orderRequest: false,
       }

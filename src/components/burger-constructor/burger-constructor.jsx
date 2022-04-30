@@ -6,7 +6,7 @@ import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import { useSelector, useDispatch } from 'react-redux';
-import { postOrder } from '../../services/actions/order';
+import { postOrder, RESET_ORDER } from '../../services/actions/order';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
 
@@ -132,6 +132,9 @@ const OrderTotal = () => {
 
   const closeModal = () => {
     setModalActive(false);
+    dispatch({
+      type: RESET_ORDER
+    })
     
   };
   
