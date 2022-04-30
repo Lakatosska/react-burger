@@ -125,7 +125,7 @@ const OrderTotal = () => {
   const { order, orderRequest } = useSelector(store => store.order);
 
   const [modalActive, setModalActive] = useState(false);
-  
+
   const dispatch = useDispatch();
 
   const openModal = () => {
