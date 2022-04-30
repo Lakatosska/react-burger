@@ -16,15 +16,15 @@ export const addToConstructor = (ingredient, index) => {
   };
 };
 
-export const handleSortIngredient = (fromIndex, toIndex) => {
-  return {
+export const handleSortIngredient = (fromIndex, toIndex) => (
+  {
     type: SHIFT_INGREDIENT,
     payload: {
       from: fromIndex, 
       to: toIndex,
     },
-  };
-};
+  }
+)
 
 export const handleDeleteIngredient = (index) => (
   {

@@ -7,30 +7,13 @@ import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import { useSelector, useDispatch } from 'react-redux';
 import { postOrder } from '../../services/actions/order';
-import { DELETE_INGREDIENT, SHIFT_INGREDIENT, addToConstructor } from '../../services/actions/constructor';
+import { DELETE_INGREDIENT, SHIFT_INGREDIENT, addToConstructor, handleDeleteIngredient, handleSortIngredient } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
 
 
 const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
-
-  const handleSortIngredient = (fromIndex, toIndex) => (
-    dispatch({
-      type: SHIFT_INGREDIENT,
-      payload: {
-        from: fromIndex, 
-        to: toIndex,
-      },
-    })
-  )
-
-   const handleDeleteIngredient = (index) => {
-    dispatch({
-      type: DELETE_INGREDIENT,
-      payload: index
-    })
-  };
 
   const [, dragRef] = useDrag({
     type: 'item',
