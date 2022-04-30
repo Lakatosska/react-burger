@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { postOrder, RESET_ORDER } from '../../services/actions/order';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
+import { Loader } from '../loader/loader';
 
 
 const ConstructorItem = ({ cardData, index }) => {
@@ -121,8 +122,10 @@ const OrderTotal = () => {
 
   const ingredients = useSelector(store => store.ingredients.ingredients);
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
+  const { order, orderRequest } = useSelector(store => store.order);
 
   const [modalActive, setModalActive] = useState(false);
+  
   const dispatch = useDispatch();
 
   const openModal = () => {
@@ -140,7 +143,8 @@ const OrderTotal = () => {
   
   const modalOrder = (
     <Modal closing={closeModal}>
-        <OrderDetails  />
+       
+      <OrderDetails  />
     </Modal >
   );
 
@@ -152,6 +156,7 @@ const OrderTotal = () => {
     );
   }, [constructorItems, bun]);
 
+  
   return(
     <>
       <div className={`${burgerConstructorStyles.order} mt-10`}>
@@ -165,7 +170,8 @@ const OrderTotal = () => {
           Оформить заказ
         </Button>
       </div>
-      {modalActive && modalOrder}
+      {orderRequest && <Loader />}
+      {order && modalActive && modalOrder}
     </>
   );
 }

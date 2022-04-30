@@ -25,7 +25,7 @@ export function postOrder(ingredientData) {
       })
     })
     .then(checkResponse)
-    .then( res  => {
+    .then(res  => {
       if (res && res.success) {
         dispatch({
           type: GET_ORDER_SUCCESS,
