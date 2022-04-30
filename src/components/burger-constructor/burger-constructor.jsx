@@ -7,13 +7,17 @@ import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import { useSelector, useDispatch } from 'react-redux';
 import { postOrder } from '../../services/actions/order';
-import { DELETE_INGREDIENT, SHIFT_INGREDIENT, addToConstructor, handleDeleteIngredient, handleSortIngredient } from '../../services/actions/constructor';
+import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { useDrag, useDrop } from 'react-dnd';
 
 
 const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
+
+  const handleDeleteIngredient = (index) => {
+    dispatch(deleteIngredient(index))
+  }
 
   const [, dragRef] = useDrag({
     type: 'item',
@@ -26,7 +30,7 @@ const ConstructorItem = ({ cardData, index }) => {
       if (dragObject.index === index) {
         return
       }
-      dispatch(handleSortIngredient(dragObject.index, index))
+      dispatch(sortIngredient(dragObject.index, index))
     }
   })
 
@@ -128,6 +132,7 @@ const OrderTotal = () => {
 
   const closeModal = () => {
     setModalActive(false);
+    
   };
   
   const modalOrder = (
@@ -151,7 +156,9 @@ const OrderTotal = () => {
           <span className="text text_type_digits-medium mr-4">{total}</span>
           <CurrencyIcon type="primary" />
         </div>
-        <Button type="primary" size="large" onClick={openModal}>
+        <Button type="primary" size="large" onClick={openModal} 
+            // делаем неактивной кнопку без булки и ингредиентов
+            disabled={(bun && constructorItems.length) ? false : true}> 
           Оформить заказ
         </Button>
       </div>

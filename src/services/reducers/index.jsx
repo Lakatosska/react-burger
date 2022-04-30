@@ -19,7 +19,8 @@ import {
 import {
   ADD_INGREDIENT,
   DELETE_INGREDIENT,
-  SHIFT_INGREDIENT
+  SHIFT_INGREDIENT,
+  RESET_CONSTRUCTOR
 } from '../actions/constructor';
 
 // ingredientsReducer
@@ -152,6 +153,12 @@ export const constructorReducer = (state = initialConstructorState, action) => {
       return {
         ...state,
         constructorItems: [...array],
+      }
+    }
+    case RESET_CONSTRUCTOR: {
+      return {
+        constructorItems: [], 
+        bun: null
       }
     }
     default:

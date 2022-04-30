@@ -1,4 +1,5 @@
 import { BASEURL, checkResponse } from '../../utils/constants';
+import { RESET_CONSTRUCTOR } from './constructor';
 
 export const GET_ORDER_REQUEST = 'GET_ORDER_REQUEST';
 export const GET_ORDER_SUCCESS = 'GET_ORDER_SUCCESS';
@@ -28,9 +29,10 @@ export function postOrder(ingredientData) {
         dispatch({
           type: GET_ORDER_SUCCESS,
           order: res.order.number
-
         })
-        console.log(res.order.number)
+        dispatch({ 
+          type: RESET_CONSTRUCTOR
+        });
       } else {
         dispatch({
           type: GET_ORDER_FAILED
