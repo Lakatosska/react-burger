@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import orderDetailsStyles from './order-details.module.css';
 import orderDoneImg from '../../images/order-done.png';
-import { PlaceOrderContext } from '../../services/burger-constructor-context';
+import { useSelector } from 'react-redux';
 
 const OrderDetails = () => {
 
-  const orderNumber = useContext(PlaceOrderContext);
-  
+  const orderNumber = useSelector(store => store.order.order);
+
   return(
     <div className={`${orderDetailsStyles.container} pt-15`}>
       <h1 className='text text_type_digits-large mb-10'>{orderNumber}</h1>

@@ -29,7 +29,7 @@
 }
 
 .window {
-  height: calc(100vh - 226px);
+  height: calc(100vh - 550px);
   overflow-y: auto;
 }
 
