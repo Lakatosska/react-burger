@@ -5,30 +5,40 @@ export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
 export const GET_INGREDIENTS_FAILED = 'GET_INGREDIENTS_FAILED';
 
 // ActionsCreator
-export function getIngredients() {
+export const getLoadingIngredients = () => (
+  {
+    type: GET_INGREDIENTS_REQUEST,
+  }
+);
+
+export const setReceivedIngredients = (value) => (
+  {
+    type: GET_INGREDIENTS_SUCCESS,
+    payload: value
+  }
+);
+
+export const getNonresponseIngredients = () => (
+  {
+    type: GET_INGREDIENTS_FAILED
+  }
+);
+
+export const getIngredients = () => {
   return function(dispatch) {
-    dispatch({
-      type: GET_INGREDIENTS_REQUEST
-    })
+    dispatch(getLoadingIngredients())
     fetch(`${BASEURL}/ingredients`)
     .then(checkResponse)
-    .then( res  => {
+    .then(res  => {
       if (res && res.success) {
-        dispatch({
-          type: GET_INGREDIENTS_SUCCESS,
-          ingredients: res.data
-        })
+        dispatch(setReceivedIngredients(res.data))
       } else {
-        dispatch({
-          type: GET_INGREDIENTS_FAILED
-        })
+        dispatch(getNonresponseIngredients)
       }
     })
-    .catch( err => {
-      dispatch({
-          type: GET_INGREDIENTS_FAILED,
-          payload: err
-      })
+    .catch(err => {
+      console.log(err);
+      dispatch(getNonresponseIngredients)
     })
   }
-}
+};

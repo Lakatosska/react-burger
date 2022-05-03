@@ -2,11 +2,15 @@ export const OPEN_MODAL ='OPEN_MODAL';
 export const CLOSE_MODAL ='CLOSE_MODAL';
 
 // ActionsCreator
-export function getCurrentIngredient(cardData) {
-  return function(dispatch) {
-    dispatch({
+export const getCard = (value) => (
+  {
     type: OPEN_MODAL,
-    payload: cardData
-    })
+    payload: value
+  }
+);
+
+export const getCurrentIngredient = (cardData) => {
+  return function(dispatch) {
+    dispatch(getCard(cardData))
   };
 };

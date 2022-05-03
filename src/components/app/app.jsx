@@ -13,7 +13,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getIngredients());
+      dispatch(getIngredients());
     },
     [dispatch]
   ); 

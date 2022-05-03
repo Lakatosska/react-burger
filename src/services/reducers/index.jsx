@@ -45,7 +45,7 @@ export const ingredientsReducer = (state = initialIngredientsState, action) => {
         ...state,
         ingredientsRequest: false,
         ingredientsFailed: false,
-        ingredients: action.ingredients,
+        ingredients: action.payload,
       }
     }
     case GET_INGREDIENTS_FAILED: {
@@ -65,7 +65,7 @@ export const ingredientsReducer = (state = initialIngredientsState, action) => {
 const initialOrderState = {
   order: null,
   orderRequest: false,
-  orderFailed: false,
+  orderFailed: false
 };
 
 export const orderReducer = (state = initialOrderState, action) => {

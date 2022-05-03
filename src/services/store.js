@@ -8,8 +8,9 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose; 
 
-// расширитель хранилища
+// расширитель хранилища (thunk - чтобы экшены могли быть не только объектами, но и функциями, в т.ч. асинхронными)
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
 // инициализируем хранилище
 export const store = createStore(rootReducer, enhancer)
+

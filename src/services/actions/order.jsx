@@ -7,7 +7,8 @@ export const GET_ORDER_FAILED = 'GET_ORDER_FAILED';
 export const RESET_ORDER = 'RESET_ORDER';
 
 // ActionsCreator
-export function postOrder(ingredientData) {
+
+export const postOrder = (ingredientData) => {
 
   const ingredientsId = ingredientData.map(el => el._id);
 
@@ -25,7 +26,7 @@ export function postOrder(ingredientData) {
       })
     })
     .then(checkResponse)
-    .then(res  => {
+    .then(res => {
       if (res && res.success) {
         dispatch({
           type: GET_ORDER_SUCCESS,
@@ -40,10 +41,10 @@ export function postOrder(ingredientData) {
         })
       }
     })
-    .catch( err => {
+    .catch(err => {
+      console.log(err);
       dispatch({
-          type: GET_ORDER_FAILED,
-          payload: err
+        type: GET_ORDER_FAILED
       })
     })
   }

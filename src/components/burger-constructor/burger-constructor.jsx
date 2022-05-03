@@ -138,12 +138,10 @@ const OrderTotal = () => {
     dispatch({
       type: RESET_ORDER
     })
-    
   };
   
   const modalOrder = (
     <Modal closing={closeModal}>
-       
       <OrderDetails  />
     </Modal >
   );
