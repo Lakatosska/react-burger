@@ -7,7 +7,7 @@ import {
 
 import appHeaderStyles from './app-header.module.css';
 
-const AppHeader = () => {
+export const AppHeader = () => {
 
   return(
     <header className={appHeaderStyles.header}>
@@ -33,6 +33,4 @@ const AppHeader = () => {
       
     </header>
   );
-}
-
-export default AppHeader;
+};
