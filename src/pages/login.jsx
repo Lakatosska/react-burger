@@ -12,8 +12,8 @@ export const LoginPage = () => {
       <form className={`${styles.form} mb-20`}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
         <fieldset className={styles.fieldset}>
-          <EmailInput></EmailInput>
-          <PasswordInput></PasswordInput>
+          <EmailInput />
+          <PasswordInput />
         </fieldset>
         <Button type="primary" size="large"> 
           Войти

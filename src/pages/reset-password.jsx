@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
@@ -12,10 +13,11 @@ export const ResetPasswordPage = () => {
       <form className={`${styles.form} mb-20`}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <fieldset className={styles.fieldset}>
-          <EmailInput></EmailInput>
+          <PasswordInput />
+          <EmailInput />
         </fieldset>
         <Button type="primary" size="large"> 
-          Восстановить
+          Сохранить
         </Button>
       </form>
 

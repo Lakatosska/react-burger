@@ -13,8 +13,8 @@ export const RegisterPage = () => {
         <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
         <fieldset className={styles.fieldset}>
           <Input />
-          <EmailInput></EmailInput>
-          <PasswordInput></PasswordInput>
+          <EmailInput />
+          <PasswordInput />
         </fieldset>
         <Button type="primary" size="large"> 
           Зарегистрироваться
