@@ -47,7 +47,7 @@ const App = () => {
           <Route path='/reset-password' exact={true}>
             <ResetPasswordPage />
           </Route>
-          <Route path='/page404' exact={true}>
+          <Route path='*'>
             <NotFound />
           </Route>
         </Switch>
