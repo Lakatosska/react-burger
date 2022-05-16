@@ -23,7 +23,7 @@ export const LoginPage = () => {
       <p className="text text_type_main-default text_color_inactive mb-4">Вы - новый пользователь?
         <Link to='/register' className={`${styles.link} ml-3`}>Зарегистрироваться</Link></p>
       <p className="text text_type_main-default text_color_inactive">Забыли пароль?
-        <Link to='/reset-password' className={`${styles.link} ml-3`}>Восстановить пароль</Link></p>
+        <Link to='/forgot-password' className={`${styles.link} ml-3`}>Восстановить пароль</Link></p>
     </main>
   );
 };

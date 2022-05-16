@@ -13,9 +13,12 @@ export const ProfilePage = () => {
         <nav className={styles.nav}>
           <NavLink to='/profile' exact={true}
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
+            activeClassName='text text_type_main-medium'
             >Профиль</NavLink>
-          <NavLink to='/'
-            className={`${styles.navlink} text text_type_main-medium text_color_inactive`}>История заказов</NavLink>
+          <NavLink to='/profile/orders' exact={true}
+            className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
+            activeClassName='text text_type_main-medium'
+            >История заказов</NavLink>
           <NavLink to='/'
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}>Выход</NavLink>
         </nav>
