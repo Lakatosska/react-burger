@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { 
   Logo, 
   BurgerIcon, 
@@ -13,23 +15,29 @@ export const AppHeader = () => {
     <header className={appHeaderStyles.header}>
       <nav className={appHeaderStyles.nav}>
       
-        <a href='#' className={`${appHeaderStyles.link} p-5 mr-2`}>
-          <BurgerIcon type='primary'/>
+        <Link
+            to={{ pathname: '/' }}
+            className={`${appHeaderStyles.link} p-5 mr-2`}
+          ><BurgerIcon type='primary'/>
           <span className='ml-2 text text_type_main-default'>Конструктор</span>
-        </a>
+        </Link>
       
-        <a href='#' className={`${appHeaderStyles.link} p-5`}>
+        <Link
+          to={{ pathname: '/' }}
+          className={`${appHeaderStyles.link} p-5`}>
           <ListIcon type="secondary" />
           <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Лента заказов</span>
-        </a>
+        </Link>
       </nav>
         
       <Logo />
 
-      <a href='#' className={`${appHeaderStyles.link} p-5`}>
+      <Link
+        to={{ pathname: '/profile' }}
+        className={`${appHeaderStyles.link} p-5`}>
         <ProfileIcon type="secondary" />
         <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Личный кабинет</span>
-      </a>
+      </Link>
       
     </header>
   );
