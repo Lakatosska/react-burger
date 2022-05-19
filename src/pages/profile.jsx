@@ -1,11 +1,15 @@
+import { useState, useRef } from "react";
 import { NavLink } from 'react-router-dom';
 
-import { Input, EmailInput, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Input, EditIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import styles from './style.module.css';
 
 
 export const ProfilePage = () => {
+
+  const [value, setValue] = useState('value');
+  const inputRef = useRef(null);
 
   return (
     <main className={`${styles.main} mt-30`}>
@@ -27,10 +31,45 @@ export const ProfilePage = () => {
       <section>
         <form className={`${styles.form} mb-20`}>
           <fieldset className={styles.fieldset}>
-            <Input />
-            <EmailInput />
-            <PasswordInput />
+            <Input
+              type={'text'}
+              placeholder={'Имя'}
+              onChange={e => setValue(e.target.value)}
+              value={''}
+              name={'name'}
+              ref={inputRef}
+              icon={'EditIcon'}
+              errorText={"Ошибка"}
+            />
+            <Input
+              type={'email'}
+              placeholder={'E-mail'}
+              onChange={e => setValue(e.target.value)}
+              value={''}
+              name={'email'}
+              ref={inputRef}
+              icon={'EditIcon'}
+              errorText={"Ошибка"}
+            />
+            <Input
+              type={'password'}
+              placeholder={'Введите новый пароль'}
+              onChange={e => setValue(e.target.value)}
+              value={''}
+              name={'email'}
+              ref={inputRef}
+              icon={'EditIcon'}
+              errorText={"Ошибка"}
+            />
           </fieldset>
+          <div className={styles.actions}>
+            <Button type="secondary" size="medium">
+              Отмена
+            </Button>
+            <Button type="primary" size="large">
+              Сохранить
+            </Button>
+          </div>
         </form>
       </section>
     </main>

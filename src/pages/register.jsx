@@ -7,8 +7,8 @@ import styles from './style.module.css';
 
 export const RegisterPage = () => {
 
-  const [value, setValue] = useState('value')
-  const inputRef = useRef(null)
+  const [value, setValue] = useState('value');
+  const inputRef = useRef(null);
   
 
   return (
@@ -16,32 +16,29 @@ export const RegisterPage = () => {
       <form className={`${styles.form} mb-20`}>
         <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
         <fieldset className={styles.fieldset}>
-        <Input
-          type={'text'}
-          placeholder={'Имя'}
-          onChange={e => setValue(e.target.value)}
-          value={''}
-          name={'name'}
-          error={false}
-          ref={inputRef}
-          errorText={'Ошибка'}
-          size={'default'}
-        />
-        <Input
-          type={'email'}
-          placeholder={'E-mail'}
-          onChange={e => setValue(e.target.value)}
-          value={''}
-          name={'email'}
-          error={false}
-          ref={inputRef}
-          errorText={'Ошибка'}
-          size={'default'}
-        />
+          <Input
+            type={'text'}
+            placeholder={'Имя'}
+            onChange={e => setValue(e.target.value)}
+            value={''}
+            name={'name'}
+            ref={inputRef}
+            errorText={"Ошибка"}
+          />
+          <Input
+            type={'email'}
+            placeholder={'E-mail'}
+            onChange={e => setValue(e.target.value)}
+            value={''}
+            name={'email'}
+            ref={inputRef}
+            errorText={"Ошибка"}
+          />
           <PasswordInput 
             onChange={e => setValue(e.target.value)} 
             value={''} 
-            name={'password'}/>
+            name={'password'}
+          />
         </fieldset>
         
         <Button type="primary" size="large"> 

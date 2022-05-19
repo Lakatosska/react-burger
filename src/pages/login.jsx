@@ -1,19 +1,34 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from 'react-router-dom';
 
-import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import styles from './style.module.css';
 
 export const LoginPage = () => {
+
+  const [value, setValue] = useState('value');
+  const inputRef = useRef(null);
 
   return (
     <main className={styles.container}>
       <form className={`${styles.form} mb-20`}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
         <fieldset className={styles.fieldset}>
-          <EmailInput />
-          <PasswordInput />
+          <Input
+            type={'email'}
+            placeholder={'E-mail'}
+            onChange={e => setValue(e.target.value)}
+            value={''}
+            name={'email'}
+            ref={inputRef}
+            errorText={"Ошибка"}
+          />
+          <PasswordInput 
+            onChange={e => setValue(e.target.value)} 
+            value={''} 
+            name={'password'}
+          />
         </fieldset>
         <Button type="primary" size="large"> 
           Войти

@@ -52,3 +52,9 @@
   text-decoration: none;
   line-height: 64px;
 }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 480px;
+}
