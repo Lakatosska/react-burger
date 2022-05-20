@@ -1,14 +1,14 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from 'react-router-dom';
 
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { FORGOT_PASSWORD_SUCCESS } from '../services/actions/forgot-password';
 
 import styles from './style.module.css';
 
 export const ForgotPasswordPage = () => {
 
   const [value, setValue] = useState('value');
-  const inputRef = useRef(null);
 
   return (
     <main className={styles.container}>
@@ -21,13 +21,14 @@ export const ForgotPasswordPage = () => {
             onChange={e => setValue(e.target.value)}
             value={''}
             name={'email'}
-            ref={inputRef}
-            errorText={"Ошибка"}
           />
         </fieldset>
-        <Button type="primary" size="large"> 
-          Восстановить
-        </Button>
+        {FORGOT_PASSWORD_SUCCESS} && 
+        <Link to='/reset-password'>
+          <Button type="primary" size="large"> 
+            Восстановить
+          </Button>
+        </Link>
       </form>
 
       <p className="text text_type_main-default text_color_inactive">Вспомнили пароль?
