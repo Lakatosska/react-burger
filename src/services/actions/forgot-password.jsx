@@ -4,7 +4,7 @@ export const FORGOT_PASSWORD_REQUEST = 'REGISTER_REQUEST';
 export const FORGOT_PASSWORD_SUCCESS = 'REGISTER_SUCCESS';
 export const FORGOT_PASSWORD_FAILED = 'REGISTER_FAILED';
 
-export const forgotPassword = (email) => {
+export const forgotPassword = (form) => {
 
   return function(dispatch) {
     dispatch({
@@ -15,13 +15,14 @@ export const forgotPassword = (email) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(email)
+      body: JSON.stringify(form)
     })
     .then(checkResponse)
     .then(res => {
       if (res && res.success) {
         dispatch({
           type: FORGOT_PASSWORD_SUCCESS,
+          form: res.user
         })
       
       } else {

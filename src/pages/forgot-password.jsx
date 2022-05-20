@@ -1,14 +1,29 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { FORGOT_PASSWORD_SUCCESS } from '../services/actions/forgot-password';
+import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, forgotPassword } from '../services/actions/forgot-password';
 
 import styles from './style.module.css';
 
 export const ForgotPasswordPage = () => {
 
-  const [value, setValue] = useState('value');
+  const dispatch = useDispatch();
+
+  const form = useSelector(store => store.forgotPassword.form);
+
+  const onChange = (evt) => {
+    dispatch({
+    type: FORGOT_PASSWORD_REQUEST,
+    payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
+    })
+  };
+
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(forgotPassword(form))
+  } 
 
   return (
     <main className={styles.container}>
@@ -18,17 +33,16 @@ export const ForgotPasswordPage = () => {
           <Input
             type={'email'}
             placeholder={'Укажите e-mail'}
-            onChange={e => setValue(e.target.value)}
-            value={''}
+            onChange={onChange}
+            value={form.email}
             name={'email'}
           />
         </fieldset>
-        {FORGOT_PASSWORD_SUCCESS} && 
-        <Link to='/reset-password'>
-          <Button type="primary" size="large"> 
+        
+          <Button type="primary" size="large" onClick={onFormSubmit}> 
             Восстановить
           </Button>
-        </Link>
+        
       </form>
 
       <p className="text text_type_main-default text_color_inactive">Вспомнили пароль?

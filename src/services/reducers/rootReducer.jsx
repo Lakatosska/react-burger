@@ -2,13 +2,16 @@ import { combineReducers } from 'redux';
 import { ingredientsReducer, 
         orderReducer, 
         currentIngredientReducer,
-        constructorReducer
+        constructorReducer,
 } from './index';
-
 
 import { 
   registerReducer 
 } from './register';
+
+import { 
+  forgotPasswordReducer 
+} from './forgot-password';
 
 
 export const rootReducer = combineReducers({
@@ -17,4 +20,5 @@ export const rootReducer = combineReducers({
   currentIngredient: currentIngredientReducer,
   constructorItems: constructorReducer,
   register: registerReducer,
+  forgotPassword: forgotPasswordReducer
 });
