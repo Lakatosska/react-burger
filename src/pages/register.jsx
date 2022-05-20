@@ -14,6 +14,13 @@ export const RegisterPage = () => {
 
   const form = useSelector(store => store.register.form);
 
+  useEffect(() => {
+    form.name = '';
+    form.email = '';
+    form.password = '';
+  }, []);
+
+
   const onChange = (evt) => {
     dispatch({
       type: SET_REGISTER,
