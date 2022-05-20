@@ -1,15 +1,30 @@
-import { useState, useRef } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { SET_REGISTER, register } from '../services/actions/register';
+import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import styles from './style.module.css';
 
+
 export const RegisterPage = () => {
 
-  const [value, setValue] = useState('value');
-  const inputRef = useRef(null);
-  
+  const dispatch = useDispatch();
+
+  const form = useSelector(store => store.register.form);
+
+  const onChange = (evt) => {
+    dispatch({
+      type: SET_REGISTER,
+      payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
+    })
+  }
+
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(register(form))
+  } 
 
   return (
     <main className={styles.container}>
@@ -19,29 +34,25 @@ export const RegisterPage = () => {
           <Input
             type={'text'}
             placeholder={'Имя'}
-            onChange={e => setValue(e.target.value)}
-            value={''}
+            onChange={onChange}
+            value={form.name}
             name={'name'}
-            ref={inputRef}
-            errorText={"Ошибка"}
           />
           <Input
             type={'email'}
             placeholder={'E-mail'}
-            onChange={e => setValue(e.target.value)}
-            value={''}
+            onChange={onChange}
+            value={form.email}
             name={'email'}
-            ref={inputRef}
-            errorText={"Ошибка"}
           />
           <PasswordInput 
-            onChange={e => setValue(e.target.value)} 
-            value={''} 
+            onChange={onChange} 
+            value={form.password} 
             name={'password'}
           />
         </fieldset>
         
-        <Button type="primary" size="large"> 
+        <Button type="primary" size="large" onClick={onFormSubmit}> 
           Зарегистрироваться
         </Button>
       </form>

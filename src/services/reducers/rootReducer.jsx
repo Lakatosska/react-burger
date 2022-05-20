@@ -2,12 +2,19 @@ import { combineReducers } from 'redux';
 import { ingredientsReducer, 
         orderReducer, 
         currentIngredientReducer,
-        constructorReducer 
+        constructorReducer
 } from './index';
+
+
+import { 
+  registerReducer 
+} from './register';
+
 
 export const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
   order: orderReducer,
   currentIngredient: currentIngredientReducer,
-  constructorItems: constructorReducer
+  constructorItems: constructorReducer,
+  register: registerReducer,
 });
