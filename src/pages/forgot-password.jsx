@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, forgotPassword } from '../services/actions/forgot-password';
+import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/forgot-password';
 
 import styles from './style.module.css';
 
@@ -13,9 +13,13 @@ export const ForgotPasswordPage = () => {
 
   const form = useSelector(store => store.forgotPassword.form);
 
+  useEffect(() => {
+    form.email = '';
+  }, []);
+
   const onChange = (evt) => {
     dispatch({
-    type: FORGOT_PASSWORD_REQUEST,
+    type: SET_FORGOT_PASSWORD,
     payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
     })
   };

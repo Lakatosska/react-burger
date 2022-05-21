@@ -3,6 +3,7 @@ import { BASEURL, checkResponse } from '../../utils/constants';
 export const FORGOT_PASSWORD_REQUEST = 'REGISTER_REQUEST';
 export const FORGOT_PASSWORD_SUCCESS = 'REGISTER_SUCCESS';
 export const FORGOT_PASSWORD_FAILED = 'REGISTER_FAILED';
+export const SET_FORGOT_PASSWORD = 'SET_FORGOT_PASSWORD';
 
 export const forgotPassword = (form) => {
 
