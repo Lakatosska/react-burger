@@ -13,6 +13,10 @@ import {
   forgotPasswordReducer 
 } from './forgot-password';
 
+import { 
+  resetPasswordReducer 
+} from './reset-password';
+
 
 export const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
@@ -20,5 +24,6 @@ export const rootReducer = combineReducers({
   currentIngredient: currentIngredientReducer,
   constructorItems: constructorReducer,
   register: registerReducer,
-  forgotPassword: forgotPasswordReducer
+  forgotPassword: forgotPasswordReducer,
+  resetPassword: resetPasswordReducer
 });

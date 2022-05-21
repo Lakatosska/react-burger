@@ -29,7 +29,6 @@ export const ForgotPasswordPage = () => {
     dispatch(forgotPassword(form))
   } 
   
-  
   if (forgotPasswordSuccess) {
     return <Redirect to={{
         pathname: '/reset-password',
