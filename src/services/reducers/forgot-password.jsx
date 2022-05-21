@@ -10,7 +10,8 @@ const initialForgotPasswordState = {
     email: ''
   },
   forgotPasswordRequest: false,
-  forgotPasswordFailed: false
+  forgotPasswordFailed: false,
+  forgotPasswordSuccess: true
 };
 
 
@@ -25,7 +26,8 @@ export const forgotPasswordReducer = (state = initialForgotPasswordState, action
     case FORGOT_PASSWORD_SUCCESS: {
       return {
         ...state,
-        form: action.form
+        form: action.form,
+        forgotPasswordSuccess: true
       };
     }
     case SET_FORGOT_PASSWORD: {
