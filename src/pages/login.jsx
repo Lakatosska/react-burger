@@ -1,14 +1,35 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { SET_LOGIN, login } from '../services/actions/login';
 
 import styles from './style.module.css';
 
 export const LoginPage = () => {
 
-  const [value, setValue] = useState('value');
-  const inputRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const form = useSelector(store => store.login.form);
+
+  useEffect(() => {
+    form.email = '';
+    form.password = '';
+  }, []);
+
+
+  const onChange = (evt) => {
+    dispatch({
+      type: SET_LOGIN,
+      payload: {...form, [evt.target.name]: evt.target.value}
+    })
+  }
+
+  const onSubmitForm = (evt) => {
+    evt.preventDefault();
+    dispatch(login(form))
+  } 
 
   return (
     <main className={styles.container}>
@@ -18,19 +39,17 @@ export const LoginPage = () => {
           <Input
             type={'email'}
             placeholder={'E-mail'}
-            onChange={e => setValue(e.target.value)}
-            value={''}
+            onChange={onChange}
+            value={form.email}
             name={'email'}
-            ref={inputRef}
-            errorText={"Ошибка"}
           />
           <PasswordInput 
-            onChange={e => setValue(e.target.value)} 
-            value={''} 
+            onChange={onChange} 
+            value={form.password} 
             name={'password'}
           />
         </fieldset>
-        <Button type="primary" size="large"> 
+        <Button type="primary" size="large" onClick={onSubmitForm}> 
           Войти
         </Button>
       </form>

@@ -22,7 +22,7 @@ export const ResetPasswordPage = () => {
   const onChange = (evt) => {
     dispatch({
       type: SET_NEW_PASSWORD,
-      payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
+      payload: {...form, [evt.target.name]: evt.target.value}
     })
   }
 

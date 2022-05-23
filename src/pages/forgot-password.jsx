@@ -20,7 +20,7 @@ export const ForgotPasswordPage = () => {
   const onChange = (evt) => {
     dispatch({
     type: SET_FORGOT_PASSWORD,
-    payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
+    payload: {...form, [evt.target.name]: evt.target.value} 
     })
   };
 
