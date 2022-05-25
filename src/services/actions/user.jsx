@@ -8,20 +8,15 @@ export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 
-export const LOGOUT_USER_REQUEST = 'LOGOUT_USER_REQUEST';
-export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
-export const LOGOUT_USER_FAILED = 'LOGOUT_USER_FAILED';
 
-export const getUser = () => {
-
-  //const token = getCookie('accessToken')
+export function getUser() {
 
   return fetch(`${BASEURL}/auth/user`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: getCookie('accessToken')
-      }
+        Authorization: 'Bearer ' + getCookie('accessToken'),
+      }    
     })
     .then(checkResponse)
     .then(res => {
@@ -30,4 +25,7 @@ export const getUser = () => {
     .catch(err => {
       console.log(err);
     })
+   
   }
+getUser()
+

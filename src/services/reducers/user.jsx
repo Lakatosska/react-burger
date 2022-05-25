@@ -8,9 +8,8 @@ const initialUserState = {
   form: {
     name: '',
     email: '',
-    password: ''
   },
-  
+
 };
 
 
