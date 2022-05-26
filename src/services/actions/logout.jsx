@@ -19,7 +19,7 @@ export const logout = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        token: localStorage.getItem('refreshToken'),
+        token: localStorage.getItem('token'),
       })
     })
     .then(checkResponse)
@@ -28,8 +28,8 @@ export const logout = () => {
         dispatch({
           type: LOGOUT_SUCCESS,
         })
-        deleteCookie('accessToken');
-        localStorage.removeItem('refreshToken'); 
+        deleteCookie('token');
+        localStorage.removeItem('token'); 
       } else {
         dispatch({
           type: LOGOUT_FAILED

@@ -26,7 +26,7 @@ export function getUser() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + getCookie('accessToken')
+        Authorization: 'Bearer ' + getCookie('token')
       }    
     })
     .then(checkResponse)
@@ -62,15 +62,14 @@ export function updateToken() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        token: localStorage.getItem('refreshToken'),
+        token: localStorage.getItem('token'),
       })    
     })
     .then(checkResponse)
     .then(res => {
       if (res && res.success) {
-        const accessToken = res.accessToken.split('Bearer ')[1]
-        setCookie('accessToken', accessToken)
-        localStorage.setItem('refreshToken', res.refreshToken)
+        setCookie('token', res.accessToken);
+        localStorage.setItem('token', res.refreshToken);  
         dispatch({
           type: UPDATE_TOKEN_SUCCESS
         })

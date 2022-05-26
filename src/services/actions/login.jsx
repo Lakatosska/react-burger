@@ -26,10 +26,8 @@ export const login = (form) => {
           type: LOGIN_SUCCESS,
           form: res.user
         })
-        const accessToken = res.accessToken.split('Bearer ')[1];
-        const refreshToken = res.refreshToken;
-        setCookie(accessToken);
-        localStorage.setItem(refreshToken, JSON.stringify(refreshToken)); 
+        setCookie('token', res.accessToken);
+        localStorage.setItem('token', res.refreshToken);
       
       } else {
         dispatch({
