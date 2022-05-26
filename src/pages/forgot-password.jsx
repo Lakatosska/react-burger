@@ -13,27 +13,42 @@ export const ForgotPasswordPage = () => {
 
   const { form, forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
 
+  const isAuth = localStorage.getItem('token');
+
   useEffect(() => {
     form.email = '';
   }, []);
 
   const onChange = (evt) => {
     dispatch({
-    type: SET_FORGOT_PASSWORD,
-    payload: {...form, [evt.target.name]: evt.target.value} 
+      type: SET_FORGOT_PASSWORD,
+      payload: {...form, [evt.target.name]: evt.target.value} 
     })
   };
 
   const onSubmitForm = (evt) => {
     evt.preventDefault();
     dispatch(forgotPassword(form))
-  } 
+  }; 
+
+  if (isAuth) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/",
+        }}
+      />
+    );
+  }
   
   if (forgotPasswordSuccess) {
-    return <Redirect to={{
-        pathname: '/reset-password',
-      }}  
-    />
+    return (
+      <Redirect 
+        to={{
+          pathname: '/reset-password',
+        }}  
+      />
+    )
   }
 
   return (

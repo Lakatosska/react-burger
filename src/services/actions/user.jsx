@@ -17,7 +17,7 @@ export const RESET_TOKEN = 'RESET_TOKEN';
 //POST https://norma.nomoreparties.space/api/auth/token - эндпоинт обновления токена.
 
 export function getUser() {
-
+  
   return function(dispatch) {
     dispatch({
       type: GET_USER_REQUEST

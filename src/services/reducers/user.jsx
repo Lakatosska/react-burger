@@ -62,7 +62,6 @@ export const userReducer = (state = initialUserState, action) => {
         ...state,
         userFailed: true,
         userRequest: false,
-        isUser: false,
       };
     }
     case SET_UPDATE_USER: {
