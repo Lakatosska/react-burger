@@ -39,40 +39,31 @@ export const ForgotPasswordPage = () => {
         }}
       />
     );
-  }
-  
-  if (forgotPasswordSuccess) {
+  } else {
+
     return (
-      <Redirect 
-        to={{
-          pathname: '/reset-password',
-        }}  
-      />
-    )
-  }
+      <main className={styles.container}>
+        <form className={`${styles.form} mb-20`}>
+          <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
+          <fieldset className={styles.fieldset}>
+            <Input
+              type={'email'}
+              placeholder={'Укажите e-mail'}
+              onChange={onChange}
+              value={form.email}
+              name={'email'}
+            />
+          </fieldset>
+          
+            <Button type="primary" size="large" onClick={onSubmitForm}> 
+              Восстановить
+            </Button>
+          
+        </form>
 
-  return (
-    <main className={styles.container}>
-      <form className={`${styles.form} mb-20`}>
-        <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
-        <fieldset className={styles.fieldset}>
-          <Input
-            type={'email'}
-            placeholder={'Укажите e-mail'}
-            onChange={onChange}
-            value={form.email}
-            name={'email'}
-          />
-        </fieldset>
-        
-          <Button type="primary" size="large" onClick={onSubmitForm}> 
-            Восстановить
-          </Button>
-        
-      </form>
-
-      <p className="text text_type_main-default text_color_inactive">Вспомнили пароль?
-        <Link to='/login' className={`${styles.link} ml-3`}>Войти</Link></p>
-    </main>
-  );
+        <p className="text text_type_main-default text_color_inactive">Вспомнили пароль?
+          <Link to='/login' className={`${styles.link} ml-3`}>Войти</Link></p>
+      </main>
+    );
+  };
 };
