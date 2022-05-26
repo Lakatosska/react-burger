@@ -26,7 +26,7 @@ export function getUser() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + getCookie('token')
+        Authorization: getCookie('token')
       }    
     })
     .then(checkResponse)
