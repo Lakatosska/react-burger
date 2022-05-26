@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { SET_REGISTER, register } from '../services/actions/register';
+import { SET_REGISTER_USER, register } from '../services/actions/register';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import styles from './style.module.css';
@@ -23,7 +23,7 @@ export const RegisterPage = () => {
 
   const onChange = (evt) => {
     dispatch({
-      type: SET_REGISTER,
+      type: SET_REGISTER_USER,
       payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
     })
   }

@@ -4,7 +4,7 @@ import { setCookie } from '../../utils/constants';
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILED = 'REGISTER_FAILED';
-export const SET_REGISTER = 'SET_REGISTER';
+export const SET_REGISTER_USER = 'SET_REGISTER_USER';
 
 export const register = (form) => {
 

@@ -4,7 +4,7 @@ import { setCookie } from '../../utils/constants';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
-export const SET_LOGIN = 'SET_LOGIN';
+export const SET_LOGIN_USER = 'SET_LOGIN_USER';
 
 export const login = (form) => {
 

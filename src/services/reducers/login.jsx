@@ -2,7 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-  SET_LOGIN
+  SET_LOGIN_USER
 } from '../actions/login';
 
 const initialLoginState = {
@@ -11,7 +11,9 @@ const initialLoginState = {
     password: ''
   },
   loginRequest: false,
-  loginFailed: false
+  loginFailed: false,
+  isLogin: false,
+  accessToken: ''
 };
 
 
@@ -21,15 +23,29 @@ export const loginReducer = (state = initialLoginState, action) => {
     case LOGIN_REQUEST: {
       return {
         ...state,
+        loginRequest: true,
+        loginFailed: false,
+        isLogin: false
       };
     }
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        form: action.form
+        loginRequest: false,
+        loginFailed: false,
+        isLogin: true
+        //form: action.form
       };
     }
-    case SET_LOGIN: {
+    case LOGIN_FAILED: {
+      return {
+        ...state,
+        loginRequest: false,
+        loginFailed: true,
+        isLogin: false
+      };
+    }
+    case SET_LOGIN_USER: {
       return {
         ...state,
         form: action.payload

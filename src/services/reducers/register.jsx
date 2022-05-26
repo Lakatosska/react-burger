@@ -2,7 +2,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILED,
-  SET_REGISTER
+  SET_REGISTER_USER
 } from '../actions/register';
 
 const initialRegisterState = {
@@ -30,7 +30,7 @@ export const registerReducer = (state = initialRegisterState, action) => {
         form: action.form
       };
     }
-    case SET_REGISTER: {
+    case SET_REGISTER_USER: {
       return {
         ...state,
         form: action.payload

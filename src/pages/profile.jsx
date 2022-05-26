@@ -1,16 +1,40 @@
 import { useState, useRef } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { Input, EditIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { getUser } from '../services/actions/user';
+
+import { SET_UPDATE_USER, getUser } from '../services/actions/user';
+import { logout } from '../services/actions/logout';
 
 import styles from './style.module.css';
 
 
 export const ProfilePage = () => {
 
-  const [value, setValue] = useState('value');
+  //const [value, setValue] = useState('value');
   const inputRef = useRef(null);
+
+  const dispatch = useDispatch();
+
+  const form = useSelector(store => store.user.form);
+
+  const onChange = (evt) => {
+    dispatch({
+      type: SET_UPDATE_USER,
+      payload: {...form, [evt.target.name]: evt.target.value}
+    })
+  }
+
+  const handleLogout = () =>
+    dispatch(
+      logout()
+  );
+
+  const handleGetUser = () =>
+    dispatch(
+      getUser()
+  );
 
   return (
     <main className={`${styles.main} mt-30`}>
@@ -24,8 +48,8 @@ export const ProfilePage = () => {
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
             activeClassName='text text_type_main-medium'
             >История заказов</NavLink>
-          <NavLink to='/'
-            className={`${styles.navlink} text text_type_main-medium text_color_inactive`}>Выход</NavLink>
+          <button onClick={handleLogout} className={`${styles.navlink} text text_type_main-medium text_color_inactive`}>Выход
+          </button>
         </nav>
         <p className="text text_type_main-default text_color_inactive mt-20">В этом разделе вы можете изменить свои персональные данные</p>
       </section>
@@ -35,8 +59,8 @@ export const ProfilePage = () => {
             <Input
               type={'text'}
               placeholder={'Имя'}
-              onChange={e => setValue(e.target.value)}
-              value={''}
+              onChange={onChange}
+              value={form.name}
               name={'name'}
               ref={inputRef}
               icon={'EditIcon'}
@@ -45,8 +69,8 @@ export const ProfilePage = () => {
             <Input
               type={'email'}
               placeholder={'E-mail'}
-              onChange={e => setValue(e.target.value)}
-              value={''}
+              onChange={onChange}
+              value={form.email}
               name={'email'}
               ref={inputRef}
               icon={'EditIcon'}
@@ -55,8 +79,8 @@ export const ProfilePage = () => {
             <Input
               type={'password'}
               placeholder={'Введите новый пароль'}
-              onChange={e => setValue(e.target.value)}
-              value={''}
+              onChange={onChange}
+              value={form.password}
               name={'email'}
               ref={inputRef}
               icon={'EditIcon'}
@@ -73,7 +97,7 @@ export const ProfilePage = () => {
             
           </div>
         </form>
-        <Button type="primary" size="large" onClick={getUser}>
+        <Button type="primary" size="large" onClick={handleGetUser}>
               getUser
             </Button>
       </section>

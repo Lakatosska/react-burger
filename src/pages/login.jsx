@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { SET_LOGIN, login } from '../services/actions/login';
+import { SET_LOGIN_USER, login } from '../services/actions/login';
 
 import styles from './style.module.css';
 
@@ -21,7 +21,7 @@ export const LoginPage = () => {
 
   const onChange = (evt) => {
     dispatch({
-      type: SET_LOGIN,
+      type: SET_LOGIN_USER,
       payload: {...form, [evt.target.name]: evt.target.value}
     })
   }
