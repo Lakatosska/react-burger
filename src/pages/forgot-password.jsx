@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/forgot-password';
@@ -10,9 +10,8 @@ import styles from './style.module.css';
 export const ForgotPasswordPage = () => {
 
   const dispatch = useDispatch();
-
+  const location = useLocation();
   const { form, forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
-
   const isAuth = localStorage.getItem('token');
 
   useEffect(() => {
@@ -30,6 +29,16 @@ export const ForgotPasswordPage = () => {
     evt.preventDefault();
     dispatch(forgotPassword(form))
   }; 
+
+  if (forgotPasswordSuccess) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/reset-password",
+        }}
+      />
+    );
+  }
 
   if (isAuth) {
     return (
@@ -66,4 +75,5 @@ export const ForgotPasswordPage = () => {
       </main>
     );
   };
-};
+}
+

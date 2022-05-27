@@ -11,7 +11,7 @@ const initialForgotPasswordState = {
   },
   forgotPasswordRequest: false,
   forgotPasswordFailed: false,
-  forgotPasswordSuccess: true
+  forgotPasswordSuccess: false
 };
 
 
@@ -21,13 +21,14 @@ export const forgotPasswordReducer = (state = initialForgotPasswordState, action
     case FORGOT_PASSWORD_REQUEST: {
       return {
         ...state,
+        forgotPasswordRequest: true,
       };
     }
     case FORGOT_PASSWORD_SUCCESS: {
       return {
         ...state,
         form: action.form,
-        forgotPasswordSuccess: true
+        forgotPasswordSuccess: true,
       };
     }
     case SET_FORGOT_PASSWORD: {
