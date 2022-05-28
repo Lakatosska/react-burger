@@ -52,9 +52,9 @@ export const userReducer = (state = initialUserState, action) => {
     case UPDATE_USER_SUCCESS: {
       return {
         ...state,
+        form: action.form,
         userFailed: false,
         userRequest: false,
-        // form: action.form,
       };
     }
     case UPDATE_USER_FAILED: {

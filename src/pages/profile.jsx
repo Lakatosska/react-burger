@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Input, EditIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
-import { SET_UPDATE_USER, getUser } from '../services/actions/user';
+import { SET_UPDATE_USER, getUser, updateUser } from '../services/actions/user';
 import { logout } from '../services/actions/logout';
 
 import styles from './style.module.css';
@@ -14,9 +14,7 @@ export const ProfilePage = () => {
 
   //const [value, setValue] = useState('value');
   const inputRef = useRef(null);
-
   const dispatch = useDispatch();
-
   const form = useSelector(store => store.user.form);
 
   const onChange = (evt) => {
@@ -34,6 +32,11 @@ export const ProfilePage = () => {
   const handleGetUser = () =>
     dispatch(
       getUser()
+  );
+
+  const handleUpdateUser = () =>
+    dispatch(
+      updateUser()
   );
 
   return (
@@ -91,7 +94,7 @@ export const ProfilePage = () => {
             <Button type="secondary" size="medium">
               Отмена
             </Button>
-            <Button type="primary" size="large">
+            <Button onClick={handleUpdateUser} type="primary" size="large">
               Сохранить
             </Button>
             

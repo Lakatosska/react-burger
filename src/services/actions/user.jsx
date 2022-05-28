@@ -49,7 +49,41 @@ export function getUser() {
       });
     })
   }
-}
+};
+
+export function updateUser() {
+  return function(dispatch) {
+    dispatch({
+      type: UPDATE_USER_REQUEST
+    })
+    fetch(`${BASEURL}/auth/user`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: getCookie('token')
+      }    
+    })
+    .then(checkResponse)
+    .then(res => {
+      if (res && res.success) {
+        dispatch({
+          type: UPDATE_USER_SUCCESS,
+          form: res.user
+        })
+      } else {
+        dispatch({
+          type: UPDATE_USER_FAILED
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch({
+        type: UPDATE_USER_FAILED
+      });
+    })
+  }
+};
 
 export function updateToken() {
   return function(dispatch) {
