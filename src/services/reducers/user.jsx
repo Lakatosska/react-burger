@@ -13,6 +13,11 @@ import {
 } from '../actions/user';
 
 const initialUserState = {
+  data: {
+    name: '',
+    email: '',
+  },
+
   form: {
     name: '',
     email: '',
@@ -39,7 +44,9 @@ export const userReducer = (state = initialUserState, action) => {
     case GET_USER_SUCCESS: {
       return {
         ...state,
-        form: action.form
+        data: {
+          ...action.payload
+        },
       };
     }
     case UPDATE_USER_REQUEST: {

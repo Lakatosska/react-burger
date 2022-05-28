@@ -13,6 +13,7 @@ import styles from './style.module.css';
 export const ProfilePage = () => {
 
   const dispatch = useDispatch();
+  const userForm = useSelector(store => store.user.data);
   const form = useSelector(store => store.user.form);
 
   const onChange = (evt) => {
@@ -66,7 +67,7 @@ export const ProfilePage = () => {
               type={'text'}
               placeholder={'Имя'}
               onChange={onChange}
-              //value={form.name}
+              value={userForm.name}
               name={'name'}
               icon={'EditIcon'}
               errorText={"Ошибка"}
@@ -75,7 +76,7 @@ export const ProfilePage = () => {
               type={'email'}
               placeholder={'E-mail'}
               onChange={onChange}
-              //value={form.email}
+              value={userForm.email}
               name={'email'}
               icon={'EditIcon'}
               errorText={"Ошибка"}
@@ -84,7 +85,7 @@ export const ProfilePage = () => {
               type={'password'}
               placeholder={'Введите новый пароль'}
               onChange={onChange}
-              //value={form.password}
+              value={userForm.password}
               name={'email'}
               icon={'EditIcon'}
               errorText={"Ошибка"}

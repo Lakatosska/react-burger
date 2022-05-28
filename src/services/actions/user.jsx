@@ -33,7 +33,8 @@ export function getUser() {
     .then(res => {
       if (res && res.success) {
         dispatch({
-          type: GET_USER_SUCCESS
+          type: GET_USER_SUCCESS,
+          payload: res.user
         })
       } else {
         dispatch(updateToken())
