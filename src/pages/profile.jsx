@@ -12,8 +12,6 @@ import styles from './style.module.css';
 
 export const ProfilePage = () => {
 
-  //const [value, setValue] = useState('value');
-  const inputRef = useRef(null);
   const dispatch = useDispatch();
   const form = useSelector(store => store.user.form);
 
@@ -47,15 +45,20 @@ export const ProfilePage = () => {
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
             activeClassName='text text_type_main-medium'
             >Профиль</NavLink>
+
           <NavLink to='/profile/orders' exact={true}
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
             activeClassName='text text_type_main-medium'
             >История заказов</NavLink>
-          <button onClick={handleLogout} className={`${styles.navlink} text text_type_main-medium text_color_inactive`}>Выход
+
+          <button onClick={handleLogout} 
+            className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
+            >Выход
           </button>
         </nav>
         <p className="text text_type_main-default text_color_inactive mt-20">В этом разделе вы можете изменить свои персональные данные</p>
       </section>
+
       <section>
         <form className={`${styles.form} mb-20`}>
           <fieldset className={styles.fieldset}>
@@ -63,9 +66,8 @@ export const ProfilePage = () => {
               type={'text'}
               placeholder={'Имя'}
               onChange={onChange}
-              value={form.name}
+              //value={form.name}
               name={'name'}
-              ref={inputRef}
               icon={'EditIcon'}
               errorText={"Ошибка"}
             />
@@ -73,9 +75,8 @@ export const ProfilePage = () => {
               type={'email'}
               placeholder={'E-mail'}
               onChange={onChange}
-              value={form.email}
+              //value={form.email}
               name={'email'}
-              ref={inputRef}
               icon={'EditIcon'}
               errorText={"Ошибка"}
             />
@@ -83,13 +84,13 @@ export const ProfilePage = () => {
               type={'password'}
               placeholder={'Введите новый пароль'}
               onChange={onChange}
-              value={form.password}
+              //value={form.password}
               name={'email'}
-              ref={inputRef}
               icon={'EditIcon'}
               errorText={"Ошибка"}
             />
           </fieldset>
+
           <div className={styles.actions}>
             <Button type="secondary" size="medium">
               Отмена

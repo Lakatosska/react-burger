@@ -23,16 +23,16 @@ const App = () => {
   useEffect(() => {
       dispatch(getIngredients());
     },
-    [dispatch]
+    []
   ); 
 
   useEffect(() => {
-      const accessToken = getCookie('accessToken')
+      const accessToken = getCookie('token')
       if (accessToken) {
         dispatch(getUser())
       }
     }, 
-    [dispatch]
+    []
   );
 
   return (
