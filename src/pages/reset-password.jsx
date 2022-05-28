@@ -10,12 +10,11 @@ import styles from './style.module.css';
 export const ResetPasswordPage = () => {
 
   const dispatch = useDispatch();
-
   const form = useSelector(store => store.resetPassword.form);
 
   useEffect(() => {
     form.password = '';
-    form.code = '';
+    form.token = '';
   }, []);
 
 
@@ -48,7 +47,7 @@ export const ResetPasswordPage = () => {
             type={'text'}
             placeholder={'Введите код из письма'}
             onChange={onChange}
-            value={form.code}
+            value={form.token}
             name={'code'}
           />
         </fieldset>

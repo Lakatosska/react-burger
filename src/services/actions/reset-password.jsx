@@ -25,7 +25,6 @@ export const resetPassword = (form) => {
           type: RESET_PASSWORD_SUCCESS,
           form: res.user
         })
-      
       } else {
         dispatch({
           type: RESET_PASSWORD_FAILED

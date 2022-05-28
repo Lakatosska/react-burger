@@ -8,13 +8,10 @@ import {
 const initialResetPasswordState = {
   form: {
     password: '',
-    code: ''
+    token: '',
   },
-  resetPasswordRequest: false,
-  resetPasswordFailed: false,
-  resetPasswordSuccess: true
+  resetPasswordSuccess: false
 };
-
 
 export const resetPasswordReducer = (state = initialResetPasswordState, action) => {
 
@@ -27,8 +24,7 @@ export const resetPasswordReducer = (state = initialResetPasswordState, action) 
     case RESET_PASSWORD_SUCCESS: {
       return {
         ...state,
-        form: action.form,
-        forgotPasswordSuccess: true
+        resetPasswordSuccess: true
       };
     }
     case SET_NEW_PASSWORD: {
