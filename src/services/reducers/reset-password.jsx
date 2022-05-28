@@ -24,6 +24,7 @@ export const resetPasswordReducer = (state = initialResetPasswordState, action) 
     case RESET_PASSWORD_SUCCESS: {
       return {
         ...state,
+        form: action.form,
         resetPasswordSuccess: true
       };
     }

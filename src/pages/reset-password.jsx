@@ -12,11 +12,12 @@ export const ResetPasswordPage = () => {
   const dispatch = useDispatch();
   const form = useSelector(store => store.resetPassword.form);
 
+  /*
   useEffect(() => {
     form.password = '';
     form.token = '';
   }, []);
-
+*/
 
   const onChange = (evt) => {
     dispatch({
@@ -48,7 +49,7 @@ export const ResetPasswordPage = () => {
             placeholder={'Введите код из письма'}
             onChange={onChange}
             value={form.token}
-            name={'code'}
+            name={'token'}
           />
         </fieldset>
 
