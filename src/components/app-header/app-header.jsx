@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { 
   Logo, 
@@ -15,29 +15,29 @@ export const AppHeader = () => {
     <header className={appHeaderStyles.header}>
       <nav className={appHeaderStyles.nav}>
       
-        <Link
-            to={{ pathname: '/' }}
+        <NavLink to='/' exact={true}
             className={`${appHeaderStyles.link} p-5 mr-2`}
-          ><BurgerIcon type='primary'/>
-          <span className='ml-2 text text_type_main-default'>Конструктор</span>
-        </Link>
+            activeClassName={appHeaderStyles.activeLink}
+          ><BurgerIcon type='secondary'/>
+          <span className='ml-2 text text_type_main-default text_color_inactive'>Конструктор</span>
+        </NavLink>
       
-        <Link
-          to={{ pathname: '/' }}
-          className={`${appHeaderStyles.link} p-5`}>
+        <NavLink to='/profile/orders' exact={true}
+          className={`${appHeaderStyles.link} p-5`}
+          activeClassName={appHeaderStyles.activeLink}>
           <ListIcon type="secondary" />
           <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Лента заказов</span>
-        </Link>
+        </NavLink>
       </nav>
         
       <Logo />
 
-      <Link
-        to={{ pathname: '/profile' }}
-        className={`${appHeaderStyles.link} p-5`}>
+      <NavLink to='/profile' exact={true}
+        className={`${appHeaderStyles.link} p-5`}
+        activeClassName={appHeaderStyles.activeLink}>
         <ProfileIcon type="secondary" />
         <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Личный кабинет</span>
-      </Link>
+      </NavLink>
       
     </header>
   );

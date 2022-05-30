@@ -24,3 +24,11 @@
   text-decoration: none;
 }
 
+.activeLink span {
+  color: #F2F2F3;
+}
+
+.activeLink svg {
+  fill: #F2F2F3;
+}
+
