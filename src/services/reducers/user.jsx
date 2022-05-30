@@ -6,6 +6,7 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
   SET_UPDATE_USER,
+  CANCEL_UPDATE_USER,
   UPDATE_TOKEN_REQUEST,
   UPDATE_TOKEN_SUCCESS,
   UPDATE_TOKEN_FAILED,
@@ -13,11 +14,6 @@ import {
 } from '../actions/user';
 
 const initialUserState = {
-  data: {
-    name: '',
-    email: '',
-  },
-
   form: {
     name: '',
     email: '',
@@ -44,9 +40,7 @@ export const userReducer = (state = initialUserState, action) => {
     case GET_USER_SUCCESS: {
       return {
         ...state,
-        data: {
-          ...action.payload
-        },
+        form: action.form
       };
     }
     case UPDATE_USER_REQUEST: {
@@ -75,6 +69,12 @@ export const userReducer = (state = initialUserState, action) => {
       return {
         ...state,
         form: action.payload,
+      };
+    }
+    case CANCEL_UPDATE_USER: {
+      return {
+        ...state,
+        form: initialUserState.form,
       };
     }
     case UPDATE_TOKEN_REQUEST: {

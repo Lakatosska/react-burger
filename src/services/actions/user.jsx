@@ -8,6 +8,7 @@ export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 export const SET_UPDATE_USER = 'SET_UPDATE_USER';
+export const CANCEL_UPDATE_USER = 'CANCEL_UPDATE_USER';
 
 export const UPDATE_TOKEN_REQUEST = 'UPDATE_TOKEN_REQUEST';
 export const UPDATE_TOKEN_SUCCESS = 'UPDATE_TOKEN_SUCCESS';
@@ -34,7 +35,8 @@ export function getUser() {
       if (res && res.success) {
         dispatch({
           type: GET_USER_SUCCESS,
-          payload: res.user
+          form: res.user
+          //payload: res.user
         })
       } else {
         dispatch(updateToken())
@@ -52,7 +54,7 @@ export function getUser() {
   }
 };
 
-export function updateUser() {
+export function updateUser(form) {
   return function(dispatch) {
     dispatch({
       type: UPDATE_USER_REQUEST
@@ -62,7 +64,8 @@ export function updateUser() {
       headers: {
         'Content-Type': 'application/json',
         Authorization: getCookie('token')
-      }    
+      },
+      body: JSON.stringify(form)    
     })
     .then(checkResponse)
     .then(res => {
