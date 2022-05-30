@@ -63,18 +63,17 @@ export const ProfilePage = () => {
         <nav className={styles.nav}>
           <NavLink to='/profile' exact={true}
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
-            activeClassName='text text_type_main-medium'
+            activeClassName={styles.activeLink}
             >Профиль</NavLink>
 
           <NavLink to='/profile/orders' exact={true}
             className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
-            activeClassName='text text_type_main-medium'
+            activeClassName={styles.activeLink}
             >История заказов</NavLink>
 
-          <button onClick={handleLogout} 
-            className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
+          <p onClick={handleLogout} className={`${styles.navlink} text text_type_main-medium text_color_inactive`}
             >Выход
-          </button>
+          </p>
         </nav>
         <p className="text text_type_main-default text_color_inactive mt-20">В этом разделе вы можете изменить свои персональные данные</p>
       </section>

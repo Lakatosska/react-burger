@@ -51,6 +51,11 @@
 .navlink {
   text-decoration: none;
   line-height: 64px;
+  cursor: pointer;
+}
+
+.activeLink {
+  color: #F2F2F3;
 }
 
 .actions {
