@@ -16,11 +16,14 @@ export const ProfilePage = () => {
   const userForm = useSelector(store => store.user.data);
   const form = useSelector(store => store.user.form);
 
+  const [actionButtons, setActionButtons] = useState(false);
+
   const onChange = (evt) => {
     dispatch({
       type: SET_UPDATE_USER,
       payload: {...form, [evt.target.name]: evt.target.value}
-    })
+    });
+    setActionButtons(true)
   }
 
   const handleLogout = () =>
@@ -74,7 +77,7 @@ export const ProfilePage = () => {
             />
             <Input
               type={'email'}
-              placeholder={'E-mail'}
+              placeholder={'Логин'}
               onChange={onChange}
               value={userForm.email}
               name={'email'}
@@ -83,25 +86,27 @@ export const ProfilePage = () => {
             />
             <Input
               type={'password'}
-              placeholder={'Введите новый пароль'}
+              placeholder={'Пароль'}
               onChange={onChange}
-              value={userForm.password}
-              name={'email'}
+              value={form.password}
+              name={'password'}
               icon={'EditIcon'}
               errorText={"Ошибка"}
             />
           </fieldset>
 
-          <div className={styles.actions}>
+          {actionButtons && (<div className={styles.actions}>
             <Button type="secondary" size="medium">
               Отмена
             </Button>
+
             <Button onClick={handleUpdateUser} type="primary" size="large">
               Сохранить
             </Button>
-            
-          </div>
+          </div>)}
+
         </form>
+
         <Button type="primary" size="large" onClick={handleGetUser}>
               getUser
             </Button>
