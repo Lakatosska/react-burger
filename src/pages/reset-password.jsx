@@ -1,23 +1,23 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-import { Input, EmailInput, PasswordInput, Button, ShowIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { RESET_PASSWORD_SUCCESS, SET_NEW_PASSWORD, resetPassword } from '../services/actions/auth';
+import { Input, Button, ShowIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { SET_NEW_PASSWORD, resetPassword } from '../services/actions/reset-password';
 
 import styles from './style.module.css';
 
 export const ResetPasswordPage = () => {
 
   const dispatch = useDispatch();
-  const form = useSelector(store => store.user.form);
+  const { form, resetPasswordSuccess } = useSelector(store => store.resetPassword);
+  const { isAuth } = useSelector(store => store.user);
 
-  /*
+  
   useEffect(() => {
     form.password = '';
     form.token = '';
-  }, []);
-*/
+  }, []); 
 
   const onChange = (evt) => {
     dispatch({
@@ -30,6 +30,16 @@ export const ResetPasswordPage = () => {
     evt.preventDefault();
     dispatch(resetPassword(form))
   } 
+
+  if (resetPasswordSuccess) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/login',
+        }}
+      />
+    );
+  }
 
   return (
     <main className={styles.container}>

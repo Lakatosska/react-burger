@@ -3,32 +3,30 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILED,
   SET_REGISTER_USER,
+
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   SET_LOGIN_USER,
+
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
-  FORGOT_PASSWORD_REQUEST,
-  FORGOT_PASSWORD_SUCCESS,
-  FORGOT_PASSWORD_FAILED,
-  SET_FORGOT_PASSWORD,
-  RESET_PASSWORD_REQUEST,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILED,
-  SET_NEW_PASSWORD,
+
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
   GET_USER_FAILED,
+
   UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
   SET_UPDATE_USER,
   CANCEL_UPDATE_USER,
+
   UPDATE_TOKEN_REQUEST,
   UPDATE_TOKEN_SUCCESS,
   UPDATE_TOKEN_FAILED,
+
 } from '../actions/auth';
 
 const initialUserState = {
@@ -36,7 +34,6 @@ const initialUserState = {
     name: '',
     email: '',
     password: '',
-    token: '',
   },
 
   isAuth: false,
@@ -46,17 +43,9 @@ const initialUserState = {
 
   loginRequest: false,
   loginFailed: false,
-  isLogin: false,
-  accessToken: '',
 
   logoutRequest: false,
   logoutFailed: false,
-
-  forgotPasswordRequest: false,
-  forgotPasswordFailed: false,
-  forgotPasswordSuccess: false,
-
-  resetPasswordSuccess: false,
 
   userRequest: false,
   userFailed: false,
@@ -92,7 +81,6 @@ export const userReducer = (state = initialUserState, action) => {
         ...state,
         loginRequest: true,
         loginFailed: false,
-        isLogin: false
       };
     }
     case LOGIN_SUCCESS: {
@@ -109,7 +97,6 @@ export const userReducer = (state = initialUserState, action) => {
         ...state,
         loginRequest: false,
         loginFailed: true,
-        isLogin: false
       };
     }
     case SET_LOGIN_USER: {
@@ -133,43 +120,6 @@ export const userReducer = (state = initialUserState, action) => {
       return {
         ...state,
         
-      };
-    }
-    case FORGOT_PASSWORD_REQUEST: {
-      return {
-        ...state,
-        forgotPasswordRequest: true,
-      };
-    }
-    case FORGOT_PASSWORD_SUCCESS: {
-      return {
-        ...state,
-        form: action.form,
-        forgotPasswordSuccess: true,
-      };
-    }
-    case SET_FORGOT_PASSWORD: {
-      return {
-        ...state,
-        form: action.payload
-      };
-    }
-    case RESET_PASSWORD_REQUEST: {
-      return {
-        ...state,
-      };
-    }
-    case RESET_PASSWORD_SUCCESS: {
-      return {
-        ...state,
-        form: action.form,
-        resetPasswordSuccess: true
-      };
-    }
-    case SET_NEW_PASSWORD: {
-      return {
-        ...state,
-        form: action.payload
       };
     }
     case GET_USER_REQUEST: {
