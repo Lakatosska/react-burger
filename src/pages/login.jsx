@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { SET_LOGIN_USER, login } from '../services/actions/login';
+import { SET_LOGIN_USER, login } from '../services/actions/auth';
 
 import styles from './style.module.css';
 
@@ -13,15 +13,15 @@ export const LoginPage = () => {
   
   //const isAuth = localStorage.getItem('token');
 
-  const { form, isLogin } = useSelector(store => store.login);
+  const { form, isAuth } = useSelector(store => store.user);
   const { state } = useLocation();
 
-  /*
+  
   useEffect(() => {
     form.email = '';
     form.password = '';
   }, []);
-  */
+  
 
   const onChange = (evt) => {
     dispatch({
@@ -38,7 +38,7 @@ export const LoginPage = () => {
     [form, dispatch] 
   );
     
-  if (isLogin) {
+  if (isAuth) {
     return (
       <Redirect
         // Если объект state не является undefined, вернём пользователя назад.

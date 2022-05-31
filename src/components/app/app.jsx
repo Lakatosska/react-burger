@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { AppHeader } from '../app-header/app-header';
 import { getIngredients } from '../../services/actions/ingredients';
-import { getUser } from '../../services/actions/user';
+import { getUser } from '../../services/actions/auth';
 import { getCookie } from '../../utils/constants';
 import { HomePage, 
          LoginPage, 

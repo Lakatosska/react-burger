@@ -4,11 +4,11 @@ import { Redirect, Route } from 'react-router-dom';
 export function ProtectedRoute({ children, ...rest }) {
 
   //const isAuth = localStorage.getItem('token');
-  const { isLogin } = useSelector(store => store.login);
+  const { isAuth } = useSelector(store => store.user);
 
   return (
     <Route {...rest} render={({ location }) => 
-      isLogin ? ( 
+      isAuth ? ( 
         children
       ) : (
       <Redirect

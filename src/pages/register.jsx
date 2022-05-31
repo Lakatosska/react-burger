@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { SET_REGISTER_USER, register } from '../services/actions/register';
+import { SET_REGISTER_USER, register } from '../services/actions/auth';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import styles from './style.module.css';
@@ -12,7 +12,7 @@ export const RegisterPage = () => {
 
   const dispatch = useDispatch();
 
-  const form = useSelector(store => store.register.form);
+  const form = useSelector(store => store.user.form);
 
   useEffect(() => {
     form.name = '';

@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Input, EmailInput, PasswordInput, Button, ShowIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { RESET_PASSWORD_SUCCESS, SET_NEW_PASSWORD, resetPassword } from '../services/actions/reset-password';
+import { RESET_PASSWORD_SUCCESS, SET_NEW_PASSWORD, resetPassword } from '../services/actions/auth';
 
 import styles from './style.module.css';
 
 export const ResetPasswordPage = () => {
 
   const dispatch = useDispatch();
-  const form = useSelector(store => store.resetPassword.form);
+  const form = useSelector(store => store.user.form);
 
   /*
   useEffect(() => {

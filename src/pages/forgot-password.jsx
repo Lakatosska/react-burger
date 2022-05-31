@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/forgot-password';
+import { FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/auth';
 
 import styles from './style.module.css';
 
@@ -11,8 +11,10 @@ export const ForgotPasswordPage = () => {
 
   const dispatch = useDispatch();
   const location = useLocation();
-  const { form, forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
-  const isAuth = localStorage.getItem('token');
+  const { form, forgotPasswordSuccess } = useSelector(store => store.user);
+  //const isAuth = localStorage.getItem('token');
+  const { isAuth } = useSelector(store => store.user);
+
 
   useEffect(() => {
     form.email = '';
