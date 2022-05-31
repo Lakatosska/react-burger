@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { SET_LOGIN_USER, login } from '../services/actions/login';
@@ -10,8 +10,11 @@ import styles from './style.module.css';
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const form = useSelector(store => store.login.form);
+
+  const isAuth = localStorage.getItem('token');
 
   useEffect(() => {
     form.email = '';
@@ -30,6 +33,27 @@ export const LoginPage = () => {
     evt.preventDefault();
     dispatch(login(form))
   } 
+
+  /*
+  if (isAuth) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/",
+        }}
+      />
+    );
+  */
+
+  if (isAuth) {
+    return (
+      <Redirect
+        // Если объект state не является undefined, вернём пользователя назад.
+        to={ location.state?.from || '/' }
+      />
+    );
+  }
+  
 
   return (
     <main className={styles.container}>

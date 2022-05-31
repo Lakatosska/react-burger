@@ -13,12 +13,9 @@ import styles from './style.module.css';
 export const ProfilePage = () => {
 
   const dispatch = useDispatch();
-
   const form = useSelector(store => store.user.form);
-  const isLogin = useSelector(store => store.login.isLogin);
-
+  const isAuth = localStorage.getItem('token');
   const [actionButtons, setActionButtons] = useState(false);
-
 
   const onChange = (evt) => {
     dispatch({
@@ -46,7 +43,7 @@ export const ProfilePage = () => {
   };
 
   /*
-  if (!isLogin) {
+  if (!isAuth) {
     return (
       <Redirect
         to={{
@@ -56,6 +53,7 @@ export const ProfilePage = () => {
     );
   }
   */
+  
 
   return (
     <main className={`${styles.main} mt-30`}>
