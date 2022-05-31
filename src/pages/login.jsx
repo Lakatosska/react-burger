@@ -10,17 +10,18 @@ import styles from './style.module.css';
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
-  const location = useLocation();
+  const { state } = useLocation();
 
-  const form = useSelector(store => store.login.form);
+  const { form, isLogin } = useSelector(store => store.login);
 
   const isAuth = localStorage.getItem('token');
 
+  /*
   useEffect(() => {
     form.email = '';
     form.password = '';
   }, []);
-
+  */
 
   const onChange = (evt) => {
     dispatch({
@@ -45,14 +46,16 @@ export const LoginPage = () => {
     );
   */
 
-  if (isAuth) {
+    
+  if (isLogin) {
     return (
       <Redirect
         // Если объект state не является undefined, вернём пользователя назад.
-        to={ location.state?.from || '/' }
+        to={ state?.from || '/' }
       />
     );
   }
+  
   
 
   return (
