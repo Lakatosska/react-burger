@@ -10,11 +10,10 @@ import styles from './style.module.css';
 export const ForgotPasswordPage = () => {
 
   const dispatch = useDispatch();
-  const location = useLocation();
+  const { state } = useLocation();
+  const { isAuth } = useSelector(store => store.user);
   const { form, forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
   //const isAuth = localStorage.getItem('token');
-  const { isAuth } = useSelector(store => store.user);
-
 
   useEffect(() => {
     form.email = '';
@@ -35,23 +34,19 @@ export const ForgotPasswordPage = () => {
   if (forgotPasswordSuccess) {
     return (
       <Redirect
-        to={{
-          pathname: '/reset-password',
-        }}
+        to={{ pathname: '/reset-password' }}
       />
     );
   }
 
   if (isAuth) {
     return (
-      <Redirect
-        to={{
-          pathname: '/',
-        }}
+      <Redirect 
+        to={ state?.from || '/' } 
       />
-    );
-  } else {
-
+    )
+  };
+ 
     return (
       <main className={styles.container}>
         <form className={`${styles.form} mb-20`}>
@@ -77,5 +72,5 @@ export const ForgotPasswordPage = () => {
       </main>
     );
   };
-}
+
 

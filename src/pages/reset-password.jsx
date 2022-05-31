@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, Button, ShowIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { SET_NEW_PASSWORD, resetPassword } from '../services/actions/reset-password';
@@ -11,7 +11,9 @@ export const ResetPasswordPage = () => {
 
   const dispatch = useDispatch();
   const { form, resetPasswordSuccess } = useSelector(store => store.resetPassword);
+  const { forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
   const { isAuth } = useSelector(store => store.user);
+  const { state } = useLocation();
 
   
   useEffect(() => {
@@ -34,12 +36,26 @@ export const ResetPasswordPage = () => {
   if (resetPasswordSuccess) {
     return (
       <Redirect
-        to={{
-          pathname: '/login',
-        }}
+        to={{ pathname: '/login' }}
       />
     );
-  }
+  };
+
+  if (!forgotPasswordSuccess) {
+    return (
+      <Redirect 
+        to={{ pathname: '/forgot-password' }} 
+      />
+    );
+  };
+
+  if (isAuth) {
+    return (
+      <Redirect 
+        to={ state?.from || '/' } 
+      />
+    )
+  };
 
   return (
     <main className={styles.container}>

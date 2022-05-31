@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { SET_REGISTER_USER, register } from '../services/actions/auth';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -12,7 +12,8 @@ export const RegisterPage = () => {
 
   const dispatch = useDispatch();
 
-  const form = useSelector(store => store.user.form);
+  const { form, isAuth } = useSelector(store => store.user);
+  const { state } = useLocation();
 
   useEffect(() => {
     form.name = '';
@@ -32,6 +33,15 @@ export const RegisterPage = () => {
     evt.preventDefault();
     dispatch(register(form))
   } 
+
+  if (isAuth) {
+    return (
+      <Redirect
+        // Если объект state не является undefined, вернём пользователя назад.
+        to={ state?.from || '/' }
+      />
+    );
+  }
 
   return (
     <main className={styles.container}>

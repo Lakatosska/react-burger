@@ -1,6 +1,8 @@
+import errorImg from '../images/404-Error.svg';
+
 export const NotFound = () => {
 
   return (
-    console.log('404')
+    <img src={errorImg} alt='Oops! Page not found'/>
   );
 };

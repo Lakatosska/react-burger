@@ -47,7 +47,6 @@ export const LoginPage = () => {
     );
   }
   
-
   return (
     <main className={styles.container}>
       <form className={`${styles.form} mb-20`}>
