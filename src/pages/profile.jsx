@@ -16,6 +16,8 @@ export const ProfilePage = () => {
   const form = useSelector(store => store.user.form);
   const isAuth = localStorage.getItem('token');
   const [actionButtons, setActionButtons] = useState(false);
+  const { isLogin } = useSelector(store => store.login);
+
 
   const onChange = (evt) => {
     dispatch({
@@ -42,8 +44,8 @@ export const ProfilePage = () => {
     });
   };
 
-  /*
-  if (!isAuth) {
+  
+  if (!isLogin) {
     return (
       <Redirect
         to={{
@@ -52,7 +54,7 @@ export const ProfilePage = () => {
       />
     );
   }
-  */
+  
   
 
   return (

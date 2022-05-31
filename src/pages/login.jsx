@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
@@ -10,11 +10,11 @@ import styles from './style.module.css';
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
-  const { state } = useLocation();
+  
+  //const isAuth = localStorage.getItem('token');
 
   const { form, isLogin } = useSelector(store => store.login);
-
-  const isAuth = localStorage.getItem('token');
+  const { state } = useLocation();
 
   /*
   useEffect(() => {
@@ -30,22 +30,13 @@ export const LoginPage = () => {
     })
   }
 
-  const onSubmitForm = (evt) => {
-    evt.preventDefault();
-    dispatch(login(form))
-  } 
-
-  /*
-  if (isAuth) {
-    return (
-      <Redirect
-        to={{
-          pathname: "/",
-        }}
-      />
-    );
-  */
-
+  const onSubmitForm = useCallback(
+    (evt) => {
+      evt.preventDefault();
+      dispatch(login(form))
+    },
+    [form, dispatch] 
+  );
     
   if (isLogin) {
     return (
@@ -55,7 +46,6 @@ export const LoginPage = () => {
       />
     );
   }
-  
   
 
   return (
