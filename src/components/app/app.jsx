@@ -14,6 +14,8 @@ import { HomePage,
          ResetPasswordPage, 
          NotFound } from '../../pages';
 
+import { ProtectedRoute } from '../protected-route/protected-route';
+
 import appStyles from './app.module.css';
 
 const App = () => {
@@ -41,27 +43,41 @@ const App = () => {
       <div className={appStyles.app}>
         <AppHeader />
         <Switch>
+
           <Route path='/' exact={true}>
             <HomePage />
           </Route>
+
           <Route path='/login' exact={true}>
             <LoginPage />
           </Route>
+
           <Route path='/register' exact={true}>
             <RegisterPage />
           </Route>
-          <Route path='/profile' exact={true}>
+
+          <ProtectedRoute path='/profile' exact={true}>
             <ProfilePage />
-          </Route>
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/profile/orders' exact={true}>
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/ingredients/:id' exact={true}>
+          </ProtectedRoute>
+
           <Route path='/forgot-password' exact={true}>
             <ForgotPasswordPage />
           </Route>
+
           <Route path='/reset-password' exact={true}>
             <ResetPasswordPage />
           </Route>
+
           <Route path='*'>
             <NotFound />
           </Route>
+
         </Switch>
       </div>
     </Router>
