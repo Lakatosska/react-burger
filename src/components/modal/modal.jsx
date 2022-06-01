@@ -8,7 +8,7 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 
 const modalRoot = document.getElementById('react-modals');
 
-export const Modal = ({ closing, ...props }) => { 
+const Modal = ({ closing, ...props }) => { 
   
   useEffect(() => {
     const closeEsc = (evt) => {

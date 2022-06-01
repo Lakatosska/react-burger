@@ -13,7 +13,7 @@ export function ProtectedRoute({ children, ...rest }) {
       ) : (
       <Redirect
       // переадресовываем на /login
-      // в 'from' сохраним текущий маршрут (чтобы вернуть на него после login'a)
+      // в 'from' сохраним текущий маршрут (чтобы вернуться на него после login'a)
       // если state будет непустой, то юзер перенаправиться назад
         to={{
             pathname: '/login',
@@ -23,4 +23,5 @@ export function ProtectedRoute({ children, ...rest }) {
       )
     }/>
   )
-}
+};
+

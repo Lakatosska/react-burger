@@ -63,3 +63,9 @@
   justify-content: flex-end;
   width: 480px;
 }
+
+.modalPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

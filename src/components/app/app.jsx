@@ -15,8 +15,8 @@ import { HomePage,
          IngredientPage, 
          NotFound } from '../../pages';
 import { ProtectedRoute } from '../protected-route/protected-route';
-import { Modal } from '../modal/modal';
-import { IngredientDetails } from '../ingredient-details/ingredient-details';
+import Modal from '../modal/modal';
+import IngredientDetails from '../ingredient-details/ingredient-details';
 
 import appStyles from './app.module.css';
 
@@ -45,7 +45,7 @@ const App = () => {
   );
 
   return (
-    <Router>
+    
       <div className={appStyles.app}>
         <AppHeader />
 
@@ -70,7 +70,7 @@ const App = () => {
           <ProtectedRoute path='/profile/orders' exact={true}>
           </ProtectedRoute>
 
-          <Route path='/ingredients/:id' exact={true}>
+          <Route path='/ingredients/:id'>
             <IngredientPage />
           </Route>
 
@@ -97,7 +97,7 @@ const App = () => {
         )}
 
       </div>
-    </Router>
+    
   );
 }
 
