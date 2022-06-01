@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 
 import { AppHeader } from '../app-header/app-header';
 import { getIngredients } from '../../services/actions/ingredients';
@@ -11,15 +11,21 @@ import { HomePage,
          RegisterPage, 
          ProfilePage, 
          ForgotPasswordPage, 
-         ResetPasswordPage, 
+         ResetPasswordPage,
+         IngredientPage, 
          NotFound } from '../../pages';
-
 import { ProtectedRoute } from '../protected-route/protected-route';
+import { Modal } from '../modal/modal';
+import { IngredientDetails } from '../ingredient-details/ingredient-details';
 
 import appStyles from './app.module.css';
 
 const App = () => {
+
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const background = location.state && location.state.background;
   
   useEffect(() => {
       dispatch(getIngredients());
@@ -42,7 +48,8 @@ const App = () => {
     <Router>
       <div className={appStyles.app}>
         <AppHeader />
-        <Switch>
+
+        <Switch location={ background || location }>
 
           <Route path='/' exact={true}>
             <HomePage />
@@ -63,8 +70,9 @@ const App = () => {
           <ProtectedRoute path='/profile/orders' exact={true}>
           </ProtectedRoute>
 
-          <ProtectedRoute path='/ingredients/:id' exact={true}>
-          </ProtectedRoute>
+          <Route path='/ingredients/:id' exact={true}>
+            <IngredientPage />
+          </Route>
 
           <Route path='/forgot-password' exact={true}>
             <ForgotPasswordPage />
@@ -79,6 +87,15 @@ const App = () => {
           </Route>
 
         </Switch>
+
+        { background && (
+          <Route path='/ingredients/:id'>
+            <Modal>
+              <IngredientDetails />
+            </Modal>
+          </Route>
+        )}
+
       </div>
     </Router>
   );

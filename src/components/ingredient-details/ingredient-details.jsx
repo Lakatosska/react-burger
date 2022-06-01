@@ -2,7 +2,7 @@ import ingredientDetailsStyles from './ingredient-details.module.css';
 import { useSelector } from 'react-redux';
 
 
-const IngredientDetails = () => {
+export const IngredientDetails = () => {
 
   const { currentIngredient } = useSelector(store => store.currentIngredient);
   const { image_large, name, calories, proteins, fat, carbohydrates } = currentIngredient;
