@@ -1,7 +1,6 @@
 import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILED,
   SET_NEW_PASSWORD
 } from '../actions/reset-password';
 

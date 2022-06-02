@@ -13,7 +13,8 @@ import { HomePage,
          ForgotPasswordPage, 
          ResetPasswordPage,
          IngredientPage, 
-         NotFound } from '../../pages';
+         NotFound, 
+         ProfileOrdersPage} from '../../pages';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
@@ -73,6 +74,7 @@ const App = () => {
           </ProtectedRoute>
 
           <ProtectedRoute path='/profile/orders' exact={true}>
+            < ProfileOrdersPage/>
           </ProtectedRoute>
 
           <Route path='/ingredients/:id'>
