@@ -79,7 +79,7 @@ export const ProfilePage = () => {
       </section>
 
       <section>
-        <form className={`${styles.form} mb-20`}>
+        <form onSubmit={onSubmitForm} className={`${styles.form} mb-20`}>
           <fieldset className={styles.fieldset}>
             <Input
               type={'text'}
@@ -88,9 +88,7 @@ export const ProfilePage = () => {
               value={form.name}
               name={'name'}
               icon={'EditIcon'}
-              errorText={"Ошибка"}
-             
-          
+              errorText={"Ошибка"}          
             />
             <Input
               type={'email'}
@@ -121,7 +119,7 @@ export const ProfilePage = () => {
               Отмена
             </Button>
 
-            <Button onClick={onSubmitForm} type="primary" size="large">
+            <Button type="primary" size="large">
               Сохранить
             </Button>
           </div>)}

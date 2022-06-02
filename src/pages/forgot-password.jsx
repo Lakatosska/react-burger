@@ -49,7 +49,7 @@ export const ForgotPasswordPage = () => {
  
     return (
       <main className={styles.container}>
-        <form className={`${styles.form} mb-20`}>
+        <form onSubmit={onSubmitForm} className={`${styles.form} mb-20`}>
           <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
           <fieldset className={styles.fieldset}>
             <Input
@@ -61,7 +61,7 @@ export const ForgotPasswordPage = () => {
             />
           </fieldset>
           
-            <Button type="primary" size="large" onClick={onSubmitForm}> 
+            <Button type="primary" size="large"> 
               Восстановить
             </Button>
           

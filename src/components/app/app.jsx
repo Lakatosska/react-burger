@@ -5,7 +5,6 @@ import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { AppHeader } from '../app-header/app-header';
 import { getIngredients } from '../../services/actions/ingredients';
 import { getUser } from '../../services/actions/auth';
-import { CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCookie } from '../../utils/constants';
 import { HomePage, 
          LoginPage, 

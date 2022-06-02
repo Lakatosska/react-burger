@@ -1,15 +1,17 @@
 import { useState, useMemo, useRef } from 'react';
+import { useDrag, useDrop } from 'react-dnd';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import burgerConstructorStyles from './burger-constructor.module.css';
+
 import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
-import { useSelector, useDispatch } from 'react-redux';
 import { postOrder, RESET_ORDER } from '../../services/actions/order';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
-import { useDrag, useDrop } from 'react-dnd';
 import { Loader } from '../loader/loader';
+
+import burgerConstructorStyles from './burger-constructor.module.css';
 
 
 const ConstructorItem = ({ cardData, index }) => {
