@@ -99,8 +99,8 @@ const App = () => {
 
         { background && (
           <Route path='/ingredients/:id'>
-            <Modal title='Детали ингредиента' closing={closeModal}>
-              <IngredientDetails />
+            <Modal closing={closeModal}>
+              <IngredientDetails showModal={true}/>
             </Modal>
           </Route>
         )}

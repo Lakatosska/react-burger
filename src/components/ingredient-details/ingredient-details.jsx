@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
 
-const IngredientDetails = () => {
+const IngredientDetails = ({showModal = false}) => {
 
   const { id } = useParams();
   const ingredients = useSelector(store => store.ingredients.ingredients);
@@ -14,6 +14,7 @@ const IngredientDetails = () => {
  
   return(
     <article className={ingredientDetailsStyles.container}>
+      {showModal && <h2 className='text text_type_main-large ml-10 mt-15'>Детали ингредиента</h2>}
       <img src={currentIngredient.image_large} alt={currentIngredient.name} />
       <span className='text text_type_main-medium mt-4 mb-8'>{currentIngredient.name}</span>
       <ul className={`${ingredientDetailsStyles.nutrients} mb-15`}>

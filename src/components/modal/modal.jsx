@@ -8,12 +8,12 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 
 const modalRoot = document.getElementById('react-modals');
 
-const Modal = ({ closing, ...props }) => { 
+const Modal = (props) => { 
   
   useEffect(() => {
     const closeEsc = (evt) => {
       if (evt.key === 'Escape')  {
-        closing();
+        props.closing();
       }
     }
   
@@ -22,19 +22,17 @@ const Modal = ({ closing, ...props }) => {
     return () =>
     document.removeEventListener('keydown', closeEsc); 
 
-  }, [closing]);
+  });
 
   return ReactDOM.createPortal(
     (
       <>
-        <ModalOverlay closing={closing}/>
+        <ModalOverlay closing={props.closing} onClick={(e) => e.stopPropagation()}/>
         <div className={modalStyles.modal}>
 
-          <h2 className='text text_type_main-large ml-10 mt-15'>{props.title}</h2>
-
-          <button className={modalStyles.button} type='button'>
-            <CloseIcon type="primary" onClick={closing}/>
-          </button>
+          <div className={modalStyles.button}>
+            <CloseIcon onClick={props.closing}/>
+          </div>
           
           {props.children}
 
@@ -54,3 +52,26 @@ Modal.propTypes = {
 };
 
 export default Modal;
+
+/*
+return ReactDOM.createPortal(
+    (
+      <>
+        <ModalOverlay closing={closing} onClick={(e) => e.stopPropagation()}/>
+        <div className={modalStyles.modal}>
+
+          <h2 className='text text_type_main-large ml-10 mt-15'>{props.title}</h2>
+
+          <button className={modalStyles.button} type='button'>
+            <CloseIcon type="primary" onClick={closing}/>
+          </button>
+          
+          {props.children}
+
+        </div>
+        
+      </>
+    ), 
+    modalRoot
+    );
+*/
