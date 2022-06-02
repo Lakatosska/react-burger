@@ -7,7 +7,7 @@ import styles from './style.module.css';
 
 export const IngredientPage = () => {
 
-  let { id } = useParams();
+  const { id } = useParams();
 
   return (
     <div className={styles.modalPage}>

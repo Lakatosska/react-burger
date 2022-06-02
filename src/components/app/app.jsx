@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 
 import { AppHeader } from '../app-header/app-header';
 import { getIngredients } from '../../services/actions/ingredients';
 import { getUser } from '../../services/actions/auth';
+import { CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCookie } from '../../utils/constants';
 import { HomePage, 
          LoginPage, 
@@ -24,6 +25,7 @@ const App = () => {
 
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
 
   const background = location.state && location.state.background;
   
@@ -43,6 +45,13 @@ const App = () => {
     }, 
     []
   );
+
+  const closeModal = () => {
+    dispatch({
+      type: CLOSE_MODAL
+    }); 
+    history.replace({ pathname: '/' });
+  };
 
   return (
     
@@ -90,7 +99,7 @@ const App = () => {
 
         { background && (
           <Route path='/ingredients/:id'>
-            <Modal>
+            <Modal title='Детали ингредиента' closing={closeModal}>
               <IngredientDetails />
             </Modal>
           </Route>
