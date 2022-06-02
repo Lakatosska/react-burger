@@ -27,12 +27,12 @@ const Modal = (props) => {
   return ReactDOM.createPortal(
     (
       <>
-        <ModalOverlay closing={props.closing} onClick={(e) => e.stopPropagation()}/>
+        {props.showModal && <ModalOverlay closing={props.closing} />}
         <div className={modalStyles.modal}>
 
-          <div className={modalStyles.button}>
-            <CloseIcon onClick={props.closing}/>
-          </div>
+        {props.showModal && <div onClick={props.closing} className={modalStyles.button}>
+            <CloseIcon />
+          </div>}
           
           {props.children}
 

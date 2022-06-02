@@ -47,9 +47,6 @@ const App = () => {
   );
 
   const closeModal = () => {
-    dispatch({
-      type: CLOSE_MODAL
-    }); 
     history.replace({ pathname: '/' });
   };
 
@@ -99,7 +96,7 @@ const App = () => {
 
         { background && (
           <Route path='/ingredients/:id'>
-            <Modal closing={closeModal}>
+            <Modal closing={closeModal} showModal={true}>
               <IngredientDetails showModal={true}/>
             </Modal>
           </Route>
