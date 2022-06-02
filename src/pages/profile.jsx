@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-
 import { Input, EditIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import { SET_UPDATE_USER, CANCEL_UPDATE_USER, getUser, updateUser } from '../services/actions/auth';
@@ -14,7 +13,6 @@ export const ProfilePage = () => {
 
   const dispatch = useDispatch();
   const form = useSelector(store => store.user.form);
-  //const isAuth = localStorage.getItem('token');
   const [actionButtons, setActionButtons] = useState(false);
   const { isAuth } = useSelector(store => store.user);
 
@@ -43,19 +41,12 @@ export const ProfilePage = () => {
       type: CANCEL_UPDATE_USER 
     });
   };
-
   
   if (!isAuth) {
     return (
-      <Redirect
-        to={{
-          pathname: '/login',
-        }}
-      />
+      <Redirect to={{ pathname: '/login' }} />
     );
-  }
-  
-  
+  }  
 
   return (
     <main className={`${styles.main} mt-30`}>

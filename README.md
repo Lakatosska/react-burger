@@ -2,7 +2,7 @@
 
 Space burger app on React
 
-## Используемые технологии
+## Technologies used
 
 * React hooks
 * API requests

@@ -32,9 +32,9 @@ const Modal = (props) => {
         {props.showModal && <ModalOverlay closing={props.closing} />}
         <div className={modalStyles.modal}>
 
-        {props.showModal && <div onClick={props.closing} className={modalStyles.button}>
+        <div onClick={props.closing} className={modalStyles.button}>
             <CloseIcon />
-          </div>}
+          </div>
           
           {props.children}
 

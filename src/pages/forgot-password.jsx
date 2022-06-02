@@ -13,7 +13,6 @@ export const ForgotPasswordPage = () => {
   const { state } = useLocation();
   const { isAuth } = useSelector(store => store.user);
   const { form, forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
-  //const isAuth = localStorage.getItem('token');
 
   useEffect(() => {
     form.email = '';

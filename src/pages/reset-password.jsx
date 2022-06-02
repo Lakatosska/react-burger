@@ -15,7 +15,6 @@ export const ResetPasswordPage = () => {
   const { isAuth } = useSelector(store => store.user);
   const { state } = useLocation();
 
-  
   useEffect(() => {
     form.password = '';
     form.token = '';

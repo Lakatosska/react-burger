@@ -10,8 +10,6 @@ import styles from './style.module.css';
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
-  
-  //const isAuth = localStorage.getItem('token');
 
   const { form, isAuth } = useSelector(store => store.user);
   const { state } = useLocation();

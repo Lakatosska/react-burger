@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
-
 import IngredientDetails from '../components/ingredient-details/ingredient-details';
-
 import styles from './style.module.css';
 
 

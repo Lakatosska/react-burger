@@ -78,4 +78,4 @@ export const RegisterPage = () => {
         <Link to='/login' className={`${styles.link} ml-3`}>Войти</Link></p>
     </main>
   );
-}
+};
