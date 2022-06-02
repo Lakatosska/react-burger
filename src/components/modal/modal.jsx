@@ -54,26 +54,3 @@ Modal.propTypes = {
 };
 
 export default Modal;
-
-/*
-return ReactDOM.createPortal(
-    (
-      <>
-        <ModalOverlay closing={closing} onClick={(e) => e.stopPropagation()}/>
-        <div className={modalStyles.modal}>
-
-          <h2 className='text text_type_main-large ml-10 mt-15'>{props.title}</h2>
-
-          <button className={modalStyles.button} type='button'>
-            <CloseIcon type="primary" onClick={closing}/>
-          </button>
-          
-          {props.children}
-
-        </div>
-        
-      </>
-    ), 
-    modalRoot
-    );
-*/
