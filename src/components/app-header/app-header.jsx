@@ -13,7 +13,7 @@ export const AppHeader = () => {
 
   return(
     <header className={appHeaderStyles.header}>
-      <nav className={appHeaderStyles.nav}>
+      <div className={appHeaderStyles.list}>
       
         <NavLink to='/' exact={true}
             className={`${appHeaderStyles.link} p-5 mr-2`}
@@ -28,16 +28,18 @@ export const AppHeader = () => {
           <ListIcon type="secondary" />
           <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Лента заказов</span>
         </NavLink>
-      </nav>
-        
-      <Logo />
+      </div>
 
-      <NavLink to='/profile' exact={true}
-        className={`${appHeaderStyles.link} p-5`}
-        activeClassName={appHeaderStyles.activeLink}>
-        <ProfileIcon type="secondary" />
-        <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Личный кабинет</span>
-      </NavLink>
+        <NavLink to='/' exact={true}>  
+          <Logo />
+        </NavLink>
+
+        <NavLink to='/profile' exact={true}
+          className={`${appHeaderStyles.link} p-5`}
+          activeClassName={appHeaderStyles.activeLink}>
+          <ProfileIcon type="secondary" />
+          <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Личный кабинет</span>
+        </NavLink>
       
     </header>
   );
