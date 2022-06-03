@@ -6,17 +6,6 @@ export const SHIFT_INGREDIENT ='SHIFT_INGREDIENT';
 export const RESET_CONSTRUCTOR ='RESET_CONSTRUCTOR';
 
 // ActionsCreator
-export const addToConstructor = (ingredient, index) => {
-  return {
-    type: ADD_INGREDIENT,
-    payload: {
-      ...ingredient,
-      id: uuid4(),
-      index
-    }
-  };
-};
-
 export const sortIngredient = (fromIndex, toIndex) => (
   {
     type: SHIFT_INGREDIENT,
@@ -33,3 +22,15 @@ export const deleteIngredient = (index) => (
     payload: index
   }
 );
+
+export const addToConstructor = (ingredient, index) => {
+  return {
+    type: ADD_INGREDIENT,
+    payload: {
+      ...ingredient,
+      id: uuid4(),
+      index
+    }
+  };
+};
+

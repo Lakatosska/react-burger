@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import { 
   Logo, 
   BurgerIcon, 
@@ -7,32 +9,38 @@ import {
 
 import appHeaderStyles from './app-header.module.css';
 
-const AppHeader = () => {
+export const AppHeader = () => {
 
   return(
     <header className={appHeaderStyles.header}>
-      <nav className={appHeaderStyles.nav}>
+      <div className={appHeaderStyles.list}>
       
-        <a href='#' className={`${appHeaderStyles.link} p-5 mr-2`}>
-          <BurgerIcon type='primary'/>
-          <span className='ml-2 text text_type_main-default'>Конструктор</span>
-        </a>
+        <NavLink to='/' exact={true}
+            className={`${appHeaderStyles.link} p-5 mr-2`}
+            activeClassName={appHeaderStyles.activeLink}
+          ><BurgerIcon type='secondary'/>
+          <span className='ml-2 text text_type_main-default text_color_inactive'>Конструктор</span>
+        </NavLink>
       
-        <a href='#' className={`${appHeaderStyles.link} p-5`}>
+        <NavLink to='/profile/orders' exact={true}
+          className={`${appHeaderStyles.link} p-5`}
+          activeClassName={appHeaderStyles.activeLink}>
           <ListIcon type="secondary" />
           <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Лента заказов</span>
-        </a>
-      </nav>
-        
-      <Logo />
+        </NavLink>
+      </div>
 
-      <a href='#' className={`${appHeaderStyles.link} p-5`}>
-        <ProfileIcon type="secondary" />
-        <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Личный кабинет</span>
-      </a>
+        <NavLink to='/' exact={true}>  
+          <Logo />
+        </NavLink>
+
+        <NavLink to='/profile' exact={true}
+          className={`${appHeaderStyles.link} p-5`}
+          activeClassName={appHeaderStyles.activeLink}>
+          <ProfileIcon type="secondary" />
+          <span className='ml-2 mr-5 text text_type_main-default text_color_inactive'>Личный кабинет</span>
+        </NavLink>
       
     </header>
   );
-}
-
-export default AppHeader;
+};

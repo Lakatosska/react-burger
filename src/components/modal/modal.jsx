@@ -1,19 +1,21 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import modalStyles from './modal.module.css';
 import ModalOverlay from '../modal-overlay/modal-overlay';
+
+import modalStyles from './modal.module.css';
 
 
 const modalRoot = document.getElementById('react-modals');
 
-const Modal = ({ closing, ...props }) => { 
+const Modal = (props) => { 
   
   useEffect(() => {
     const closeEsc = (evt) => {
       if (evt.key === 'Escape')  {
-        closing();
+        props.closing();
       }
     }
   
@@ -22,19 +24,17 @@ const Modal = ({ closing, ...props }) => {
     return () =>
     document.removeEventListener('keydown', closeEsc); 
 
-  }, [closing]);
+  });
 
   return ReactDOM.createPortal(
     (
       <>
-        <ModalOverlay closing={closing}/>
+        {props.showModal && <ModalOverlay closing={props.closing} />}
         <div className={modalStyles.modal}>
 
-          <h2 className='text text_type_main-large ml-10 mt-15'>{props.title}</h2>
-
-          <button className={modalStyles.button} type='button'>
-            <CloseIcon type="primary" onClick={closing}/>
-          </button>
+        {props.showModal && <div onClick={props.closing} className={modalStyles.button}>
+            <CloseIcon />
+          </div>}
           
           {props.children}
 

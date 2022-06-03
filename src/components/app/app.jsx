@@ -1,33 +1,110 @@
 import { useEffect } from 'react';
-import AppHeader from '../app-header/app-header';
-import BurgerIngredients from '../burger-ingredients/burger-ingredients';
-import BurgerConstructor from '../burger-constructor/burger-constructor';
-import appStyles from './app.module.css';
 import { useDispatch } from 'react-redux';
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
+
+import { AppHeader } from '../app-header/app-header';
 import { getIngredients } from '../../services/actions/ingredients';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { getUser } from '../../services/actions/auth';
+import { getCookie } from '../../utils/constants';
+import { HomePage, 
+         LoginPage, 
+         RegisterPage, 
+         ProfilePage, 
+         ForgotPasswordPage, 
+         ResetPasswordPage,
+         IngredientPage, 
+         NotFound, 
+         ProfileOrdersPage} from '../../pages';
+import { ProtectedRoute } from '../protected-route/protected-route';
+import Modal from '../modal/modal';
+import IngredientDetails from '../ingredient-details/ingredient-details';
+
+import appStyles from './app.module.css';
 
 const App = () => {
 
   const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
 
+  const background = location.state && location.state.background;
+  
   useEffect(() => {
       dispatch(getIngredients());
     },
-    [dispatch]
+    []
   ); 
 
-  return(
-    <div className={appStyles.app}>
-      <AppHeader />
-      <DndProvider backend={HTML5Backend}>
-        <main className={appStyles.main}>
-          <BurgerIngredients />
-          <BurgerConstructor /> 
-        </main>
-      </DndProvider>
-    </div>
+  // при монтировании приложения проверяем, есть ли accessToken, 
+  // и если есть, выполняем запрос для получения данных пользователя
+  useEffect(() => {
+      const accessToken = getCookie('token')
+      if (accessToken) {
+        dispatch(getUser())
+      }
+    }, 
+    []
+  );
+
+  const closeModal = () => {
+    history.replace({ pathname: '/' });
+  };
+
+  return (
+    
+      <div className={appStyles.app}>
+        <AppHeader />
+
+        <Switch location={ background || location }>
+
+          <Route path='/' exact={true}>
+            <HomePage />
+          </Route>
+
+          <Route path='/login' exact={true}>
+            <LoginPage />
+          </Route>
+
+          <Route path='/register' exact={true}>
+            <RegisterPage />
+          </Route>
+
+          <ProtectedRoute path='/profile' exact={true}>
+            <ProfilePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/profile/orders' exact={true}>
+            < ProfileOrdersPage/>
+          </ProtectedRoute>
+
+          <Route path='/ingredients/:id'>
+            <IngredientPage />
+          </Route>
+
+          <Route path='/forgot-password' exact={true}>
+            <ForgotPasswordPage />
+          </Route>
+
+          <Route path='/reset-password' exact={true}>
+            <ResetPasswordPage />
+          </Route>
+
+          <Route path='*'>
+            <NotFound />
+          </Route>
+
+        </Switch>
+
+        { background && (
+          <Route path='/ingredients/:id'>
+            <Modal closing={closeModal} showModal={true}>
+              <IngredientDetails showModal={true}/>
+            </Modal>
+          </Route>
+        )}
+
+      </div>
+    
   );
 }
 
