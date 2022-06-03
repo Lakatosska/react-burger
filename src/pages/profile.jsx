@@ -16,7 +16,6 @@ export const ProfilePage = () => {
   const [actionButtons, setActionButtons] = useState(false);
   const { isAuth } = useSelector(store => store.user);
 
-
   const onChange = (evt) => {
     dispatch({
       type: SET_UPDATE_USER,
@@ -89,19 +88,15 @@ export const ProfilePage = () => {
               name={'email'}
               icon={'EditIcon'}
               errorText={"Ошибка"}
-              //onIconClick={console.log('кликнули на Логин')}
-              //disabled
             />
             <Input
               type={'password'}
               placeholder={'Пароль'}
               onChange={onChange}
-              value={form.password}
+              value={form.password || ''}
               name={'password'}
               icon={'EditIcon'}
               errorText={"Ошибка"}
-              //onIconClick={console.log('кликнули на Пароль')}
-              //disabled
             />
           </fieldset>
 
