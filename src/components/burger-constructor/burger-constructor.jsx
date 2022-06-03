@@ -146,8 +146,8 @@ const OrderTotal = () => {
   };
   
   const modalOrder = (
-    <Modal closing={closeModal}>
-      <OrderDetails  />
+    <Modal closing={closeModal} showModal={true}>
+      <OrderDetails />
     </Modal >
   );
 
