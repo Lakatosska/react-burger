@@ -1,0 +1,39 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardList {
+  list-style: none;
+}
+
+.card {
+  padding: 24px;
+  background-color: #1C1C21;
+  border-radius: 40px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+}
+
+.icon {
+  width: 112px;
+  height: 56px;
+  border: #801ab3 solid 2px;
+}
+
+.img {
+  list-style: none;
+}
