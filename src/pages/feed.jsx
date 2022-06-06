@@ -6,8 +6,8 @@ import styles from './style.module.css';
 export const FeedPage = () => {
 
   return (
-    <main>
-      <h2>Лента заказов</h2>
+    <main className={styles.feedMain}>
+      <h2 className="text text_type_main-large mb-5">Лента заказов</h2>
       <div className={styles.feed}>
         <OrdersFeed />
         <OrdersStatus />
@@ -15,59 +15,3 @@ export const FeedPage = () => {
     </main>
   );
 };
-
-/*
-export const FeedPage = () => {
-
-  return (
-    <>
-      <h2>Лента заказов</h2>
-      <div className={feedStyles.main}>
-        <section>
-          <ul>
-            <li>
-              <div>
-                <p>order number</p>
-                <span>order time</span>
-              </div>
-              
-              <p>order name</p>
-              <div>
-                <span>order icons</span>
-                <div>
-                  <p>order total</p>
-                  <img>order currency icon</img>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-
-        <section>
-          <div>
-            <div>
-              <h3>Готовы:</h3>
-
-            </div>
-
-            <div>
-              <h3>В работе:</h3>
-
-            </div>
-          </div>
-
-          <div>
-            <h3>Выполнено за сегодня:</h3>
-          </div>
-
-          <div>
-            <h3>Выполнено за сегодня:</h3>
-          </div>
-
-        </section>
-      </div>
-    </>
-  );
-};
-*/

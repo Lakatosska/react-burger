@@ -31,10 +31,20 @@ export const CardOrder = () => {
           <li className={ordersFeedStyles.img}>
             <img src={icons[2]} className={ordersFeedStyles.icon}/>
           </li>
+          <li className={ordersFeedStyles.img}>
+            <img src={icons[2]} className={ordersFeedStyles.icon}/>
+          </li>
+          <li className={ordersFeedStyles.img}>
+            <img src={icons[2]} className={ordersFeedStyles.icon}/>
+          </li>
+          
+          <div className={ordersFeedStyles.icon} style={{backgroundImage: `url(${icons[2]})` }}>
+            <p className={`${ordersFeedStyles.lastIcon} text text_type_main-default`}>+3</p>
+          </div>
         </ul>
 
         <div className={`${ordersFeedStyles.price} ml-6`}>
-          <p className="text text_type_digits-default mr-1">480</p>
+          <p className="text text_type_digits-default mr-2">480</p>
           <CurrencyIcon type="primary" />
         </div>
 
@@ -49,6 +59,12 @@ export const OrdersFeed = () => {
 
   return (
     <section>
+      <li className={ordersFeedStyles.cardList}>
+        <CardOrder />
+      </li>
+      <li className={ordersFeedStyles.cardList}>
+        <CardOrder />
+      </li>
       <li className={ordersFeedStyles.cardList}>
         <CardOrder />
       </li>

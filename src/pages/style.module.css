@@ -70,10 +70,14 @@
   align-items: center;
 }
 
+.feedMain {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
 .feed {
   display: grid;
   gap: 60px;
   grid-template-columns: 600px 580px;
-  max-width: 1240px;
-  margin: 0 auto;
+  
 }

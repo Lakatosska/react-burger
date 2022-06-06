@@ -2,3 +2,22 @@
   display: flex;
   flex-direction: column;
 }
+
+.status {
+  display: grid;
+  grid-template-columns: 272px 272px;
+  gap: 36px;
+}
+
+.doneList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #00CCCC;
+}
+
+.inWorkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
