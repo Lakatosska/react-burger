@@ -7,7 +7,7 @@ export const FeedPage = () => {
 
   return (
     <main className={styles.feedMain}>
-      <h2 className="text text_type_main-large mb-5">Лента заказов</h2>
+      <h2 className="text text_type_main-large mt-10 mb-5">Лента заказов</h2>
       <div className={styles.feed}>
         <OrdersFeed />
         <OrdersStatus />
