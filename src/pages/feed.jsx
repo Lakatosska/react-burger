@@ -18,7 +18,10 @@ export const FeedPage = () => {
     return () => {
       dispatch({ type: WS_CONNECTION_CLOSED });
     }
-  }, []);
+  }, [dispatch]);
+
+  // const ws = new WebSocket('wss://norma.nomoreparties.space/orders')
+  // console.log(ws.readyState) 
 
 
   return (

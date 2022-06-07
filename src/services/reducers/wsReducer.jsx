@@ -5,12 +5,15 @@ import {
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_GET_MESSAGE,
+  WS_GET_MESSAGE_USER,
   WS_SEND_MESSAGE,
 } from '../actions/wsActions';
 
 const initialWebSocketState = {
   wsConnected: false,
-  orders: {},
+  orders: [],
+  total: 0,
+  totalToday: 0,
 };
 
 export const wsReducer = (state = initialWebSocketState, action) => {
@@ -37,7 +40,9 @@ export const wsReducer = (state = initialWebSocketState, action) => {
     case WS_GET_MESSAGE: {
       return {
         ...state,
-        orders: action.payload,
+        orders: action.payload.orders,
+        total: action.payload.total,
+        totalToday: action.payload.totalToday,
       };
     }
     default:

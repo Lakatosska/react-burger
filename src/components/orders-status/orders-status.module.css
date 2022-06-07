@@ -14,6 +14,12 @@
   margin: 0;
   padding: 0;
   color: #00CCCC;
+  display: flex;
+  max-height: 325px;
+  flex-direction: column;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  overflow-y: hidden;
 }
 
 .inWorkList {

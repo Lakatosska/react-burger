@@ -31,7 +31,10 @@ const composeEnhancers =
     : compose; 
 
 // расширитель хранилища (thunk - чтобы экшены могли быть не только объектами, но и функциями, в т.ч. асинхронными)
-const enhancer = composeEnhancers(applyMiddleware(thunk, socketMiddleware(wsUrl, wsActions)));
+const enhancer = composeEnhancers(applyMiddleware(
+    thunk, 
+    socketMiddleware(wsUrl, wsActions))
+  );
 
 // инициализируем хранилище
 export const store = createStore(rootReducer, enhancer)
