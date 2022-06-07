@@ -26,7 +26,6 @@ export const OrdersStatus = () => {
     }
   })
 
-
   return (
     <section className={ordersStatusStyles.section}>
       <div className={`${ordersStatusStyles.status} mb-15`}>
@@ -35,7 +34,6 @@ export const OrdersStatus = () => {
           <ul className={ordersStatusStyles.doneList}>
             {ordersDone}
           </ul>
-
         </div>
 
         <div>
@@ -43,38 +41,19 @@ export const OrdersStatus = () => {
           <ul className={ordersStatusStyles.inWorkList}>
             {ordersInWork}
           </ul>
-
         </div>
       </div>
 
       <div className="mb-15">
         <p className="text text_type_main-medium">Выполнено за все время:</p>
         <p className="text text_type_digits-large">{total}</p>
-
       </div>
 
       <div>
         <p className="text text_type_main-medium">Выполнено за сегодня:</p>
         <p className="text text_type_digits-large">{totalToday}</p>
-
       </div>
     </section>
   
   );
 };
-
-/*
-return (
-    <section className={ordersStatusStyles.section}>
-      <div className={`${ordersStatusStyles.status} mb-15`}>
-        <div>
-          <p className="text text_type_main-medium mb-6">Готовы:</p>
-          <ul className={ordersStatusStyles.doneList}>
-            <li className="text text_type_digits-default">034533</li>
-            <li className="text text_type_digits-default">034534</li>
-            <li className="text text_type_digits-default">034535</li>
-            <li className="text text_type_digits-default">034536</li>
-          </ul>
-
-        </div>
-*/

@@ -17,7 +17,7 @@
   display: flex;
   max-height: 325px;
   flex-direction: column;
-  column-gap: 20px;
+  column-gap: 65px;
   flex-wrap: wrap;
   overflow-y: hidden;
 }

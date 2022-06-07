@@ -6,6 +6,7 @@
 .cardList {
   list-style: none;
   margin-bottom: 16px;
+  padding: 0;
 }
 
 .card {
