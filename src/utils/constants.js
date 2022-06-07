@@ -1,6 +1,6 @@
 export const BASEURL = 'https://norma.nomoreparties.space/api';
 
-export const wsUrl = 'https://norma.nomoreparties.space/orders';
+export const wsUrl = 'wss://norma.nomoreparties.space/orders';
 
 export function checkResponse(res) {
   if (res.ok) {
