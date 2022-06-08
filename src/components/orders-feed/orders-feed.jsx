@@ -15,8 +15,6 @@ export const CardOrder = ({card}) => {
     return ingredients.find(el => el._id === item)
   })
 
-
-
   return (
     <article className={ordersFeedStyles.card}>
 
@@ -28,15 +26,24 @@ export const CardOrder = ({card}) => {
       <p className="text text_type_main-medium  mt-6 mb-6">{name}</p>
 
       <div className={ordersFeedStyles.total}>
+
         <ul className={ordersFeedStyles.icons}>
-          <li className={ordersFeedStyles.img}>
-            <img src={IngredientFullItem[0].image_mobile} className={ordersFeedStyles.icon}/>
-          </li>
-        
           
-          <div className={ordersFeedStyles.icon} style={{backgroundImage: `url(${IngredientFullItem[1].image_mobile})` }}>
-            <p className={`${ordersFeedStyles.lastIcon} text text_type_main-default`}>+3</p>
-          </div>
+          {ingredientsId.length <= 5
+            ? (IngredientFullItem.map(item => {
+                return (
+                  <li className={ordersFeedStyles.img}>
+                    <img src={item.image_mobile} className={ordersFeedStyles.icon}/>
+                  </li>
+                )
+              }))      
+          : '' }
+          { (ingredientsId.length > 5) &&
+            (<div className={ordersFeedStyles.icon} style={{backgroundImage: `url(${IngredientFullItem[5].image_mobile})` }}>
+              <p className={`${ordersFeedStyles.lastIcon} text text_type_main-default`}>+3</p>
+            </div>)
+          }
+          
         </ul>
 
         <div className={`${ordersFeedStyles.price} ml-6`}>
