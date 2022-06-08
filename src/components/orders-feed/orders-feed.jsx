@@ -11,9 +11,9 @@ export const CardOrder = ({card}) => {
   const { orders } = useSelector(store => store.ws);
   const { ingredients } = useSelector(store => store.ingredients);
 
-  const IngredientFullItem = ingredientsId.map(item => {
-    return ingredients.find(el => el._id === item)
-  })
+  const orderedIngredients = ingredientsId.map(item => {
+    return ingredients.find(el => el._id === item);
+  });
 
   return (
     <article className={ordersFeedStyles.card}>
@@ -28,22 +28,21 @@ export const CardOrder = ({card}) => {
       <div className={ordersFeedStyles.total}>
 
         <ul className={ordersFeedStyles.icons}>
-          
-          {ingredientsId.length <= 5
-            ? (IngredientFullItem.map(item => {
-                return (
-                  <li className={ordersFeedStyles.img}>
-                    <img src={item.image_mobile} className={ordersFeedStyles.icon}/>
-                  </li>
-                )
-              }))      
-          : '' }
-          { (ingredientsId.length > 5) &&
-            (<div className={ordersFeedStyles.icon} style={{backgroundImage: `url(${IngredientFullItem[5].image_mobile})` }}>
-              <p className={`${ordersFeedStyles.lastIcon} text text_type_main-default`}>+3</p>
-            </div>)
+          { 
+            (ingredientsId.length > 5) &&
+              ( <div className={ordersFeedStyles.icon} style={{backgroundImage: `url(${orderedIngredients[5].image_mobile})` }}>
+                  <p className={`${ordersFeedStyles.lastIcon} text text_type_main-default`}>+{orderedIngredients.length - 5}</p>
+                </div>)
           }
-          
+          {
+            orderedIngredients.slice(0, 5).reverse().map(item => {
+              return (
+                <li className={ordersFeedStyles.img}>
+                  <img src={item.image_mobile} className={ordersFeedStyles.icon}/>
+                </li>
+              )
+            })
+          }
         </ul>
 
         <div className={`${ordersFeedStyles.price} ml-6`}>
