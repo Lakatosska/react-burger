@@ -9,7 +9,7 @@ export const OrdersStatus = () => {
   const ordersDone = orders.map(item => {
     if (item.status === 'done') {
       return (
-        <li className="text text_type_digits-default mb-2">
+        <li key={item._id} className="text text_type_digits-default mb-2">
           {item.number}
         </li>
       )
@@ -19,7 +19,7 @@ export const OrdersStatus = () => {
   const ordersInWork = orders.map(item => {
     if (item.status === 'pending') {
       return (
-        <li className="text text_type_digits-default mb-2">
+        <li key={item._id} className="text text_type_digits-default mb-2">
           {item.number}
         </li>
       )

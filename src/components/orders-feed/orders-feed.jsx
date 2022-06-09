@@ -16,12 +16,14 @@ export const CardOrder = ({ card }) => {
   const orderedIngredients = ingredientsId.map(item => {
     return ingredients.find(el => el._id === item);
   });
+  console.log(orderedIngredients);
 
   const sumTotal = useMemo(() => {
     return (
       orderedIngredients.reduce((acc, item) => acc + item.price, 0)
     );
   }, [orderedIngredients]);
+  console.log(sumTotal);
 
   return (
     <article className={`${ordersFeedStyles.card} mr-2`}>
@@ -41,9 +43,9 @@ export const CardOrder = ({ card }) => {
                 </div>)
           }
           {
-            orderedIngredients.slice(0, 5).reverse().map(item => {
+            orderedIngredients.slice(0, 5).reverse().map((item, index) => {
               return (
-                <li className={ordersFeedStyles.img}>
+                <li key={index} className={ordersFeedStyles.img}>
                   <img src={item.image_mobile} className={ordersFeedStyles.icon}/>
                 </li>
               )
@@ -68,11 +70,11 @@ export const OrdersFeed = () => {
   return (
     <section>
       <ul className={`${ordersFeedStyles.cardList} custom-scroll`}>
-        {orders.map(item => {
-            return(
+        {orders.map(item => (
+            <li key={item._id}>
               <CardOrder card={item}/>
-            )
-          })
+            </li>
+          ))
         }
       </ul>
     </section>
