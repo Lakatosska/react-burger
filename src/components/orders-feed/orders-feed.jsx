@@ -13,9 +13,13 @@ export const CardOrder = ({ card }) => {
   const { orders } = useSelector(store => store.ws);
   const { ingredients } = useSelector(store => store.ingredients);
 
-  const orderedIngredients = ingredientsId.map(item => {
+  //filter(ingredient => ingredient != null)
+
+  const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
     return ingredients.find(el => el._id === item);
-  });
+   }
+  );
+
   console.log(orderedIngredients);
 
   const sumTotal = useMemo(() => {
@@ -23,6 +27,7 @@ export const CardOrder = ({ card }) => {
       orderedIngredients.reduce((acc, item) => acc + item.price, 0)
     );
   }, [orderedIngredients]);
+
   console.log(sumTotal);
 
   return (
