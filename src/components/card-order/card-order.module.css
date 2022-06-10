@@ -3,13 +3,6 @@
   justify-content: space-between;
 }
 
-.cardList {
-  list-style: none;
-  padding: 0;
-  height: calc(100vh - 320px);
-  overflow-y: auto;
-}
-
 .card {
   padding: 24px;
   background-color: #1C1C21;
