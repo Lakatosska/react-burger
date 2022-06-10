@@ -1,0 +1,45 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+  margin: 122px auto 0;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+}
+
+.status {
+  margin: 0;
+  padding: 0;
+}
+
+.tableItem {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border: #801ab3 solid 2px;
+  border-radius: 100px;
+  background-color: #131316;
+  object-fit: cover;
+}
+
+.quantity {
+  display: flex;
+}
+
+.figures {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  display: flex;
+}

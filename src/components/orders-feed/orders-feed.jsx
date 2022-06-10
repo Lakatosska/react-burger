@@ -13,7 +13,6 @@ export const CardOrder = ({ card }) => {
   const { orders } = useSelector(store => store.ws);
   const { ingredients } = useSelector(store => store.ingredients);
 
-  //filter(ingredient => ingredient != null)
 
   const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
     return ingredients.find(el => el._id === item);
