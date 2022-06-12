@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { CardOrder } from '../card-order/card-order';
 
@@ -16,6 +16,7 @@ export const OrdersFeed = () => {
       <ul className={`${ordersFeedStyles.cardList} custom-scroll`}>
         {orders.map(item => (
           <Link key={item._id}
+            className={ordersFeedStyles.link}
             to={{
               pathname: `/feed/${item._id}`,
               state: { background: location },

@@ -18,7 +18,7 @@
 .table {
   padding: 0;
   max-height: calc(100vh - 620px);
-  overflow-y: scroll;
+  overflow-y: auto;
   
 }
 

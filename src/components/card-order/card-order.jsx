@@ -1,5 +1,8 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+//import { formatDistance, formatDistanceToNowStrict, subDays, formatDistanceToNow } from 'date-fns';
+//import { ru } from 'date-fns/locale';
+import { placeOrderDate } from '../../utils/constants';
 
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
@@ -13,13 +16,22 @@ export const CardOrder = ({ card }) => {
   const { orders } = useSelector(store => store.ws);
   const { ingredients } = useSelector(store => store.ingredients);
 
+  
+ /*
+  const date = formatDistanceToNowStrict(
+    new Date(createdAt),
+    {locale: ru},
+    {addSuffix: true}
+  )
+  console.log(date)
+*/
 
   const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
     return ingredients.find(el => el._id === item);
    }
   );
 
-  //console.log(orderedIngredients);
+  console.log(card);
 
   const sumTotal = useMemo(() => {
     return (
@@ -32,7 +44,7 @@ export const CardOrder = ({ card }) => {
     <article className={`${cardOrderStyles.card} mr-2`}>
       <div className={cardOrderStyles.info}>
         <p className="text text_type_digits-default">#{number}</p>
-        <p className="text text_type_main-default text_color_inactive">Сегодня, 16:20 i-GMT+3</p>
+        <p className="text text_type_main-default text_color_inactive">{placeOrderDate(createdAt)}</p>
       </div>
               
       <p className="text text_type_main-medium  mt-6 mb-6">{name}</p>
