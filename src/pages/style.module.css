@@ -79,5 +79,10 @@
   display: grid;
   gap: 60px;
   grid-template-columns: 600px 580px;
-  
+}
+
+.order {
+  padding: 0 40px 40px 40px;
+  width: 640px;
+  margin: 124px auto 0;
 }

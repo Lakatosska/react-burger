@@ -4,11 +4,9 @@ import styles from './style.module.css';
 
 export const OrderPage = () => {
 
-  const { id } = useParams();
-
   return (
-    <main className={styles.order}>
-      <OrderInfo id={ id }/>
+    <main className={`${styles.order} mt-30`}>
+      <OrderInfo />
     </main>
   );
 };

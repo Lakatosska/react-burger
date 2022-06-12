@@ -1,8 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  max-width: 640px;
-  margin: 122px auto 0;
 }
 
 .number {
