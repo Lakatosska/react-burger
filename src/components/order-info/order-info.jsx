@@ -30,10 +30,11 @@ export const OrderInfo = () => {
   if (!currentOrder) return null;
   const { name, number, status, createdAt, ingredients: ingredientsId} = currentOrder;
   
-  const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(ingredientId => {
-    return ingredients.find(ingredient => ingredient._id === ingredientId);
+  const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
+    return ingredients.find(el => el._id === item);
    })
-
+   
+  
   const uniqueIngredients = [...new Set(orderedIngredients)];
 
   //const ingredientQuantity = orderedIngredients.filter(el => el._id === uniqueIngredients._id).length
@@ -41,6 +42,8 @@ export const OrderInfo = () => {
    console.log(orderedIngredients);
    console.log(uniqueIngredients);
    //console.log(ingredientQuantity);
+
+  const sumTotal = orderedIngredients.reduce((acc, item) => acc + item.price, 0);
 
 
   return (
@@ -54,7 +57,7 @@ export const OrderInfo = () => {
       <div className='mt-15 mb-10'>
         <p className="text text_type_main-medium mb-6">Состав:</p>
 
-        <div className={orderInfoStyles.table}>
+        <ul className={`${orderInfoStyles.table} custom-scroll`}>
           {
             uniqueIngredients.map((item, index) => {
               return (
@@ -70,14 +73,14 @@ export const OrderInfo = () => {
               )
             })
           }
-        </div>
+        </ul>
       </div>
 
       <div className={orderInfoStyles.figures}>
         <p className="text text_type_main-default text_color_inactive">Сегодня, 16:20 i-GMT+3</p>
 
         <div className={`${orderInfoStyles.price} ml-6`}>
-          <p className="text text_type_digits-default mr-2">510</p>
+          <p className="text text_type_digits-default mr-2">{sumTotal}</p>
           <CurrencyIcon type="primary" />
         </div>
 
