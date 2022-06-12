@@ -19,7 +19,7 @@ export const CardOrder = ({ card }) => {
    }
   );
 
-  console.log(orderedIngredients);
+  //console.log(orderedIngredients);
 
   const sumTotal = useMemo(() => {
     return (
