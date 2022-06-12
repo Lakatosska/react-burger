@@ -7,13 +7,6 @@ import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/action
 
 import orderInfoStyles from './order-info.module.css';
 
-const icons = [
-  "https://code.s3.yandex.net/react/code/bun-02-mobile.png", 
-  "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
-  "https://code.s3.yandex.net/react/code/meat-03-mobile.png",
-  "https://code.s3.yandex.net/react/code/meat-02-mobile.png"
-  ]
-
 export const OrderInfo = () => {
 
   const { id } = useParams();
@@ -24,7 +17,9 @@ export const OrderInfo = () => {
       type: WS_CONNECTION_START
     });
     return () => {
-      dispatch({ type: WS_CONNECTION_CLOSED });
+      dispatch({ 
+        type: WS_CONNECTION_CLOSED 
+      });
     }
   }, []);
 
@@ -34,13 +29,18 @@ export const OrderInfo = () => {
   const currentOrder = orders.find(order => order._id === id);
   if (!currentOrder) return null;
   const { name, number, status, createdAt, ingredients: ingredientsId} = currentOrder;
-
   
-  const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
-    return ingredients.find(el => el._id === item);
+  const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(ingredientId => {
+    return ingredients.find(ingredient => ingredient._id === ingredientId);
    })
 
-   console.log(orderedIngredients)
+  const uniqueIngredients = [...new Set(orderedIngredients)];
+
+  //const ingredientQuantity = orderedIngredients.filter(el => el._id === uniqueIngredients._id).length
+
+   console.log(orderedIngredients);
+   console.log(uniqueIngredients);
+   //console.log(ingredientQuantity);
 
 
   return (
@@ -55,30 +55,21 @@ export const OrderInfo = () => {
         <p className="text text_type_main-medium mb-6">Состав:</p>
 
         <div className={orderInfoStyles.table}>
-          <article className={`${orderInfoStyles.tableItem} mb-4`}>
-            <img src={icons[0]} className={orderInfoStyles.icon}/>
-
-            <p className="text text_type_main-default mr-4 ml-4">{orderedIngredients[0].name}</p>
-
-            <div className={orderInfoStyles.quantity}>
-              <p className="text text_type_digits-default mr-2">2</p>
-              <p className="text text_type_digits-default mr-2">x 20</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </article>
-
-          <article className={orderInfoStyles.tableItem}>
-            <img src={icons[2]} className={orderInfoStyles.icon}/>
-
-            <p className="text text_type_main-default mr-4 ml-4">{orderedIngredients[1].name}</p>
-
-            <div className={orderInfoStyles.quantity}>
-              <p className="text text_type_digits-default mr-2">1</p>
-              <p className="text text_type_digits-default mr-2">x 300</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </article>
-
+          {
+            uniqueIngredients.map((item, index) => {
+              return (
+                <li key={index} className={`${orderInfoStyles.tableItem} mb-4`}>
+                  <img src={item.image_mobile} className={orderInfoStyles.icon}/>
+                  <p className="text text_type_main-default mr-4 ml-4">{item.name}</p>
+                  <div className={orderInfoStyles.quantity}>
+                    <p className="text text_type_digits-default mr-2">{orderedIngredients.filter(el => el._id === item._id).length}</p>
+                    <p className="text text_type_digits-default mr-2">x {item.price}</p>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                </li>
+              )
+            })
+          }
         </div>
       </div>
 
