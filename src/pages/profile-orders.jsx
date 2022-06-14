@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import { SET_UPDATE_USER, CANCEL_UPDATE_USER, getUser, updateUser } from '../services/actions/auth';
+import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
 import { logout } from '../services/actions/auth';
 
 import styles from './style.module.css';
@@ -13,19 +14,31 @@ import { OrderHistory } from "../components/order-history/order-history";
 
 export const ProfileOrdersPage = () => {
 
-  const dispatch = useDispatch();
   const { isAuth } = useSelector(store => store.user);
 
-  const handleLogout = () =>
-    dispatch(
-      logout()
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: WS_CONNECTION_START
+    });
+    return () => {
+      dispatch({ type: WS_CONNECTION_CLOSED });
+    }
+  }, [dispatch]);
+
   
   if (!isAuth) {
     return (
       <Redirect to={{ pathname: '/login' }} />
     );
   }  
+
+  const handleLogout = () =>
+  dispatch(
+    logout()
+);
+
 
   return (
     <main className={`${styles.main} mt-30`}>
@@ -48,7 +61,7 @@ export const ProfileOrdersPage = () => {
         <p className="text text_type_main-default text_color_inactive mt-20">В этом разделе вы можете изменить свои персональные данные</p>
       </section>
 
-      <section>
+      <section className={styles.orderHistory}>
         <OrderHistory />
       </section>
     </main>

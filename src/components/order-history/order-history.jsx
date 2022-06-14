@@ -1,6 +1,28 @@
+import { useSelector } from 'react-redux';
+import { Link, useLocation } from "react-router-dom";
+
+import { CardOrder } from '../card-order/card-order';
+
+import orderHistoryStyles from './order-history.module.css';
+
 export const OrderHistory = () => {
 
+  const location = useLocation();
+  const { orders } = useSelector(store => store.ws);
+
   return (
-    <h1>История заказов</h1>
+    <ul className={`${orderHistoryStyles.cardList} custom-scroll`}>
+        {orders.map(item => (
+          <Link key={item._id}
+            className={orderHistoryStyles.link}
+            to={{
+              pathname: `/feed/${item._id}`,
+              state: { background: location },
+            }}
+          >
+            <CardOrder card={item} />
+          </Link>
+        ))}
+      </ul>
   )
 }
