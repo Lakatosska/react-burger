@@ -42,7 +42,15 @@ export const wsReducer = (state = initialWebSocketState, action) => {
         ...state,
         orders: action.payload.orders,
         total: action.payload.total,
-        totalToday: action.payload.totalToday,
+        totalToday: action.payload.totalToday
+      };
+    }
+    case WS_GET_MESSAGE_USER: {
+      return {
+        ...state,
+        orders: action.payload.orders,
+        total: action.payload.total,
+        totalToday: action.payload.totalToday
       };
     }
     default:

@@ -4,7 +4,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import { SET_UPDATE_USER, CANCEL_UPDATE_USER, getUser, updateUser } from '../services/actions/auth';
-import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
+import { WS_CONNECTION_START, WS_CONNECTION_START_USER, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
 import { logout } from '../services/actions/auth';
 
 import styles from './style.module.css';
@@ -20,7 +20,7 @@ export const ProfileOrdersPage = () => {
 
   useEffect(() => {
     dispatch({
-      type: WS_CONNECTION_START
+      type: WS_CONNECTION_START_USER
     });
     return () => {
       dispatch({ type: WS_CONNECTION_CLOSED });

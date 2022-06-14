@@ -13,34 +13,12 @@ import { ProfileForm } from "../components/profile-form/profile-form";
 export const ProfilePage = () => {
 
   const dispatch = useDispatch();
-  const form = useSelector(store => store.user.form);
-  const [actionButtons, setActionButtons] = useState(false);
   const { isAuth } = useSelector(store => store.user);
-
-  const onChange = (evt) => {
-    dispatch({
-      type: SET_UPDATE_USER,
-      payload: {...form, [evt.target.name]: evt.target.value}
-    });
-    setActionButtons(true)
-  };
-
-  const onSubmitForm = (evt) => {
-    evt.preventDefault();
-    dispatch(updateUser(form));
-    setActionButtons(false);
-  }; 
 
   const handleLogout = () =>
     dispatch(
       logout()
   );
-
-  const cancelUpdateForm = () => {
-    dispatch({ 
-      type: CANCEL_UPDATE_USER 
-    });
-  };
   
   if (!isAuth) {
     return (

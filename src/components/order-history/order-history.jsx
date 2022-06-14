@@ -16,13 +16,13 @@ export const OrderHistory = () => {
           <Link key={item._id}
             className={orderHistoryStyles.link}
             to={{
-              pathname: `/feed/${item._id}`,
+              pathname: `/profile/orders/${item._id}`,
               state: { background: location },
             }}
           >
             <CardOrder card={item} />
           </Link>
-        ))}
+        )).reverse()}
       </ul>
   )
 }
