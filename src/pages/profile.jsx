@@ -7,6 +7,7 @@ import { SET_UPDATE_USER, CANCEL_UPDATE_USER, getUser, updateUser } from '../ser
 import { logout } from '../services/actions/auth';
 
 import styles from './style.module.css';
+import { ProfileForm } from "../components/profile-form/profile-form";
 
 
 export const ProfilePage = () => {
@@ -69,48 +70,7 @@ export const ProfilePage = () => {
       </section>
 
       <section>
-        <form onSubmit={onSubmitForm} className={`${styles.form} mb-20`}>
-          <fieldset className={styles.fieldset}>
-            <Input
-              type={'text'}
-              placeholder={'Имя'}
-              onChange={onChange}
-              value={form.name}
-              name={'name'}
-              icon={'EditIcon'}
-              errorText={"Ошибка"}          
-            />
-            <Input
-              type={'email'}
-              placeholder={'Логин'}
-              onChange={onChange}
-              value={form.email}
-              name={'email'}
-              icon={'EditIcon'}
-              errorText={"Ошибка"}
-            />
-            <Input
-              type={'password'}
-              placeholder={'Пароль'}
-              onChange={onChange}
-              value={form.password || ''}
-              name={'password'}
-              icon={'EditIcon'}
-              errorText={"Ошибка"}
-            />
-          </fieldset>
-
-          {actionButtons && (<div className={styles.actions}>
-            <Button onClick={cancelUpdateForm} type="secondary" size="medium">
-              Отмена
-            </Button>
-
-            <Button type="primary" size="large">
-              Сохранить
-            </Button>
-          </div>)}
-
-        </form>
+        <ProfileForm />
       </section>
     </main>
   );
