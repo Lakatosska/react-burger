@@ -8,11 +8,6 @@
   justify-content: center;
 }
 
-.status {
-  margin: 0;
-  padding: 0;
-}
-
 .table {
   padding: 0;
   max-height: calc(100vh - 720px);

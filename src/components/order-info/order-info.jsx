@@ -29,7 +29,7 @@ export const OrderInfo = () => {
 
   const currentOrder = orders.find(order => order._id === id);
   if (!currentOrder) return null;
-  const { name, number, status, createdAt, ingredients: ingredientsId} = currentOrder;
+  const { name, number, createdAt, ingredients: ingredientsId} = currentOrder;
   
   const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
     return ingredients.find(el => el._id === item);
@@ -38,23 +38,32 @@ export const OrderInfo = () => {
   
   const uniqueIngredients = [...new Set(orderedIngredients)];
 
-  //const ingredientQuantity = orderedIngredients.filter(el => el._id === uniqueIngredients._id).length
-
-   //console.log(ingredientQuantity);
-
-  const orderStatus = status === 'done' ? 'Выполнен' : 'Готовится';
 
   const sumTotal = orderedIngredients.reduce((acc, item) => acc + item.price, 0);
 
-  const timeNow = new Date();
-  console.log(timeNow)
+  let status;
+  let color;
+  switch (currentOrder.status) {
+    case 'done':
+      status = 'Выполнен';
+      color = '#00CCCC';
+      break;
+    case 'pending':
+      status = 'Готовится';
+      break;
+    case 'created':
+      status = 'Создан';
+      break;
+      default:
+  }
+
 
   return (
     <main className={orderInfoStyles.main}>
       <div>
         <h2 className={`${orderInfoStyles.number} text text_type_digits-default`}>#{number}</h2>
         <p className={"text text_type_main-medium mt-10 mb-3"}>{name}</p>
-        <p className={orderInfoStyles.status}>{orderStatus}</p>
+        <p className='text text_type_main-default' style={{color}}>{status}</p>
       </div>
 
       <div className='mt-15 mb-10'>
