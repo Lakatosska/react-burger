@@ -46,6 +46,10 @@ export function deleteCookie(name) {
   setCookie(name, null, { expires: -1 });
 }
 
+export function getStorageItem(token) {
+  return JSON.parse(localStorage.getItem(token));
+}
+
 export const placeOrderDate = (date) => {
 
   const dateCreatedAt = new Date(date);
@@ -64,5 +68,3 @@ export const placeOrderDate = (date) => {
   
   return `${day}, ${hours} i-GMT+3`;
 };
-
-//console.log(placeOrderDate('2022-05-11T18:32:51.823Z'))

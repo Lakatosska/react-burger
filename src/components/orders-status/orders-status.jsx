@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-
 import ordersStatusStyles from './orders-status.module.css';
 
 export const OrdersStatus = () => {
@@ -54,6 +53,5 @@ export const OrdersStatus = () => {
         <p className="text text_type_digits-large">{totalToday}</p>
       </div>
     </section>
-  
   );
 };

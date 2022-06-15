@@ -8,7 +8,7 @@ import { placeOrderDate } from '../../utils/constants';
 import cardOrderStyles from './card-order.module.css';
 
 
-export const CardOrder = ({ card, addStatus = false }) => {
+export const CardOrder = ({ card }) => {
 
   const { name, number, createdAt, ingredients: ingredientsId} = card;
 
@@ -39,6 +39,7 @@ export const CardOrder = ({ card, addStatus = false }) => {
     case 'created':
       status = 'Создан';
       break;
+      default:
   }
 
 
@@ -51,9 +52,9 @@ export const CardOrder = ({ card, addStatus = false }) => {
       <div>       
         <p className="text text_type_main-medium mt-6 mb-2">{name}</p>
         {(pathname === '/profile/orders') && 
-        (<p className='text text_type_main-default mb-6' style={{color}}>{status}</p>)}
+        (<p className='text text_type_main-default' style={{color}}>{status}</p>)}
       </div> 
-      <div className={cardOrderStyles.total}>
+      <div className={`${cardOrderStyles.total} mt-6`}>
         <ul className={cardOrderStyles.icons}>
           { 
             (ingredientsId.length > 5) &&
@@ -65,7 +66,7 @@ export const CardOrder = ({ card, addStatus = false }) => {
             orderedIngredients.slice(0, 5).reverse().map((item, index) => {
               return (
                 <li key={index} className={cardOrderStyles.img}>
-                  <img src={item.image_mobile} className={cardOrderStyles.icon}/>
+                  <img src={item.image_mobile} className={cardOrderStyles.icon} alt='иконка ингредиента'/>
                 </li>
               )
             })

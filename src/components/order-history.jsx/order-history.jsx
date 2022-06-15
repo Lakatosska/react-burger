@@ -20,7 +20,7 @@ export const OrderHistory = () => {
               state: { background: location },
             }}
           >
-            <CardOrder card={item} addStatus={true}/>
+            <CardOrder card={item} />
           </Link>
         ))}
       </ul>

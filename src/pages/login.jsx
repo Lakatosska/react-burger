@@ -4,13 +4,14 @@ import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { SET_LOGIN_USER, login } from '../services/actions/auth';
+import { getStorageItem } from "../utils/constants"; 
 
 import styles from './style.module.css';
+
 
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
-
   const { form, isAuth } = useSelector(store => store.user);
   const { state } = useLocation();
 
@@ -39,10 +40,13 @@ export const LoginPage = () => {
   if (isAuth) {
     return (
       <Redirect
-        // Если объект state не является undefined, вернём пользователя назад.
         to={ state?.from || '/' }
       />
     );
+  }
+
+  if (getStorageItem('refreshToken')) {
+    return <Redirect to={state?.from || "/"} />;
   }
   
   return (

@@ -7,6 +7,7 @@ import { SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/forgot-
 
 import styles from './style.module.css';
 
+
 export const ForgotPasswordPage = () => {
 
   const dispatch = useDispatch();
@@ -71,5 +72,3 @@ export const ForgotPasswordPage = () => {
       </main>
     );
   };
-
-

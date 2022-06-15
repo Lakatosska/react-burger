@@ -33,11 +33,9 @@ export const OrderInfo = () => {
   
   const orderedIngredients = ingredientsId.filter(ingredient => ingredient != null).map(item => {
     return ingredients.find(el => el._id === item);
-   })
+   });
    
-  
   const uniqueIngredients = [...new Set(orderedIngredients)];
-
 
   const sumTotal = orderedIngredients.reduce((acc, item) => acc + item.price, 0);
 
@@ -57,7 +55,6 @@ export const OrderInfo = () => {
       default:
   }
 
-
   return (
     <main className={orderInfoStyles.main}>
       <div>
@@ -74,7 +71,7 @@ export const OrderInfo = () => {
             uniqueIngredients.map((item, index) => {
               return (
                 <li key={index} className={`${orderInfoStyles.tableItem} mb-4`}>
-                  <img src={item.image_mobile} className={orderInfoStyles.icon}/>
+                  <img src={item.image_mobile} className={orderInfoStyles.icon} alt='иконка ингредиента'/>
                   <p className="text text_type_main-default mr-4 ml-4">{item.name}</p>
                   <div className={`${orderInfoStyles.quantity} mr-6`}>
                     <p className="text text_type_digits-default mr-2">{orderedIngredients.filter(el => el._id === item._id).length}</p>
