@@ -8,9 +8,7 @@ export const RESET_ORDER = 'RESET_ORDER';
 
 // ActionsCreator
 
-export const postOrder = (ingredientData) => {
-
-  const ingredientsId = ingredientData.map(el => el._id);
+export const postOrder = (Ids) => {
 
   return function(dispatch) {
     dispatch({
@@ -23,7 +21,7 @@ export const postOrder = (ingredientData) => {
         'Authorization': getCookie('token')
       },
       body: JSON.stringify({
-        ingredients: ingredientsId
+        ingredients: Ids
       })
     })
     .then(checkResponse)

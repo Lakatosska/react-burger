@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { OrderInfo } from '../components/order-info/order-info';
 import styles from './style.module.css';
 
