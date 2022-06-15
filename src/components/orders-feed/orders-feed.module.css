@@ -7,7 +7,7 @@
   list-style: none;
   padding: 0;
   height: calc(100vh - 320px);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .card {
