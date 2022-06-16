@@ -12,7 +12,7 @@ export const OrderHistory = () => {
 
   return (
     <ul className={`${orderHistoryStyles.cardList} custom-scroll`}>
-        {orders.map(item => ( 
+        {orders !== 0 && orders?.map(item => ( 
           <Link key={item._id}
             className={orderHistoryStyles.link}
             to={{

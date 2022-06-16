@@ -63,7 +63,7 @@ export const LoginPage = () => {
           />
           <PasswordInput 
             onChange={onChange} 
-            value={form.password} 
+            value={form.password || ''} 
             name={'password'}
           />
         </fieldset>

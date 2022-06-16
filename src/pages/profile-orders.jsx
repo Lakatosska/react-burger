@@ -5,6 +5,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { WS_CONNECTION_START_USER, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
 import { logout } from '../services/actions/auth';
 import { OrderHistory } from "../components/order-history/order-history";
+import { getCookie } from "../utils/constants";
 
 import styles from './style.module.css';
 
@@ -12,17 +13,22 @@ import styles from './style.module.css';
 export const ProfileOrdersPage = () => {
 
   const { isAuth } = useSelector(store => store.user);
+  const user = useSelector((store) => store.user.form);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: WS_CONNECTION_START_USER
-    });
-    return () => {
-      dispatch({ type: WS_CONNECTION_CLOSED });
+    if (user.name && user.email) {
+      const token = getCookie('token').split('Bearer ')[1];
+      dispatch({
+        type: WS_CONNECTION_START_USER,
+        payload: { token }
+      });
+      return () => {
+        dispatch({ type: WS_CONNECTION_CLOSED });
+      }
     }
-  }, [dispatch]);
+  }, [user]);
 
   
   if (!isAuth) {
@@ -32,9 +38,7 @@ export const ProfileOrdersPage = () => {
   }  
 
   const handleLogout = () =>
-  dispatch(
-    logout()
-);
+    dispatch(logout());
 
 
   return (
