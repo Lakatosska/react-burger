@@ -112,6 +112,7 @@ export const userReducer = (state = initialUserState, action) => {
     case LOGOUT_SUCCESS: {
       return {
         ...state,
+        form: initialUserState.form,
         isAuth: false,        
       };
     }

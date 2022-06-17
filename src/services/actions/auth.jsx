@@ -241,8 +241,8 @@ export function getUser() {
       if (res && res.success) {
         dispatch({
           type: GET_USER_SUCCESS,
-          form: res.user
-          //payload: res.user
+          form: res.user,
+          payload: res.user
         })
       } else {
         dispatch(updateToken())
