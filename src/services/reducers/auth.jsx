@@ -25,6 +25,8 @@ import {
   UPDATE_TOKEN_SUCCESS,
   UPDATE_TOKEN_FAILED,
 
+  AUTH_CHECKED,
+
 } from '../actions/auth';
 
 const initialUserState = {
@@ -35,6 +37,7 @@ const initialUserState = {
   },
 
   isAuth: false,
+  isAuthChecked: false,
 
   registerRequest: false,
   registerFailed: false,
@@ -191,6 +194,12 @@ export const userReducer = (state = initialUserState, action) => {
         updateTokenRequest: false,
         updateTokenFailed: true,
       };
+    }
+    case AUTH_CHECKED: {
+      return {
+        ...state,
+        isAuthChecked: true
+      }
     }
   
     default:

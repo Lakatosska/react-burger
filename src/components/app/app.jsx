@@ -20,6 +20,7 @@ import { HomePage,
 import { ProtectedRoute } from '../protected-route/protected-route';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
+import { AUTH_CHECKED } from '../../services/actions/auth';
 
 import appStyles from './app.module.css';
 
@@ -34,14 +35,17 @@ const App = () => {
   useEffect(() => {
       dispatch(getIngredients());
     },
-    []
-  ); 
+    []); 
 
   useEffect(() => {
-      dispatch(getUser())
-    }, 
-    [dispatch]
-  );
+    const accessToken = getCookie('token');
+    if (accessToken) {
+      dispatch(getUser());
+    } else {
+      dispatch({type: AUTH_CHECKED});
+    }
+  }, []);
+
 
   const closeModal = () => {
     history.goBack();

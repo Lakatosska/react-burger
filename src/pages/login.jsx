@@ -15,8 +15,6 @@ export const LoginPage = () => {
   const { form, isAuth } = useSelector(store => store.user);
   const { state } = useLocation();
 
-  
-
 
   const onChange = (evt) => {
     dispatch({

@@ -27,7 +27,7 @@ export const ProfileOrdersPage = () => {
       return () => {
         dispatch({ type: WS_CONNECTION_CLOSED });
       }
-  }, [dispatch]);
+  }, []);
 
   
   if (!isAuth) {
