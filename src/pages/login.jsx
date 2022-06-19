@@ -16,11 +16,7 @@ export const LoginPage = () => {
   const { state } = useLocation();
 
   
-  useEffect(() => {
-    form.email = '';
-    form.password = '';
-  }, []);
-  
+
 
   const onChange = (evt) => {
     dispatch({

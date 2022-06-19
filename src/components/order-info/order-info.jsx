@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/actions/wsActions';
@@ -12,17 +12,26 @@ export const OrderInfo = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
-    dispatch({
-      type: WS_CONNECTION_START
-    });
+    if (location.pathname.includes('feed')) {
+      dispatch({ 
+        type: WS_CONNECTION_START,
+        payload: '/all',
+      });
+    } else if (location.pathname.includes('profile')) {
+      dispatch({ 
+        type: WS_CONNECTION_START,
+        user: true,
+      });
+    }
     return () => {
       dispatch({ 
         type: WS_CONNECTION_CLOSED 
       });
-    }
-  }, []);
+    };
+  }, [])
 
   const { orders } = useSelector(store => store.ws);
   const { ingredients } = useSelector(store => store.ingredients);

@@ -6,7 +6,6 @@ import { wsUrl } from '../utils/constants';
 
 import {
   WS_CONNECTION_START,
-  WS_CONNECTION_START_USER,
   WS_CONNECTION_SUCCESS,
   WS_CONNECTION_CLOSED,
   WS_CONNECTION_ERROR,
@@ -15,7 +14,6 @@ import {
 
 const wsActions = {
   wsInit: WS_CONNECTION_START,
-  wsInitUser: WS_CONNECTION_START_USER,
   onOpen: WS_CONNECTION_SUCCESS,
   onClose: WS_CONNECTION_CLOSED,
   onError: WS_CONNECTION_ERROR,

@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 
-import { WS_CONNECTION_START_USER, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
+import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
 import { logout } from '../services/actions/auth';
 import { OrderHistory } from "../components/order-history/order-history";
 import { getCookie } from "../utils/constants";
+import { getUser } from "../services/actions/auth";
 
 import styles from './style.module.css';
 
@@ -18,17 +19,15 @@ export const ProfileOrdersPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user.name && user.email) {
-      const token = getCookie('token').split('Bearer ')[1];
-      dispatch({
-        type: WS_CONNECTION_START_USER,
-        payload: { token }
+    dispatch(getUser());
+    dispatch({
+        type: WS_CONNECTION_START,
+        user: true
       });
       return () => {
         dispatch({ type: WS_CONNECTION_CLOSED });
       }
-    }
-  }, [user]);
+  }, [dispatch]);
 
   
   if (!isAuth) {
