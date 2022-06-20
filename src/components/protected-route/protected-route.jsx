@@ -7,7 +7,7 @@ import { Loader } from '../loader/loader';
 
 export function ProtectedRoute({ children, ...rest }) {
 
-  //const { isAuth } = useSelector(store => store.user);
+  const { isAuth } = useSelector(store => store.user);
 
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ export function ProtectedRoute({ children, ...rest }) {
 
   return (
     <Route {...rest} render={({ location }) => 
-      (isAuthChecked) ? ( 
+      (isAuth) ? ( 
         children
       ) : (
       <Redirect
