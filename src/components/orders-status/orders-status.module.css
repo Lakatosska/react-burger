@@ -1,0 +1,29 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: 272px 272px;
+  gap: 36px;
+}
+
+.doneList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #00CCCC;
+  display: flex;
+  max-height: 325px;
+  flex-direction: column;
+  column-gap: 65px;
+  flex-wrap: wrap;
+  overflow-y: hidden;
+}
+
+.inWorkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

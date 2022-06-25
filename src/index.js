@@ -8,7 +8,7 @@ import App from './components/app/app';
 import './index.css';
 
 ReactDOM.render(
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <App />
     </Provider>

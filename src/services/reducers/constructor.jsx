@@ -8,7 +8,7 @@ import {
 
 const initialConstructorState = {
   constructorItems: [], 
-  bun: null,
+  bun: '',
 };
 
 export const constructorReducer = (state = initialConstructorState, action) => {
@@ -40,7 +40,7 @@ export const constructorReducer = (state = initialConstructorState, action) => {
     case RESET_CONSTRUCTOR: {
       return {
         constructorItems: [], 
-        bun: null
+        bun: '',
       }
     }
     default:

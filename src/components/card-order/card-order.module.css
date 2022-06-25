@@ -1,0 +1,56 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  padding: 24px;
+  background-color: #1C1C21;
+  border-radius: 40px;
+  margin-bottom: 16px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row-reverse;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border: #801ab3 solid 2px;
+  border-radius: 100px;
+  background-color: #131316;
+  object-fit: cover;
+  margin-right: -16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.lastIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 28, 33, 0.6);
+  z-index: 2;
+}
+
+.img {
+  list-style: none;
+}

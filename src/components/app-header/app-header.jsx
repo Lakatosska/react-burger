@@ -22,7 +22,7 @@ export const AppHeader = () => {
           <span className='ml-2 text text_type_main-default text_color_inactive'>Конструктор</span>
         </NavLink>
       
-        <NavLink to='/profile/orders' exact={true}
+        <NavLink to='/feed' exact={true}
           className={`${appHeaderStyles.link} p-5`}
           activeClassName={appHeaderStyles.activeLink}>
           <ListIcon type="secondary" />

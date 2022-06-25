@@ -1,4 +1,4 @@
-import { BASEURL, checkResponse } from '../../utils/constants';
+import { BASEURL, checkResponse, getCookie } from '../../utils/constants';
 import { RESET_CONSTRUCTOR } from './constructor';
 
 export const GET_ORDER_REQUEST = 'GET_ORDER_REQUEST';
@@ -8,9 +8,7 @@ export const RESET_ORDER = 'RESET_ORDER';
 
 // ActionsCreator
 
-export const postOrder = (ingredientData) => {
-
-  const ingredientsId = ingredientData.map(el => el._id);
+export const postOrder = (Ids) => {
 
   return function(dispatch) {
     dispatch({
@@ -19,10 +17,11 @@ export const postOrder = (ingredientData) => {
     fetch(`${BASEURL}/orders`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + getCookie('token')
       },
       body: JSON.stringify({
-        ingredients: ingredientsId
+        ingredients: Ids
       })
     })
     .then(checkResponse)

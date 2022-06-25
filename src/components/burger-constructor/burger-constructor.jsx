@@ -123,10 +123,10 @@ const ConstructorItems = () => {
 
 const OrderTotal = () => {
 
-  const ingredients = useSelector(store => store.ingredients.ingredients);
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
   const { order, orderRequest } = useSelector(store => store.order);
   const { isAuth } = useSelector(store => store.user);
+  const orderItemsId = [bun, bun, ...constructorItems].map(el => el._id);
 
   const [modalActive, setModalActive] = useState(false);
 
@@ -134,10 +134,14 @@ const OrderTotal = () => {
   const history = useHistory();
 
   const openModal = () => {
-    setModalActive(true);
-    dispatch(postOrder(ingredients)); // отправляем данные заказа
+    if (isAuth) {
+      setModalActive(true);
+      dispatch(postOrder(orderItemsId)); 
+    } else {
+      <Redirect to={{ pathname: '/login' }} />
+    }// отправляем данные заказа
   };
-
+ 
   const closeModal = () => {
     setModalActive(false);
     dispatch({
