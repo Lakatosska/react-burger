@@ -242,6 +242,12 @@ export function getUser() {
       }
     })
     .catch(err => {
+      if (err.message === 'jwt expired') {
+        dispatch(updateToken())
+        .then(() => {
+          dispatch(getUser())
+        })
+      }
       console.log(err)
       dispatch({
         type: GET_USER_FAILED
@@ -320,5 +326,3 @@ export function updateToken() {
     })
   }
 };
-
-
