@@ -27,8 +27,21 @@ import appStyles from './app.module.css';
 const App = () => {
 
   const dispatch = useDispatch();
-  const location = useLocation();
+  
   const history = useHistory();
+
+/*
+  interface ILocation {
+    key: string;
+    pathname: string;
+    search: string;
+    hash: string;
+    state: {};    
+  };
+  // ругается на background в 'location.state.background'
+  */
+
+  const location = useLocation<any>();
 
   const background = location.state && location.state.background;
   
