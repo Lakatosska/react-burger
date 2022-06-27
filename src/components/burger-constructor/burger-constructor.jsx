@@ -2,10 +2,8 @@ import { useState, useMemo, useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
-import { cardPropTypes } from '../../utils/prop-types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import { postOrder, RESET_ORDER } from '../../services/actions/order';
@@ -56,11 +54,6 @@ const ConstructorItem = ({ cardData, index }) => {
     </div> 
   )
 }
-
-ConstructorItem.propTypes = {
-  cardData: cardPropTypes.isRequired,
-  index: PropTypes.number.isRequired,
-};
 
 
 const ConstructorItems = () => {

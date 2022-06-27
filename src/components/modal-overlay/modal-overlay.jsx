@@ -9,8 +9,10 @@ export const ModalOverlay = (props)=> {
   );
 };
 
+/*
 ModalOverlay.propTypes = {
   closing: PropTypes.func,
 };
+*/
 
 export default ModalOverlay;

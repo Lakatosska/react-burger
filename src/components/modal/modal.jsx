@@ -46,11 +46,12 @@ const Modal = (props) => {
     );
   
 } 
-
+/*
 Modal.propTypes = {
   closing: PropTypes.func.isRequired,
   title: PropTypes.string,
   children: PropTypes.element,
 };
+*/
 
 export default Modal;
