@@ -5,21 +5,21 @@ import { ru } from "date-fns/locale";
 export const BASEURL = 'https://norma.nomoreparties.space/api';
 export const wsUrl = 'wss://norma.nomoreparties.space/orders';
 
-export function checkResponse(res) {
+export function checkResponse(res: Response) {
   if (res.ok) {
     return res.json()
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export function getCookie(name) {
+export function getCookie(name: string) {
   const matches = document.cookie.match(
     new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-export function setCookie(name, value, props) {
+export function setCookie(name: string, value: string, props?: any) {
   props = props || {};
   let exp = props.expires;
   if (typeof exp == 'number' && exp) {
@@ -42,15 +42,17 @@ export function setCookie(name, value, props) {
   document.cookie = updatedCookie;
 }
 
-export function deleteCookie(name) {
-  setCookie(name, null, { expires: -1 });
+export function deleteCookie(name: string) {
+  setCookie(name, '', { expires: -1 });
 }
 
-export function getStorageItem(token) {
+/*
+export function getStorageItem(token: string) {
   return JSON.parse(localStorage.getItem(token));
 }
+*/
 
-export const placeOrderDate = (date) => {
+export const placeOrderDate = (date: string) => {
 
   const dateCreatedAt = new Date(date);
 
