@@ -1,8 +1,11 @@
 import { legacy_createStore as createStore, compose, applyMiddleware } from 'redux';
-import { rootReducer } from '../services/reducers/rootReducer';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import { rootReducer } from './reducers/rootReducer';
 import { socketMiddleware } from './middleware/socket-middleware';
 import { wsUrl } from '../utils/constants';
+
 
 import {
   WS_CONNECTION_START,
@@ -20,14 +23,17 @@ const wsActions = {
   onMessage: WS_GET_MESSAGE, 
 };
 
+/*
 // Redux DevTools 
-const composeEnhancers =
+const composeWithDevTools =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose; 
+    
+*/
 
 // расширитель хранилища (thunk - чтобы экшены могли быть не только объектами, но и функциями, в т.ч. асинхронными)
-const enhancer = composeEnhancers(applyMiddleware(
+const enhancer = composeWithDevTools(applyMiddleware(
     thunk, 
     socketMiddleware(wsUrl, wsActions))
   );
