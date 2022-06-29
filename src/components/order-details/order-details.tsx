@@ -1,10 +1,14 @@
+import { FC } from 'react';
+
 import orderDetailsStyles from './order-details.module.css';
 import orderDoneImg from '../../images/order-done.png';
-import { useSelector } from 'react-redux';
 
-const OrderDetails = () => {
 
-  const orderNumber = useSelector(store => store.order.order);
+interface IOrderDetails {
+  orderNumber: number;
+}
+
+const OrderDetails: FC<IOrderDetails> = ({ orderNumber }) => {
 
   return(
     <div className={`${orderDetailsStyles.container} pt-15`}>
