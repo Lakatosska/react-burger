@@ -29,7 +29,7 @@ export type TOrderActions =
   | IResetOrderAction;
 
 
-export const postOrder: AppThunk = (Ids) => {
+export const postOrder: AppThunk = (Ids: string[]) => {
 
   return function(dispatch: AppDispatch) {
     dispatch({
