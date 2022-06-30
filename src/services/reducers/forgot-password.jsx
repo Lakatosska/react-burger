@@ -2,7 +2,7 @@ import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
   SET_FORGOT_PASSWORD
-} from '../actions/forgot-password';
+} from '../actions/password';
 
 const initialForgotPasswordState = {
   form: {

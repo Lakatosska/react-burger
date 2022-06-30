@@ -27,3 +27,15 @@ export type TIngredient = {
 "image_large":"https://code.s3.yandex.net/react/code/bun-02-large.png",
 "__v":0
 */
+
+export type TUser = {
+  name?: string;
+  email: string;
+  password?: string;
+}
+
+/*
+name: '',
+email: '',
+password: '',
+*/
