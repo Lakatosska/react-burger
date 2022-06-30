@@ -9,7 +9,7 @@ export const wsUrl = 'wss://norma.nomoreparties.space/orders';
 interface CustomBody extends Body {
   json(): Promise;
 }
-*/
+
 
 export interface CustomResponse extends Body {
   readonly headers: Headers;
@@ -29,15 +29,16 @@ export function checkResponse(res: CustomResponse): Promise<any> {
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 }
+*/
 
-/*
+
 export function checkResponse(res: Response) {
   if (res.ok) {
     return res.json()
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 }
-*/
+
 
 
 
