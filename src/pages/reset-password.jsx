@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { SET_NEW_PASSWORD, resetPassword } from '../services/actions/reset-password';
+import { SET_NEW_PASSWORD, resetPassword } from '../services/actions/password';
 
 import styles from './style.module.css';
 

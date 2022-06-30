@@ -2,7 +2,7 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   SET_NEW_PASSWORD
-} from '../actions/reset-password';
+} from '../actions/password';
 
 const initialResetPasswordState = {
   form: {
