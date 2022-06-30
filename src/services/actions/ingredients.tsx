@@ -9,10 +9,12 @@ export const GET_INGREDIENTS_FAILED: 'GET_INGREDIENTS_FAILED' = 'GET_INGREDIENTS
 export interface IGetIngredientsAction {
   readonly type: typeof GET_INGREDIENTS_REQUEST;
 }
+
 export interface IGetIngredientsSuccessAction {
   readonly type: typeof GET_INGREDIENTS_SUCCESS;
   readonly payload: Array<TIngredient>;
 }
+
 export interface IGetIngredientsFailedAction {
   readonly type: typeof GET_INGREDIENTS_FAILED;
 }
@@ -41,7 +43,7 @@ export type TIngredientsActions =
   | IGetIngredientsAction
   | IGetIngredientsSuccessAction
   | IGetIngredientsFailedAction;
-  
+
 
 export const getIngredients: AppThunk = () => {
   return function(dispatch: AppDispatch) {

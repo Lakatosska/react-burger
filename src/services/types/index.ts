@@ -8,13 +8,15 @@ import {
 
 import { store } from '../store';
 import { TIngredientsActions } from '../actions/ingredients';
+import { TModalActions } from '../actions/currentIngredient';
 
 
 export type RootState = ReturnType<typeof store.getState>;
 
-// Типизация всех экшенов приложения
+// Типизация всех экшенов прTModalActionиложения
 type TApplicationActions = 
-| TIngredientsActions;
+| TIngredientsActions
+| TModalActions;
 
 
 // Типизация thunk
