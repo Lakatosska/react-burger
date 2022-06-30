@@ -1,16 +1,37 @@
 import { BASEURL, checkResponse, getCookie } from '../../utils/constants';
 import { RESET_CONSTRUCTOR } from './constructor';
+import { AppThunk, AppDispatch } from '../types';
 
-export const GET_ORDER_REQUEST = 'GET_ORDER_REQUEST';
-export const GET_ORDER_SUCCESS = 'GET_ORDER_SUCCESS';
-export const GET_ORDER_FAILED = 'GET_ORDER_FAILED';
-export const RESET_ORDER = 'RESET_ORDER';
+export const GET_ORDER_REQUEST: 'GET_ORDER_REQUEST' = 'GET_ORDER_REQUEST';
+export const GET_ORDER_SUCCESS: 'GET_ORDER_SUCCESS' = 'GET_ORDER_SUCCESS';
+export const GET_ORDER_FAILED: 'GET_ORDER_FAILED' = 'GET_ORDER_FAILED';
+export const RESET_ORDER: 'RESET_ORDER' = 'RESET_ORDER';
 
-// ActionsCreator
+export interface IGetOrderAction {
+  readonly type: typeof GET_ORDER_REQUEST;
+}
 
-export const postOrder = (Ids) => {
+export interface IGetOrderSuccessAction {
+  readonly type: typeof GET_ORDER_SUCCESS;
+}
 
-  return function(dispatch) {
+export interface IGetOrderFailedAction {
+  readonly type: typeof GET_ORDER_FAILED;
+}
+export interface IResetOrderAction {
+  readonly type: typeof RESET_ORDER;
+}
+
+export type TOrderActions =
+  | IGetOrderAction
+  | IGetOrderSuccessAction
+  | IGetOrderFailedAction
+  | IResetOrderAction;
+
+
+export const postOrder: AppThunk = (Ids) => {
+
+  return function(dispatch: AppDispatch) {
     dispatch({
       type: GET_ORDER_REQUEST
     })

@@ -9,6 +9,7 @@ import {
 import { store } from '../store';
 import { TIngredientsActions } from '../actions/ingredients';
 import { TModalActions } from '../actions/currentIngredient';
+import { TOrderActions } from '../actions/order';
 
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -16,7 +17,8 @@ export type RootState = ReturnType<typeof store.getState>;
 // Типизация всех экшенов прTModalActionиложения
 type TApplicationActions = 
 | TIngredientsActions
-| TModalActions;
+| TModalActions
+| TOrderActions;
 
 
 // Типизация thunk
