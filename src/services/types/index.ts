@@ -13,6 +13,7 @@ import { TModalActions } from '../actions/currentIngredient';
 import { TOrderActions } from '../actions/order';
 import { TPasswordActions } from '../actions/password';
 import { TAuthActions } from '../actions/auth';
+import { TWSActions } from '../actions/wsActions';
 
 
 
@@ -25,7 +26,8 @@ type TApplicationActions =
 | TModalActions
 | TOrderActions
 | TPasswordActions
-| TAuthActions;
+| TAuthActions
+| TWSActions;
 
 
 // Типизация thunk
