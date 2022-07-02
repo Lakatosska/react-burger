@@ -1,3 +1,5 @@
+import { TOrdersStatus } from "../types/data";
+
 export const WS_CONNECTION_START: 'WS_CONNECTION_START'  = 'WS_CONNECTION_START';
 export const WS_CONNECTION_SUCCESS: 'WS_CONNECTION_SUCCESS' = 'WS_CONNECTION_SUCCESS';
 export const WS_CONNECTION_ERROR: 'WS_CONNECTION_ERROR' = 'WS_CONNECTION_ERROR';
@@ -22,6 +24,7 @@ export interface IWSConectionClosedAction {
 
 export interface IWSGetMessageAction {
   readonly type: typeof WS_GET_MESSAGE;
+  payload: TOrdersStatus;
 }
 
 export type TWSActions =

@@ -39,4 +39,39 @@ export type TUser = {
 name: '',
 email: '',
 password: '',
+token: ''
+*/
+
+export type TOrder = {
+  createdAt: string;
+  ingredients: Array<string>;
+  name: string;
+  number: number;
+  status: 'created' | 'pending' | 'done';
+  updatedAt: string;
+  _id: string;
+};
+
+/*
+createdAt: "2022-07-02T22:58:27.519Z"
+ingredients: (5) ['60d3b41abdacab0026a733c6', '60d3b41abdacab0026a733c6', '60d3b41abdacab0026a733cb', '60d3b41abdacab0026a733d1', '60d3b41abdacab0026a733cf']
+name: "Фалленианский антарианский био-марсианский краторный бургер"
+number: 19109
+status: "done"
+updatedAt: "2022-07-02T22:58:27.728Z"
+_id: "62c0cd9342d34a001c273b9d"
+*/
+
+export type TOrdersStatus = {
+  orders: Array<TOrder>;
+  total: number;
+  totalToday: number;
+  wsConnected: boolean;
+};
+
+/*
+orders: (50) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+total: 19022
+totalToday: 101
+wsConnected: false
 */

@@ -280,14 +280,14 @@ export const getUser: AppThunk = () => {
           form: res.user,
         })
       } else {
-        dispatch(updateToken())
-        dispatch(getUser())
+        updateToken();       
+        getUser();    
       }
     })
     .catch(err => {
       if (err.message === 'jwt expired') {
-        dispatch(updateToken())
-        dispatch(getUser())
+        updateToken();
+        getUser();
       }
       console.log(err)
       dispatch({
