@@ -10,7 +10,7 @@ export const RESET_CONSTRUCTOR: 'RESET_CONSTRUCTOR' = 'RESET_CONSTRUCTOR';
 
 export interface IAddIngredientAction {
   readonly type: typeof ADD_INGREDIENT;
-  readonly payload: object;
+  readonly payload: object | TIngredient | any;
 }
 
 export interface IDeleteIngredientAction {

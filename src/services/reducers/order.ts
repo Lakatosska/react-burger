@@ -3,7 +3,14 @@ import {
   GET_ORDER_SUCCESS,
   GET_ORDER_FAILED,
   RESET_ORDER,
+  TOrderActions
 } from '../actions/order';
+
+type TOrderState = {
+  order: number | null;
+  orderRequest: boolean;
+  orderFailed: boolean;
+}
 
 const initialOrderState = {
   order: null,
@@ -11,7 +18,7 @@ const initialOrderState = {
   orderFailed: false
 };
 
-export const orderReducer = (state = initialOrderState, action) => {
+export const orderReducer = (state = initialOrderState, action: TOrderActions): TOrderState => {
 
   switch (action.type) {
     case GET_ORDER_REQUEST: {

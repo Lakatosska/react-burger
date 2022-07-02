@@ -2,16 +2,24 @@ import {
   ADD_INGREDIENT,
   DELETE_INGREDIENT,
   SHIFT_INGREDIENT,
-  RESET_CONSTRUCTOR
+  RESET_CONSTRUCTOR,
+  TConstructorActions
 } from '../actions/constructor';
 
+import { TIngredient } from '../types/data';
+
+
+type TConstructorState = {
+  constructorItems: ReadonlyArray<TIngredient>;
+  bun: TIngredient | string;
+}
 
 const initialConstructorState = {
   constructorItems: [], 
   bun: '',
 };
 
-export const constructorReducer = (state = initialConstructorState, action) => {
+export const constructorReducer = (state = initialConstructorState, action: TConstructorActions): TConstructorState => {
 
   switch (action.type) {
     case ADD_INGREDIENT: {

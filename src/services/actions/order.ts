@@ -13,6 +13,7 @@ export interface IGetOrderAction {
 
 export interface IGetOrderSuccessAction {
   readonly type: typeof GET_ORDER_SUCCESS;
+  readonly order: number;
 }
 
 export interface IGetOrderFailedAction {

@@ -10,6 +10,10 @@ export interface IGetCardOpenAction {
   readonly payload: TIngredient;
 }
 
+export interface IGetCardCloseAction {
+  readonly type: typeof CLOSE_MODAL;
+}
+
 const getCardOpen = (value: TIngredient): IGetCardOpenAction => (
   {
     type: OPEN_MODAL,
@@ -18,7 +22,8 @@ const getCardOpen = (value: TIngredient): IGetCardOpenAction => (
 );
 
 export type TModalActions =
-  | IGetCardOpenAction;
+  | IGetCardOpenAction
+  | IGetCardCloseAction;
 
 export const getCurrentIngredient: AppThunk = (cardData) => {
   return function(dispatch: AppDispatch) {
