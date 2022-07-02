@@ -1,8 +1,16 @@
 import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  SET_NEW_PASSWORD
+  SET_NEW_PASSWORD,
+  TResetPasswordActions
 } from '../actions/password';
+import { TUser } from '../types/data';
+
+type TResetPasswordState = {
+  form: TUser,
+  resetPasswordSuccess: boolean,
+}
+
 
 const initialResetPasswordState = {
   form: {
@@ -12,7 +20,7 @@ const initialResetPasswordState = {
   resetPasswordSuccess: false
 };
 
-export const resetPasswordReducer = (state = initialResetPasswordState, action) => {
+export const resetPasswordReducer = (state = initialResetPasswordState, action: TResetPasswordActions): TResetPasswordState => {
 
   switch (action.type) {
     case RESET_PASSWORD_REQUEST: {

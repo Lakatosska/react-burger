@@ -30,8 +30,9 @@ export type TIngredient = {
 
 export type TUser = {
   name?: string;
-  email: string;
+  email?: string;
   password?: string;
+  token?: string;
 }
 
 /*

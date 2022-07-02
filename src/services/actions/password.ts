@@ -18,6 +18,7 @@ export interface IForgotPasswordAction {
 
 export interface IForgotPasswordSuccessAction {
   readonly type: typeof FORGOT_PASSWORD_SUCCESS;
+  form: TUser;
 }
 
 export interface IForgotPasswordFailedAction {
@@ -26,6 +27,7 @@ export interface IForgotPasswordFailedAction {
 
 export interface ISetForgotPasswordAction {
   readonly type: typeof SET_FORGOT_PASSWORD;
+  payload: TUser;
 }
 
 export interface IResetPasswordAction {
@@ -34,6 +36,7 @@ export interface IResetPasswordAction {
 
 export interface IResetPasswordSuccessAction {
   readonly type: typeof RESET_PASSWORD_SUCCESS;
+  form: TUser;
 }
 
 export interface IResetPasswordFailedAction {
@@ -42,13 +45,16 @@ export interface IResetPasswordFailedAction {
 
 export interface ISetNewPasswordAction {
   readonly type: typeof SET_NEW_PASSWORD;
+  payload: TUser;
 }
 
-export type TPasswordActions =
+export type TForgotPasswordActions =
   | IForgotPasswordAction
   | IForgotPasswordSuccessAction
   | IForgotPasswordFailedAction
-  | ISetForgotPasswordAction 
+  | ISetForgotPasswordAction;
+
+export type TResetPasswordActions =
   | IResetPasswordAction
   | IResetPasswordSuccessAction
   | IResetPasswordFailedAction
