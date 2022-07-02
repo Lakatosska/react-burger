@@ -27,7 +27,33 @@ import {
 
   AUTH_CHECKED,
 
+  TAuthActions
+
 } from '../actions/auth';
+import { TUser } from '../types/data';
+
+type TAuthState = {
+  form: TUser,
+
+  isAuth: boolean,
+  isAuthChecked: boolean,
+
+  registerRequest: boolean,
+  registerFailed: boolean,
+
+  loginRequest: boolean,
+  loginFailed: boolean,
+
+  logoutRequest: boolean,
+  logoutFailed: boolean,
+
+  userRequest: boolean,
+  userFailed: boolean,
+
+  updateTokenRequest: boolean,
+  updateTokenFailed: boolean,
+}
+
 
 const initialUserState = {
   form: {
@@ -56,7 +82,7 @@ const initialUserState = {
 };
 
 
-export const userReducer = (state = initialUserState, action) => {
+export const userReducer = (state = initialUserState, action: TAuthActions): TAuthState => {
 
   switch (action.type) {
     case REGISTER_REQUEST: {

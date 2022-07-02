@@ -38,6 +38,7 @@ export interface IRegisterAction {
 
 export interface IRegisterSuccessAction {
   readonly type: typeof REGISTER_SUCCESS;
+  form: TUser;
 }
 
 export interface IRegisterFailedAction {
@@ -46,6 +47,7 @@ export interface IRegisterFailedAction {
 
 export interface ISetRegisterUserAction {
   readonly type: typeof SET_REGISTER_USER;
+  payload: TUser;
 }
 
 export interface ILoginAction {
@@ -54,6 +56,7 @@ export interface ILoginAction {
 
 export interface ILoginSuccessAction {
   readonly type: typeof LOGIN_SUCCESS;
+  form: TUser;
 }
 
 export interface ILoginFailedAction {
@@ -62,6 +65,7 @@ export interface ILoginFailedAction {
 
 export interface ISetLoginUserAction {
   readonly type: typeof SET_LOGIN_USER;
+  payload: TUser;
 }
 
 export interface ILogoutAction {
@@ -82,6 +86,7 @@ export interface IGetUserAction {
 
 export interface IGetUserSuccessAction {
   readonly type: typeof GET_USER_SUCCESS;
+  form: TUser;
 }
 
 export interface IGetUserFailedAction {
@@ -94,6 +99,7 @@ export interface IUpdateUserAction {
 
 export interface IUpdateUserSuccessAction {
   readonly type: typeof UPDATE_USER_SUCCESS;
+  form: TUser;
 }
 
 export interface IUpdateUserFailedAction {
@@ -102,6 +108,7 @@ export interface IUpdateUserFailedAction {
 
 export interface ISetUpdateUserAction {
   readonly type: typeof SET_UPDATE_USER;
+  payload: TUser;
 }
 
 export interface ICancelUpdateUserAction {
