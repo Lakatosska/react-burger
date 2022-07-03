@@ -1,8 +1,13 @@
-import { getCookie } from "../../utils/constants";
+import { Middleware } from 'redux';
 
-export const socketMiddleware = (wsUrl, wsActions) => {
+import { getCookie } from "../../utils/constants";
+import { TWsActions } from '../store';
+import { RootState } from '../types';
+
+
+export const socketMiddleware = (wsUrl: string, wsActions: TWsActions): Middleware => {
   return store => {
-    let socket = null;
+    let socket: WebSocket | null = null;
 
     return next => action => {
       const { dispatch } = store;

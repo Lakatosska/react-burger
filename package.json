@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
+    "@types/websocket": "^1.0.5",
     "@ya.praktikum/react-developer-burger-ui-components": "^1.13.1",
     "date-fns": "^2.28.0",
     "react": "^17.0.2",
