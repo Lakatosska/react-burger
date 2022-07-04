@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from '../../services/types';
 
 import { CardOrder } from '../card-order/card-order';
 
@@ -12,7 +13,7 @@ export const OrderHistory = () => {
 
   return (
     <ul className={`${orderHistoryStyles.cardList} custom-scroll`}>
-        {orders !== 0 && orders?.map(item => (
+        {orders?.map(item => (
           <Link key={item._id}
             className={orderHistoryStyles.link}
             to={{

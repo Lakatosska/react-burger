@@ -1,8 +1,9 @@
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { Link, useLocation } from "react-router-dom";
-
+import { useSelector } from '../../services/types';
 import { CardOrder } from '../card-order/card-order';
 import { Loader } from '../loader/loader';
+
 
 import ordersFeedStyles from './orders-feed.module.css';
 

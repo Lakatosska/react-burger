@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
+import { useSelector } from '../../services/types';
 import ordersStatusStyles from './orders-status.module.css';
 
 export const OrdersStatus = () => {
