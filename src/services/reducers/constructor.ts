@@ -9,17 +9,17 @@ import {
 import { TIngredient } from '../types/data';
 
 
-type TConstructorState = {
+interface IConstructorState {
   constructorItems: ReadonlyArray<TIngredient>;
   bun: TIngredient | string;
 }
 
-const initialConstructorState = {
+const initialConstructorState: IConstructorState = {
   constructorItems: [], 
   bun: '',
 };
 
-export const constructorReducer = (state = initialConstructorState, action: TConstructorActions): TConstructorState => {
+export const constructorReducer = (state = initialConstructorState, action: TConstructorActions): IConstructorState => {
 
   switch (action.type) {
     case ADD_INGREDIENT: {

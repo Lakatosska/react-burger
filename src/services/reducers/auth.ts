@@ -32,7 +32,7 @@ import {
 } from '../actions/auth';
 import { TUser } from '../types/data';
 
-type TAuthState = {
+interface IAuthState {
   form: TUser,
 
   isAuth: boolean,
@@ -55,7 +55,7 @@ type TAuthState = {
 }
 
 
-const initialUserState = {
+const initialUserState: IAuthState = {
   form: {
     name: '',
     email: '',
@@ -82,7 +82,7 @@ const initialUserState = {
 };
 
 
-export const userReducer = (state = initialUserState, action: TAuthActions): TAuthState => {
+export const userReducer = (state = initialUserState, action: TAuthActions): IAuthState => {
 
   switch (action.type) {
     case REGISTER_REQUEST: {

@@ -7,19 +7,19 @@ import {
   TIngredientsActions
 } from '../actions/ingredients';
 
-type TIngredientsState = {
+interface IIngredientsState {
   ingredients: ReadonlyArray<TIngredient>;
   ingredientsRequest: boolean,
   ingredientsFailed: boolean,
 }
 
-const initialIngredientsState: TIngredientsState = {
+const initialIngredientsState: IIngredientsState = {
   ingredients: [],
   ingredientsRequest: false,
   ingredientsFailed: false,
 };
 
-export const ingredientsReducer = (state = initialIngredientsState, action: TIngredientsActions): TIngredientsState => {
+export const ingredientsReducer = (state = initialIngredientsState, action: TIngredientsActions): IIngredientsState => {
   switch (action.type) {
     case GET_INGREDIENTS_REQUEST: {
       return {

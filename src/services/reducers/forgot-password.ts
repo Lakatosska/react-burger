@@ -6,14 +6,14 @@ import {
 } from '../actions/password';
 import { TUser } from '../types/data';
 
-type TForgotPasswordState = {
+interface IForgotPasswordState {
   form: TUser,
   forgotPasswordRequest: boolean,
   forgotPasswordFailed: boolean,
   forgotPasswordSuccess: boolean,
 }
 
-const initialForgotPasswordState = {
+const initialForgotPasswordState: IForgotPasswordState = {
   form: {
     email: ''
   },
@@ -23,7 +23,7 @@ const initialForgotPasswordState = {
 };
 
 
-export const forgotPasswordReducer = (state = initialForgotPasswordState, action: TForgotPasswordActions): TForgotPasswordState => {
+export const forgotPasswordReducer = (state = initialForgotPasswordState, action: TForgotPasswordActions): IForgotPasswordState => {
 
   switch (action.type) {
     case FORGOT_PASSWORD_REQUEST: {

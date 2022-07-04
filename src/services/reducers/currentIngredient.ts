@@ -7,16 +7,16 @@ import {
 import { TIngredient } from '../types/data';
 
 
-type TCurrentIngredientState = {
+interface ICurrentIngredientState {
   currentIngredient: TIngredient | null;
 }
 
 
-const initialCurrentIngredientState: TCurrentIngredientState = {
+const initialCurrentIngredientState: ICurrentIngredientState = {
   currentIngredient: null, 
 };
 
-export const currentIngredientReducer = (state = initialCurrentIngredientState, action: TModalActions): TCurrentIngredientState => {
+export const currentIngredientReducer = (state = initialCurrentIngredientState, action: TModalActions): ICurrentIngredientState => {
 
   switch (action.type) {
     case OPEN_MODAL: {

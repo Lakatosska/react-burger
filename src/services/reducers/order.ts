@@ -5,20 +5,21 @@ import {
   RESET_ORDER,
   TOrderActions
 } from '../actions/order';
+import { TOrder } from '../types/data';
 
-type TOrderState = {
-  order: number | null;
+interface IOrderState {
+  order: TOrder | null;
   orderRequest: boolean;
   orderFailed: boolean;
 }
 
-const initialOrderState = {
+const initialOrderState: IOrderState = {
   order: null,
   orderRequest: false,
   orderFailed: false
 };
 
-export const orderReducer = (state = initialOrderState, action: TOrderActions): TOrderState => {
+export const orderReducer = (state = initialOrderState, action: TOrderActions): IOrderState => {
 
   switch (action.type) {
     case GET_ORDER_REQUEST: {

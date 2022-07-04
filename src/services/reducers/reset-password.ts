@@ -6,13 +6,13 @@ import {
 } from '../actions/password';
 import { TUser } from '../types/data';
 
-type TResetPasswordState = {
+interface IResetPasswordState {
   form: TUser,
   resetPasswordSuccess: boolean,
 }
 
 
-const initialResetPasswordState = {
+const initialResetPasswordState: IResetPasswordState = {
   form: {
     password: '',
     token: '',
@@ -20,7 +20,7 @@ const initialResetPasswordState = {
   resetPasswordSuccess: false
 };
 
-export const resetPasswordReducer = (state = initialResetPasswordState, action: TResetPasswordActions): TResetPasswordState => {
+export const resetPasswordReducer = (state = initialResetPasswordState, action: TResetPasswordActions): IResetPasswordState => {
 
   switch (action.type) {
     case RESET_PASSWORD_REQUEST: {

@@ -7,21 +7,21 @@ import {
 } from '../actions/wsActions';
 import { TOrder } from '../types/data';
 
-type TWebSocketState = {
+interface IWebSocketState {
   wsConnected: boolean;
   orders: Array<TOrder>;
   total: number;
   totalToday: number;  
 }
 
-const initialWebSocketState = {
+const initialWebSocketState: IWebSocketState = {
   wsConnected: false,
   orders: [],
   total: 0,
   totalToday: 0,
 };
 
-export const wsReducer = (state = initialWebSocketState, action: TWSActions): TWebSocketState => {
+export const wsReducer = (state = initialWebSocketState, action: TWSActions): IWebSocketState => {
 
   switch (action.type) {
     case WS_CONNECTION_SUCCESS: {
