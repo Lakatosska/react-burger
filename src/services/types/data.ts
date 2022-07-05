@@ -75,3 +75,5 @@ total: 19022
 totalToday: 101
 wsConnected: false
 */
+
+export type TType = 'bun' | 'main' | 'sauce';

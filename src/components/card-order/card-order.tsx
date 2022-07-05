@@ -1,14 +1,18 @@
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useMemo, FC } from 'react';
+//import { useSelector } from 'react-redux';
 import { useLocation} from 'react-router-dom';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-
+import { useSelector } from '../../services/types';
 import { placeOrderDate } from '../../utils/constants';
+import { TOrder } from '../../services/types/data';
 
 import cardOrderStyles from './card-order.module.css';
 
+interface ICardOrderProps {
+  card: TOrder;
+}
 
-export const CardOrder = ({ card }) => {
+export const CardOrder: FC<ICardOrderProps> = ({ card }) => {
 
   const { name, number, createdAt, ingredients: ingredientsId} = card;
 
@@ -22,7 +26,7 @@ export const CardOrder = ({ card }) => {
 
   const sumTotal = useMemo(() => {
     return (
-      orderedIngredients.reduce((acc, item) => acc + item.price, 0)
+      orderedIngredients.reduce((acc, item) => acc + item!.price, 0)
     );
   }, [orderedIngredients]);
 
@@ -58,7 +62,7 @@ export const CardOrder = ({ card }) => {
         <ul className={cardOrderStyles.icons}>
           { 
             (ingredientsId.length > 5) &&
-              ( <div className={cardOrderStyles.icon} style={{backgroundImage: `url(${orderedIngredients[5].image_mobile})` }}>
+              ( <div className={cardOrderStyles.icon} style={{backgroundImage: `url(${orderedIngredients[5]!.image_mobile})` }}>
                   <p className={`${cardOrderStyles.lastIcon} text text_type_main-default`}>+{orderedIngredients.length - 5}</p>
                 </div>)
           }
@@ -66,7 +70,7 @@ export const CardOrder = ({ card }) => {
             orderedIngredients.slice(0, 5).reverse().map((item, index) => {
               return (
                 <li key={index} className={cardOrderStyles.img}>
-                  <img src={item.image_mobile} className={cardOrderStyles.icon} alt='иконка ингредиента'/>
+                  <img src={item!.image_mobile} className={cardOrderStyles.icon} alt='иконка ингредиента'/>
                 </li>
               )
             })

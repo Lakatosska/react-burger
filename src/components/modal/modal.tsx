@@ -11,8 +11,9 @@ const modalRoot = document.getElementById('react-modals') as HTMLElement;
 
 interface IModalProps {
   closing: () => void;
-  showModal: boolean;
+  showModal?: boolean;
   children: React.ReactNode;
+  title?: string;
 }
 
 const Modal: FC<IModalProps> = ({ showModal, closing, children }) => { 
