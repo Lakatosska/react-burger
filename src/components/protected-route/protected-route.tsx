@@ -1,6 +1,6 @@
 import { useState, useEffect, FC } from "react";
 //import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, Route, RouteProps } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 //import { RouteProps } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/types';
 
