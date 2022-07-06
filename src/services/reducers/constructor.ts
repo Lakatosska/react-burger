@@ -11,7 +11,7 @@ import { TIngredient } from '../types/data';
 
 interface IConstructorState {
   constructorItems: ReadonlyArray<TIngredient>;
-  bun: TIngredient | string;
+  bun: TIngredient | string | any;
 }
 
 const initialConstructorState: IConstructorState = {

@@ -37,7 +37,7 @@ export type TConstructorActions =
   | IResetConstructorAction;
 
 
-export const addToConstructor = (ingredient: TIngredient, index: number): IAddIngredientAction => {
+export const addToConstructor = (ingredient: TIngredient, index?: number): IAddIngredientAction => {
   return {
     type: ADD_INGREDIENT,
     payload: {

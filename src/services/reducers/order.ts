@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import {
   GET_ORDER_REQUEST,
   GET_ORDER_SUCCESS,
@@ -8,7 +10,7 @@ import {
 import { TOrder } from '../types/data';
 
 interface IOrderState {
-  order: TOrder | null;
+  order: TOrder | null | any;
   orderRequest: boolean;
   orderFailed: boolean;
 }
