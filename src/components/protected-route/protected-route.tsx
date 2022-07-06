@@ -1,11 +1,19 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, Route } from 'react-router-dom';
+import { useState, useEffect, FC } from "react";
+//import { useSelector, useDispatch } from 'react-redux';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
+//import { RouteProps } from 'react-router-dom';
+import { useSelector, useDispatch } from '../../services/types';
 
 import { getUser } from '../../services/actions/auth';
 import { Loader } from '../loader/loader';
 
-export function ProtectedRoute({ children, ...rest }) {
+export interface IProtectedRoute {
+  path: string;
+  exact: boolean;
+  children: any;
+}
+
+export const ProtectedRoute: FC<IProtectedRoute> = ({ children, ...rest }) => {
 
   const { isAuth } = useSelector(store => store.user);
 

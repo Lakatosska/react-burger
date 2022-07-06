@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
-
+import { Location } from 'history';
 import { AppHeader } from '../app-header/app-header';
 import { getIngredients } from '../../services/actions/ingredients';
 import { getUser } from '../../services/actions/auth';
@@ -41,7 +41,11 @@ const App = () => {
   // ругается на background в 'location.state.background'
   */
 
-  const location = useLocation<any>();
+  interface IAppLocation {
+    background: Location
+  }
+
+  const location = useLocation<IAppLocation>();
 
   const background = location.state && location.state.background;
   
