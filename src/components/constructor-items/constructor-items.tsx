@@ -4,6 +4,7 @@ import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktiku
 import { useSelector, useDispatch } from '../../services/types';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { ConstructorItem } from '../constructor-item/constructor-item';
+import { TIngredient } from '../../services/types/data';
 import burgerConstructorStyles from '../burger-constructor/burger-constructor.module.css';
 
 export const ConstructorItems = () => {
@@ -13,7 +14,7 @@ export const ConstructorItems = () => {
 
   const [, dropTarget] = useDrop(() => ({
     accept: 'ingredient',
-    drop: (item) => dispatch(addToConstructor(item)),
+    drop: (item: TIngredient) => dispatch(addToConstructor(item)),
   }));
 
   return (
