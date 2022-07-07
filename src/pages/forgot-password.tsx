@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, FormEvent, ChangeEvent, FC  } from "react";
+//import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
-
+import { useSelector, useDispatch } from "../services/types";
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/password';
-
+import { ILocationState } from "../services/types/data";
 import styles from './style.module.css';
 
 
-export const ForgotPasswordPage = () => {
+export const ForgotPasswordPage: FC = () => {
 
   const dispatch = useDispatch();
-  const { state } = useLocation();
+  const { state } = useLocation<ILocationState>();
   const { isAuth } = useSelector(store => store.user);
   const { form, forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
 
@@ -19,14 +19,14 @@ export const ForgotPasswordPage = () => {
     form.email = '';
   }, []);
 
-  const onChange = (evt) => {
+  const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: SET_FORGOT_PASSWORD,
       payload: {...form, [evt.target.name]: evt.target.value} 
     })
   };
 
-  const onSubmitForm = (evt) => {
+  const onSubmitForm = (evt: FormEvent) => {
     evt.preventDefault();
     dispatch(forgotPassword(form))
   }; 
@@ -56,7 +56,7 @@ export const ForgotPasswordPage = () => {
               type={'email'}
               placeholder={'Укажите e-mail'}
               onChange={onChange}
-              value={form.email}
+              value={`${form.email}`}
               name={'email'}
             />
           </fieldset>

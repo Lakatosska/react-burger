@@ -1,33 +1,33 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, FormEvent, ChangeEvent, FC } from "react";
+//import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
-
+import { useSelector, useDispatch } from "../services/types";
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { SET_NEW_PASSWORD, resetPassword } from '../services/actions/password';
-
+import { ILocationState } from "../services/types/data";
 import styles from './style.module.css';
 
-export const ResetPasswordPage = () => {
+export const ResetPasswordPage: FC = () => {
 
   const dispatch = useDispatch();
   const { form, resetPasswordSuccess } = useSelector(store => store.resetPassword);
   const { forgotPasswordSuccess } = useSelector(store => store.forgotPassword);
   const { isAuth } = useSelector(store => store.user);
-  const { state } = useLocation();
+  const { state } = useLocation<ILocationState>();
 
   useEffect(() => {
     form.password = '';
     form.token = '';
   }, []); 
 
-  const onChange = (evt) => {
+  const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: SET_NEW_PASSWORD,
       payload: {...form, [evt.target.name]: evt.target.value}
     })
   }
 
-  const onSubmitForm = (evt) => {
+  const onSubmitForm = (evt: FormEvent) => {
     evt.preventDefault();
     dispatch(resetPassword(form))
   } 
@@ -65,7 +65,7 @@ export const ResetPasswordPage = () => {
             type={'password'}
             placeholder={'Введите новый пароль'}
             onChange={onChange}
-            value={form.password}
+            value={`${form.password}`}
             name={'password'}
             icon={'ShowIcon'}
           />
@@ -73,7 +73,7 @@ export const ResetPasswordPage = () => {
             type={'text'}
             placeholder={'Введите код из письма'}
             onChange={onChange}
-            value={form.token}
+            value={`${form.token}`}
             name={'token'}
           />
         </fieldset>

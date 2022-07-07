@@ -78,3 +78,7 @@ wsConnected: false
 */
 
 export type TType = 'bun' | 'main' | 'sauce';
+
+export interface ILocationState {
+  from: string;
+}

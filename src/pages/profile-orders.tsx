@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, FC } from "react";
+//import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-
+import { useSelector, useDispatch } from "../services/types";
 import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../services/actions/wsActions'
 import { logout } from '../services/actions/auth';
 import { OrderHistory } from "../components/order-history/order-history";
@@ -11,7 +11,7 @@ import { getUser } from "../services/actions/auth";
 import styles from './style.module.css';
 
 
-export const ProfileOrdersPage = () => {
+export const ProfileOrdersPage: FC = () => {
 
   const { isAuth } = useSelector(store => store.user);
   const user = useSelector((store) => store.user.form);

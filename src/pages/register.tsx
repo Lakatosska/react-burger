@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, FormEvent, ChangeEvent, FC  } from "react";
+//import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
-
+import { useSelector, useDispatch } from "../services/types";
 import { SET_REGISTER_USER, register } from '../services/actions/auth';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ILocationState } from "../services/types/data";
 
 import styles from './style.module.css';
 
-
-export const RegisterPage = () => {
+export const RegisterPage: FC = () => {
 
   const dispatch = useDispatch();
 
   const { form, isAuth } = useSelector(store => store.user);
-  const { state } = useLocation();
+  const { state } = useLocation<ILocationState>();
 
   useEffect(() => {
     form.name = '';
@@ -22,14 +22,14 @@ export const RegisterPage = () => {
   }, []);
 
 
-  const onChange = (evt) => {
+  const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: SET_REGISTER_USER,
       payload: {...form, [evt.target.name]: evt.target.value} // [] - refers to dynamic key name
     })
   }
 
-  const onSubmitForm = (evt) => {
+  const onSubmitForm = (evt: FormEvent) => {
     evt.preventDefault();
     dispatch(register(form))
   } 
@@ -52,19 +52,19 @@ export const RegisterPage = () => {
             type={'text'}
             placeholder={'Имя'}
             onChange={onChange}
-            value={form.name}
+            value={`${form.name}`}
             name={'name'}
           />
           <Input
             type={'email'}
             placeholder={'E-mail'}
             onChange={onChange}
-            value={form.email}
+            value={`${form.email}`}
             name={'email'}
           />
           <PasswordInput 
             onChange={onChange} 
-            value={form.password} 
+            value={`${form.password}`}
             name={'password'}
           />
         </fieldset>

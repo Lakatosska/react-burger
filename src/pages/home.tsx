@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
@@ -7,7 +8,7 @@ import BurgerConstructor from '../components/burger-constructor/burger-construct
 import appStyles from '../components/app/app.module.css';
 
 
-export const HomePage = () => {
+export const HomePage: FC = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
