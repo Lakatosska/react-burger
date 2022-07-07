@@ -15,13 +15,14 @@ import { ConstructorItems } from '../constructor-items/constructor-items';
 import { OrderTotal } from '../order-total/order-total';
 
 import burgerConstructorStyles from './burger-constructor.module.css';
+import { TIngredient } from '../../services/types/data';
 
 /*
 export const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
 
-  const handleDeleteIngredient = (index) => {
+  const handleDeleteIngredient = (index: number) => {
     dispatch(deleteIngredient(index))
   }
 
@@ -32,7 +33,7 @@ export const ConstructorItem = ({ cardData, index }) => {
 
   const [, dropRef] = useDrop({
     accept: 'item',
-    drop(dragObject) {
+    drop(dragObject: {index: number}) {
       if (dragObject.index === index) {
         return
       }
@@ -40,13 +41,13 @@ export const ConstructorItem = ({ cardData, index }) => {
     }
   })
 
-  const ref = useRef(null);
-  const dragDropRef = dragRef(dropRef(ref));
+  const ref: any = useRef<HTMLLIElement>(null);
+  dragRef(dropRef(ref));
 
   return(
     <div 
-      key={cardData.id}
-      ref={dragDropRef}
+      key={cardData._id}
+      ref={ref}
       className={burgerConstructorStyles.item}>
         <DragIcon type="primary"/>
         <ConstructorElement
@@ -68,7 +69,7 @@ const ConstructorItems = () => {
 
   const [, dropTarget] = useDrop(() => ({
     accept: 'ingredient',
-    drop: (item) => dispatch(addToConstructor(item)),
+    drop: (item: TIngredient) => dispatch(addToConstructor(item)),
   }));
 
   return (
@@ -93,7 +94,7 @@ const ConstructorItems = () => {
               return (
                 <ConstructorItem
                   cardData={item}
-                  key={item.id}
+                  key={item._id}
                   index={index}
                 />
               );
@@ -150,7 +151,7 @@ const OrderTotal = () => {
   
   const modalOrder = (
     <Modal closing={closeModal} showModal={true}>
-      <OrderDetails orderNumber={order}/>
+      <OrderDetails/>
     </Modal >
   );
 
