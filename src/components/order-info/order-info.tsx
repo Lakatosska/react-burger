@@ -46,8 +46,8 @@ export const OrderInfo: FC = () => {
     return ingredients.find(el => el._id === item);
    });
    
-  //const uniqueIngredients = [...new Set(orderedIngredients)];
-  const uniqueIngredients = Array.from(orderedIngredients);
+  // added "downlevelIteration": true to tsconfig 
+  const uniqueIngredients = [...new Set(orderedIngredients)];
 
   const sumTotal = orderedIngredients.reduce((acc, item) => acc + item!.price, 0);
 

@@ -11,11 +11,13 @@ import OrderDetails from '../order-details/order-details';
 import { postOrder, RESET_ORDER } from '../../services/actions/order';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { Loader } from '../loader/loader';
+import { ConstructorItems } from '../constructor-items/constructor-items';
+import { OrderTotal } from '../order-total/order-total';
 
 import burgerConstructorStyles from './burger-constructor.module.css';
 
-
-const ConstructorItem = ({ cardData, index }) => {
+/*
+export const ConstructorItem = ({ cardData, index }) => {
 
   const dispatch = useDispatch();
 
@@ -56,8 +58,9 @@ const ConstructorItem = ({ cardData, index }) => {
     </div> 
   )
 }
+*/
 
-
+/*
 const ConstructorItems = () => {
 
   const dispatch = useDispatch();
@@ -114,8 +117,9 @@ const ConstructorItems = () => {
     </ul>
   );
 }
+*/
 
-
+/*
 const OrderTotal = () => {
 
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
@@ -186,8 +190,9 @@ const OrderTotal = () => {
     </>
   );
 }
+*/
 
-const BurgerConstructor = () => {
+const BurgerConstructor: FC = () => {
 
   return(
     <section className={`${burgerConstructorStyles.main} mt-25`}>
