@@ -1,24 +1,37 @@
-import { useState, useMemo, FC } from 'react';
-import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import Modal from '../modal/modal';
-import IngredientDetails from '../ingredient-details/ingredient-details';
+import { useState, useRef, FC } from 'react';
+import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
-//import { useSelector, useDispatch } from 'react-redux';
-import { CLOSE_MODAL } from '../../services/actions/currentIngredient';
-import { getCurrentIngredient } from '../../services/actions/currentIngredient';
-import { useDrag } from 'react-dnd';
-import { Link, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from '../../services/types';
-import { TIngredient, TType } from '../../services/types/data';
 import { MenuList } from '../menu-list/menu-list';
 
 const BurgerIngredients: FC = () => {
-  const [current, setCurrent] = useState('Булки')
+  const [current, setCurrent] = useState('Булки');
+
+  const bun = useRef<any>(null);
+  const sauce = useRef<any>(null);
+  const main = useRef<any>(null);
+  const tabClick = (current: string) => {
+        if (current === 'Булки') {
+            if (bun.current) {
+                bun.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
+            }
+            setCurrent('Булки')
+        }
+        else if (current === 'Соусы') {
+            if (bun.current) {
+                sauce.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
+            }
+            setCurrent('Соусы')
+        }
+        else if (current === 'Начинки') {
+            if (bun.current) {
+                main.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
+            }
+            setCurrent('Начинки')
+        }
+    }
 
   const setTabScroll = (evt: React.UIEvent<HTMLElement>) => {
-   
     const scrollTop = evt.currentTarget.scrollTop;
-   
     if (scrollTop <= 250) {
         setCurrent('Булки');
     }
@@ -36,27 +49,27 @@ const BurgerIngredients: FC = () => {
       
       <div className={burgerIngredientsStyles.tab}>
         
-        <Tab value="Булки" active={current === 'Булки'} onClick={setCurrent}>
+        <Tab value='Булки' active={current === 'Булки'} onClick={() => tabClick('Булки')}>
           Булки
         </Tab>
-        <Tab value="Соусы" active={current === 'Соусы'} onClick={setCurrent}>
+        <Tab value='Соусы' active={current === 'Соусы'} onClick={() => tabClick('Соусы')}>
           Соусы
         </Tab>
-        <Tab value="Начинки" active={current === 'Начинки'} onClick={setCurrent}>
+        <Tab value='Начинки' active={current === 'Начинки'} onClick={() => tabClick('Начинки')}>
           Начинки
         </Tab>
       </div>
       <div className={`${burgerIngredientsStyles.window} custom-scroll`} onScroll={setTabScroll}>
         <ul className={burgerIngredientsStyles.menu}>
-          <li>
+          <li ref={bun}>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
             <MenuList type='bun' />
           </li>
-          <li>
+          <li ref={sauce}>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
             <MenuList type='sauce' />
           </li>
-          <li>
+          <li ref={main}>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
             <MenuList type='main' />
           </li>
