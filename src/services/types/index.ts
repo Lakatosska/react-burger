@@ -16,7 +16,6 @@ import { TAuthActions } from '../actions/auth';
 import { TWSActions } from '../actions/wsActions';
 
 
-
 export type RootState = ReturnType<typeof store.getState>;
 
 // Типизация всех экшенов прTModalActionиложения
@@ -38,7 +37,6 @@ export type AppThunk<TReturn = void> = ActionCreator<
 
 // Типизация метода dispatch для проверки на валидность отправляемого экшена
 export type AppDispatch = typeof store.dispatch; 
-
 
 // Теперь этот хук знает структуру хранилища
 export const useSelector: TypedUseSelectorHook<RootState> = selectorHook;
