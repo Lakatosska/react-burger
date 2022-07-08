@@ -11,7 +11,7 @@ import OrderDetails from '../order-details/order-details';
 import { postOrder, RESET_ORDER } from '../../services/actions/order';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { Loader } from '../loader/loader';
-import burgerConstructorStyles from '../burger-constructor/burger-constructor.module.css';
+import orderTotalStyles from './order-total.module.css';
 
 
 export const OrderTotal: FC = () => {
@@ -67,8 +67,8 @@ export const OrderTotal: FC = () => {
   
   return(
     <>
-      <div className={`${burgerConstructorStyles.order} mt-10`}>
-        <div className={`${burgerConstructorStyles.price} mr-10`}>
+      <div className={`${orderTotalStyles.order} mt-10`}>
+        <div className={`${orderTotalStyles.price} mr-10`}>
           <span className="text text_type_digits-medium mr-4">{total}</span>
           <CurrencyIcon type="primary" />
         </div>

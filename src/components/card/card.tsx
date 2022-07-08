@@ -2,7 +2,7 @@ import { useState, useMemo, FC } from 'react';
 import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
-import burgerIngredientsStyles from '../burger-ingredients/burger-ingredients.module.css';
+
 //import { useSelector, useDispatch } from 'react-redux';
 import { CLOSE_MODAL } from '../../services/actions/currentIngredient';
 import { getCurrentIngredient } from '../../services/actions/currentIngredient';
@@ -10,6 +10,7 @@ import { useDrag } from 'react-dnd';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/types';
 import { TIngredient, TType } from '../../services/types/data';
+import cardStyles from './card.module.css';
 
 interface ICardProps {
   cardData: TIngredient;
@@ -60,19 +61,19 @@ export const Card: FC<ICardProps> = ({ cardData }) => {
 
   return(
     <>
-      <article className={burgerIngredientsStyles.card} 
+      <article className={cardStyles.card} 
         onClick={openModal}
         ref={dragRef}
       >
-        <Link className={burgerIngredientsStyles.link}  
+        <Link className={cardStyles.link}  
             to={{ pathname: `/ingredients/${id}`, state: { background: location } }}>
           {(counter > 0) && (<Counter count={counter} size="default" />)}
           <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
-          <div className={`${burgerIngredientsStyles.priceItem} mt-1 mb-1`}>
+          <div className={`${cardStyles.priceItem} mt-1 mb-1`}>
             <span className='text text_type_digits-default mr-1'>{price}</span>
             <CurrencyIcon type='primary' />
           </div>
-          <span className={burgerIngredientsStyles.name}>{name}</span>
+          <span className={cardStyles.name}>{name}</span>
         </Link>
       </article>
       {modalActive && modalIngredients}

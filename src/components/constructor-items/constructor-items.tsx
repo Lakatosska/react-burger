@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from '../../services/types';
 import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { ConstructorItem } from '../constructor-item/constructor-item';
 import { TIngredient } from '../../services/types/data';
-import burgerConstructorStyles from '../burger-constructor/burger-constructor.module.css';
+import construtorItemsStyles from './constructor-items.module.css';
 
 export const ConstructorItems = () => {
 
@@ -18,8 +18,8 @@ export const ConstructorItems = () => {
   }));
 
   return (
-    <ul className={`${burgerConstructorStyles.items} pl-4`} ref={dropTarget}>
-      <li className={`${burgerConstructorStyles.list} ml-5`}>
+    <ul className={`${construtorItemsStyles.main} pl-4`} ref={dropTarget}>
+      <li className={`${construtorItemsStyles.list} ml-5`}>
         {bun
         ? 
           <ConstructorElement
@@ -32,7 +32,7 @@ export const ConstructorItems = () => {
           : ''}
       </li>
       
-      <li className={`${burgerConstructorStyles.list} ${burgerConstructorStyles.window} custom-scroll`}>
+      <li className={`${construtorItemsStyles.list} ${construtorItemsStyles.window} custom-scroll`}>
         {constructorItems.length > 0 
         ? (
             constructorItems.map((item, index) => {
@@ -48,7 +48,7 @@ export const ConstructorItems = () => {
         : ''}
       </li>
       
-      <li className={`${burgerConstructorStyles.list} ml-5`}>
+      <li className={`${construtorItemsStyles.list} ml-5`}>
         {bun
         ? 
           <ConstructorElement

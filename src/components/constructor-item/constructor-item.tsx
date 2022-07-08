@@ -14,7 +14,7 @@ import { Loader } from '../loader/loader';
 import { ConstructorItems } from '../constructor-items/constructor-items';
 import { TIngredient } from '../../services/types/data';
 
-import burgerConstructorStyles from '../burger-constructor/burger-constructor.module.css';
+import constructorItemStyles from './constructor-item.module.css';
 
 
 interface IConstructorItemProps {
@@ -52,7 +52,7 @@ export const ConstructorItem: FC<IConstructorItemProps> = ({ cardData, index }) 
     <div 
       key={cardData.id}
       ref={ref}
-      className={burgerConstructorStyles.item}>
+      className={constructorItemStyles.item}>
         <DragIcon type="primary"/>
         <ConstructorElement
           text={cardData.name}
