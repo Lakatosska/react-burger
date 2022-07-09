@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { Location } from 'history';
 import { useDispatch } from '../../services/types';
@@ -21,10 +21,9 @@ import { HomePage,
          ProfileOrdersPage,
          FeedPage,
          OrderPage } from '../../pages';
-
 import appStyles from './app.module.css';
 
-const App = () => {
+const App: FC = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();

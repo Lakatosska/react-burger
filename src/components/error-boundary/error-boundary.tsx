@@ -1,16 +1,23 @@
-import { Component } from "react";
+import { Component, ReactNode, ErrorInfo } from "react";
 
-export class ErrorBoundary extends Component {
-  constructor(props) {
+interface IErrorBoundaryState {
+  hasError: boolean
+}
+interface IErrorBoundaryProps {
+  children?: ReactNode
+}
+
+export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundaryState> {
+  constructor(props: IErrorBoundaryProps) {
     super(props);
     this.state = {hasError: false};
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: boolean) {
     return {hasError: true};
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: ErrorInfo) {
     console.log("Возникла ошибка!", error, info);
   }
 
