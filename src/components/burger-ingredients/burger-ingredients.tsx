@@ -48,7 +48,6 @@ export const BurgerIngredients: FC = () => {
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
       
       <div className={burgerIngredientsStyles.tab}>
-        
         <Tab value='Булки' active={current === 'Булки'} onClick={() => tabClick('Булки')}>
           Булки
         </Tab>

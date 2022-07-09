@@ -1,7 +1,6 @@
 import { legacy_createStore as createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
 import { rootReducer } from './reducers/rootReducer';
 import { socketMiddleware } from './middleware/socket-middleware';
 import { wsUrl } from '../utils/constants';
@@ -46,5 +45,4 @@ const enhancer = composeWithDevTools(applyMiddleware(
   );
 
 // инициализируем хранилище
-export const store = createStore(rootReducer, enhancer)
-
+export const store = createStore(rootReducer, enhancer);

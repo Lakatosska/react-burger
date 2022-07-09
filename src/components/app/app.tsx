@@ -6,6 +6,7 @@ import { AppHeader } from '../app-header/app-header';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import { Modal } from '../modal/modal';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
+import { ErrorBoundary } from '../error-boundary/error-boundary';
 import { getIngredients } from '../../services/actions/ingredients';
 import { getUser, AUTH_CHECKED } from '../../services/actions/auth';
 import { getCookie } from '../../utils/constants';
@@ -26,7 +27,6 @@ import appStyles from './app.module.css';
 const App = () => {
 
   const dispatch = useDispatch();
-  
   const history = useHistory();
 
 /*
@@ -68,7 +68,7 @@ const App = () => {
   };
 
   return (
-    
+    <ErrorBoundary>
       <div className={appStyles.app}>
         <AppHeader />
 
@@ -149,7 +149,7 @@ const App = () => {
         )}
 
       </div>
-    
+    </ErrorBoundary>
   );
 }
 
