@@ -1,5 +1,4 @@
 import { useEffect, FormEvent, ChangeEvent, FC } from "react";
-//import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "../services/types";
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';

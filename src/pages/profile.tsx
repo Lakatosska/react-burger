@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-
 import { logout } from '../services/actions/auth';
 import { ProfileForm } from "../components/profile-form/profile-form";
-
 import styles from './style.module.css';
 
 

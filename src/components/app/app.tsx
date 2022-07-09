@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { Location } from 'history';
+import { useDispatch } from '../../services/types';
 import { AppHeader } from '../app-header/app-header';
+import { ProtectedRoute } from '../protected-route/protected-route';
+import { Modal } from '../modal/modal';
+import { IngredientDetails } from '../ingredient-details/ingredient-details';
 import { getIngredients } from '../../services/actions/ingredients';
-import { getUser } from '../../services/actions/auth';
+import { getUser, AUTH_CHECKED } from '../../services/actions/auth';
 import { getCookie } from '../../utils/constants';
 import { HomePage, 
          LoginPage, 
@@ -17,10 +20,6 @@ import { HomePage,
          ProfileOrdersPage,
          FeedPage,
          OrderPage } from '../../pages';
-import { ProtectedRoute } from '../protected-route/protected-route';
-import Modal from '../modal/modal';
-import IngredientDetails from '../ingredient-details/ingredient-details';
-import { AUTH_CHECKED } from '../../services/actions/auth';
 
 import appStyles from './app.module.css';
 

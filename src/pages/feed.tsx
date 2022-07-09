@@ -1,5 +1,4 @@
 import { useEffect, FC } from "react";
-//import { useDispatch } from 'react-redux';
 import { useDispatch } from "../services/types";
 import { OrdersFeed } from '../components/orders-feed/orders-feed';
 import { OrdersStatus } from '../components/orders-status/orders-status';

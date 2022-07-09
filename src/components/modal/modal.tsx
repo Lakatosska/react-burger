@@ -2,7 +2,7 @@ import { useEffect, FC} from 'react';
 import ReactDOM from 'react-dom';
 
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import ModalOverlay from '../modal-overlay/modal-overlay';
+import { ModalOverlay } from '../modal-overlay/modal-overlay';
 
 import modalStyles from './modal.module.css';
 
@@ -16,7 +16,7 @@ interface IModalProps {
   title?: string;
 }
 
-const Modal: FC<IModalProps> = ({ showModal, closing, children }) => { 
+export const Modal: FC<IModalProps> = ({ showModal, closing, children }) => { 
   
   useEffect(() => {
     const closeEsc = (evt: KeyboardEvent) => {
@@ -50,7 +50,4 @@ const Modal: FC<IModalProps> = ({ showModal, closing, children }) => {
     ), 
     modalRoot
     );
-  
 } 
-
-export default Modal;

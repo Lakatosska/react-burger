@@ -12,5 +12,3 @@ export const ModalOverlay: FC<IModalOverlay> = ({ closing })=> {
     </div>
   );
 };
-
-export default ModalOverlay;

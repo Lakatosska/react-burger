@@ -1,11 +1,9 @@
 import { useEffect, FormEvent, ChangeEvent, FC  } from "react";
-//import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "../services/types";
 import { SET_REGISTER_USER, register } from '../services/actions/auth';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ILocationState } from "../services/types/data";
-
 import styles from './style.module.css';
 
 export const RegisterPage: FC = () => {

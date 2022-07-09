@@ -1,14 +1,11 @@
 import { useEffect, FC } from 'react';
-//import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/types';
-
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/actions/wsActions';
 import { placeOrderDate } from '../../utils/constants';
-
-import orderInfoStyles from './order-info.module.css';
 import { TIngredient } from '../../services/types/data';
+import orderInfoStyles from './order-info.module.css';
 
 export const OrderInfo: FC = () => {
 

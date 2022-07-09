@@ -1,15 +1,10 @@
-import { useState, useMemo, useRef, FC } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-//import { useSelector, useDispatch } from 'react-redux';
+import { useState, useMemo, FC } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
-import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-
+import { CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from '../../services/types';
-
-import Modal from '../modal/modal';
-import OrderDetails from '../order-details/order-details';
+import { Modal } from '../modal/modal';
+import { OrderDetails } from '../order-details/order-details';
 import { postOrder, RESET_ORDER } from '../../services/actions/order';
-import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { Loader } from '../loader/loader';
 import orderTotalStyles from './order-total.module.css';
 

@@ -3,12 +3,8 @@ import { useSelector } from '../../services/types';
 import orderDetailsStyles from './order-details.module.css';
 import orderDoneImg from '../../images/order-done.png';
 
-/*
-interface IOrderDetails {
-  orderNumber: number;
-}
-*/
-const OrderDetails: FC = () => {
+
+export const OrderDetails: FC = () => {
 
   const { order } = useSelector(store => store.order);
 
@@ -22,5 +18,3 @@ const OrderDetails: FC = () => {
     </div>
   );
 }
-
-export default OrderDetails;

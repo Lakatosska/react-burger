@@ -1,9 +1,9 @@
 import { useState, useRef, FC } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import burgerIngredientsStyles from './burger-ingredients.module.css';
 import { MenuList } from '../menu-list/menu-list';
+import burgerIngredientsStyles from './burger-ingredients.module.css';
 
-const BurgerIngredients: FC = () => {
+export const BurgerIngredients: FC = () => {
   const [current, setCurrent] = useState('Булки');
 
   const bun = useRef<any>(null);
@@ -77,6 +77,4 @@ const BurgerIngredients: FC = () => {
       </div>
     </section>
   );
-}
-
-export default BurgerIngredients;
+};

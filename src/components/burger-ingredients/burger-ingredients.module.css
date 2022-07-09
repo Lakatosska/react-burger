@@ -13,3 +13,8 @@
   margin: 0;
   box-sizing: content-box;
 }
+
+.window {
+  height: calc(100vh - 350px);
+  overflow-y: auto;
+}

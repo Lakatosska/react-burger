@@ -1,11 +1,9 @@
-//import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useSelector } from '../../services/types';
-
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
 
-const IngredientDetails = ({showModal = false}) => {
+export const IngredientDetails = ({showModal = false}) => {
 
   const { id } = useParams<{id: string}>();
   const ingredients = useSelector(store => store.ingredients.ingredients);
@@ -38,7 +36,4 @@ const IngredientDetails = ({showModal = false}) => {
       </ul>
     </article>
   );
-}
-
-
-export default IngredientDetails;
+};

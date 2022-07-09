@@ -1,5 +1,4 @@
 import { useMemo, FC } from 'react';
-//import { useSelector } from 'react-redux';
 import { useLocation} from 'react-router-dom';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from '../../services/types';
