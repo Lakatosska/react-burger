@@ -5,10 +5,9 @@ import {
   RESET_ORDER,
   TOrderActions
 } from '../actions/order';
-import { TOrder } from '../types/data';
 
 interface IOrderState {
-  order: TOrder | null | any;
+  order: number | null;
   orderRequest: boolean;
   orderFailed: boolean;
 }

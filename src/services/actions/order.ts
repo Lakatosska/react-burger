@@ -1,7 +1,6 @@
 import { BASEURL, checkResponse, getCookie } from '../../utils/constants';
 import { RESET_CONSTRUCTOR } from './constructor';
 import { AppThunk, AppDispatch } from '../types';
-import { TOrder } from '../types/data';
 
 export const GET_ORDER_REQUEST: 'GET_ORDER_REQUEST' = 'GET_ORDER_REQUEST';
 export const GET_ORDER_SUCCESS: 'GET_ORDER_SUCCESS' = 'GET_ORDER_SUCCESS';
@@ -14,7 +13,7 @@ export interface IGetOrderAction {
 
 export interface IGetOrderSuccessAction {
   readonly type: typeof GET_ORDER_SUCCESS;
-  order: TOrder;
+  order: number;
 }
 
 export interface IGetOrderFailedAction {
