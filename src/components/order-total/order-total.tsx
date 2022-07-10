@@ -14,7 +14,7 @@ export const OrderTotal: FC = () => {
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
   const { order, orderRequest } = useSelector(store => store.order);
   const { isAuth } = useSelector(store => store.user);
-  const orderItemsId = [bun, bun, ...constructorItems].map(el => el._id);
+  const burgerItemsId = [bun, bun, ...constructorItems].filter(el => el?._id);
 
   const [modalActive, setModalActive] = useState(false);
 
@@ -24,7 +24,7 @@ export const OrderTotal: FC = () => {
   const openModal = () => {
     if (isAuth) {
       setModalActive(true);
-      dispatch(postOrder(orderItemsId)); 
+      dispatch(postOrder(burgerItemsId)); 
     } else {
       <Redirect to={{ pathname: '/login' }} />
     }// отправляем данные заказа

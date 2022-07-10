@@ -12,6 +12,12 @@ export const ConstructorItems = () => {
   const dispatch = useDispatch();
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
 
+  //const constructs = useSelector(store => store.constructorItems);
+  const { ingredients } = useSelector(store => store.ingredients);
+
+  //const ingredientsBun = ingredients.filter(item => item._id === bun);
+
+
   const [, dropTarget] = useDrop(() => ({
     accept: 'ingredient',
     drop: (item: TIngredient) => dispatch(addToConstructor(item)),

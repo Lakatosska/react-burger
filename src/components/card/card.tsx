@@ -19,6 +19,8 @@ export const Card: FC<ICardProps> = ({ cardData }) => {
 
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
 
+  const burgerItems = [bun, bun, ...constructorItems]
+
   const location = useLocation();
   
   const [, dragRef] = useDrag({
@@ -26,6 +28,9 @@ export const Card: FC<ICardProps> = ({ cardData }) => {
     item: cardData,
   });
 
+  const counter = burgerItems.filter(el => el?._id === cardData?._id).length;
+
+  /*
   const counter = useMemo(() => {
     if (cardData.type !== 'bun') {
       return (constructorItems.filter((item) => item._id === cardData._id).length)
@@ -34,6 +39,7 @@ export const Card: FC<ICardProps> = ({ cardData }) => {
     }
   }, [constructorItems, bun]
   );
+  */
 
   const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();

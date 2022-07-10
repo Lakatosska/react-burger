@@ -1,4 +1,4 @@
-import { useRef, FC } from 'react';
+import { useRef, FC, MutableRefObject } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from '../../services/types';
@@ -35,7 +35,7 @@ export const ConstructorItem: FC<IConstructorItemProps> = ({ cardData, index }) 
     }
   })
 
-  const ref: any = useRef<HTMLLIElement>(null);
+  const ref: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
   dragRef(dropRef(ref));
 
   return(

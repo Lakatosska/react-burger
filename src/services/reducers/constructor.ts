@@ -11,12 +11,12 @@ import { TIngredient } from '../types/data';
 
 interface IConstructorState {
   constructorItems: ReadonlyArray<TIngredient>;
-  bun: TIngredient | string  | any;
+  bun: TIngredient | null;
 }
 
 const initialConstructorState: IConstructorState = {
   constructorItems: [], 
-  bun: '',
+  bun: null,
 };
 
 export const constructorReducer = (state = initialConstructorState, action: TConstructorActions): IConstructorState => {
@@ -48,7 +48,7 @@ export const constructorReducer = (state = initialConstructorState, action: TCon
     case RESET_CONSTRUCTOR: {
       return {
         constructorItems: [], 
-        bun: '',
+        bun: null,
       }
     }
     default:
