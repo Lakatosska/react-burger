@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useSelector } from '../../services/types';
-import { TIngredient, TType } from '../../services/types/data';
+import { TType } from '../../services/types/data';
 import { Card } from '../card/card';
 
 import MenuListStyles from './menu-list.module.css';

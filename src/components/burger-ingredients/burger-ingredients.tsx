@@ -6,31 +6,32 @@ import burgerIngredientsStyles from './burger-ingredients.module.css';
 export const BurgerIngredients: FC = () => {
   const [current, setCurrent] = useState('Булки');
 
-  const bun = useRef<any>(null);
-  const sauce = useRef<any>(null);
-  const main = useRef<any>(null);
-  const tabClick = (current: string) => {
+  const bunRef = useRef<HTMLLIElement>(null);
+  const sauceRef = useRef<HTMLLIElement>(null);
+  const mainRef = useRef<HTMLLIElement>(null);
+
+  const onTabClick = (current: string) => {
         if (current === 'Булки') {
-            if (bun.current) {
-                bun.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
+            if (bunRef.current) {
+                bunRef.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
             }
             setCurrent('Булки')
         }
         else if (current === 'Соусы') {
-            if (bun.current) {
-                sauce.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
+            if (sauceRef.current) {
+                sauceRef.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
             }
             setCurrent('Соусы')
         }
         else if (current === 'Начинки') {
-            if (bun.current) {
-                main.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
+            if (mainRef.current) {
+                mainRef.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
             }
             setCurrent('Начинки')
         }
     }
 
-  const setTabScroll = (evt: React.UIEvent<HTMLElement>) => {
+  const setTabScroll = (evt: React.UIEvent<HTMLElement>): void => {
     const scrollTop = evt.currentTarget.scrollTop;
     if (scrollTop <= 250) {
         setCurrent('Булки');
@@ -48,27 +49,28 @@ export const BurgerIngredients: FC = () => {
       <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
       
       <div className={burgerIngredientsStyles.tab}>
-        <Tab value='Булки' active={current === 'Булки'} onClick={() => tabClick('Булки')}>
+        <Tab value='Булки' active={current === 'Булки'} onClick={() => onTabClick('Булки')}>
           Булки
         </Tab>
-        <Tab value='Соусы' active={current === 'Соусы'} onClick={() => tabClick('Соусы')}>
+        <Tab value='Соусы' active={current === 'Соусы'} onClick={() => onTabClick('Соусы')}>
           Соусы
         </Tab>
-        <Tab value='Начинки' active={current === 'Начинки'} onClick={() => tabClick('Начинки')}>
+        <Tab value='Начинки' active={current === 'Начинки'} onClick={() => onTabClick('Начинки')}>
           Начинки
         </Tab>
       </div>
+
       <div className={`${burgerIngredientsStyles.window} custom-scroll`} onScroll={setTabScroll}>
         <ul className={burgerIngredientsStyles.menu}>
-          <li ref={bun}>
+          <li ref={bunRef}>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
             <MenuList type='bun' />
           </li>
-          <li ref={sauce}>
+          <li ref={sauceRef}>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
             <MenuList type='sauce' />
           </li>
-          <li ref={main}>
+          <li ref={mainRef}>
             <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
             <MenuList type='main' />
           </li>

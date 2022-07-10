@@ -20,7 +20,9 @@ import { HomePage,
          NotFound, 
          ProfileOrdersPage,
          FeedPage,
-         OrderPage } from '../../pages';
+         OrderPage 
+        } from '../../pages';
+import { ILocationState } from '../../services/types/data';
 import appStyles from './app.module.css';
 
 const App: FC = () => {
@@ -37,14 +39,13 @@ const App: FC = () => {
     state: {};    
   };
   // ругается на background в 'location.state.background'
-  */
-
+ 
+*/
   interface IAppLocation {
     background: Location
   }
-
-  const location = useLocation<IAppLocation>();
-
+   
+  const location = useLocation<IAppLocation>()
   const background = location.state && location.state.background;
   
   useEffect(() => {

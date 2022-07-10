@@ -1,5 +1,5 @@
 import { useState, useMemo, FC } from 'react';
-import { Tab, Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Modal } from '../modal/modal';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
 import { CLOSE_MODAL } from '../../services/actions/currentIngredient';
@@ -7,16 +7,15 @@ import { getCurrentIngredient } from '../../services/actions/currentIngredient';
 import { useDrag } from 'react-dnd';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/types';
-import { TIngredient, TType } from '../../services/types/data';
+import { TIngredient } from '../../services/types/data';
 import cardStyles from './card.module.css';
 
 interface ICardProps {
   cardData: TIngredient;
-  //count: number;
 }
 
 export const Card: FC<ICardProps> = ({ cardData }) => {
-  const { image, price, name, _id: id, type } = cardData;
+  const { image, price, name, _id: id } = cardData;
 
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
 
