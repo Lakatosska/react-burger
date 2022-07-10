@@ -1,20 +1,19 @@
 .main {
   display: flex;
   flex-direction: column;
-}
-
-.tab {
-  display: flex;
-}
-
-.menu {
+  gap: 10px;
   list-style: none;
   padding: 0;
-  margin: 0;
-  box-sizing: content-box;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
 }
 
 .window {
-  height: calc(100vh - 350px);
+  height: calc(100vh - 550px);
   overflow-y: auto;
 }
