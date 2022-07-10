@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { useSelector } from '../../services/types';
 import { TType } from '../../services/types/data';
 import { Card } from '../card/card';
-
 import MenuListStyles from './menu-list.module.css';
 
 interface IMenuListProps {
@@ -21,4 +20,4 @@ export const MenuList: FC<IMenuListProps> = ({ type }) => {
       ))}
     </div>
   );
-}
+};

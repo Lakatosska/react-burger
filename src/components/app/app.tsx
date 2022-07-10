@@ -22,25 +22,13 @@ import { HomePage,
          FeedPage,
          OrderPage 
         } from '../../pages';
-import { ILocationState } from '../../services/types/data';
 import appStyles from './app.module.css';
 
-const App: FC = () => {
+export const App: FC = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-/*
-  interface ILocation {
-    key: string;
-    pathname: string;
-    search: string;
-    hash: string;
-    state: {};    
-  };
-  // ругается на background в 'location.state.background'
- 
-*/
   interface IAppLocation {
     background: Location
   }
@@ -151,6 +139,4 @@ const App: FC = () => {
       </div>
     </ErrorBoundary>
   );
-}
-
-export default App;
+};

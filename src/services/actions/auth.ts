@@ -300,57 +300,7 @@ export const getUser: AppThunk = () => {
       });
     });
   }
-}
-
-/*
-export const getUser: AppThunk = () => {
-  
-  return function(dispatch: AppDispatch) {
-    dispatch({
-      type: GET_USER_REQUEST
-    })
-    fetch(`${BASEURL}/auth/user`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + getCookie('token')
-      }    
-    })
-    .then(checkResponse)
-    .then(res => {
-      if (res && res.success) {
-        dispatch({
-          type: GET_USER_SUCCESS,
-          form: res.user,
-        })
-      } else {
-        dispatch(updateToken())
-        .then(() => {
-          dispatch(getUser())
-        })
-      }
-    })
-    .catch(err => {
-      if (err.message === 'jwt expired') {
-        dispatch(updateToken())
-        .then(() => {
-          dispatch(getUser())
-        })
-      }
-      console.log(err)
-      dispatch({
-        type: GET_USER_FAILED
-      });
-    })
-    .finally(() => {
-      dispatch({
-        type: AUTH_CHECKED
-      });
-    });
-  }
-}
-*/
-
+};
 
 export const updateUser: AppThunk = (form: TUser) => {
   return function(dispatch: AppDispatch) {

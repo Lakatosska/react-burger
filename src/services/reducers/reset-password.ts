@@ -11,7 +11,6 @@ interface IResetPasswordState {
   resetPasswordSuccess: boolean,
 }
 
-
 const initialResetPasswordState: IResetPasswordState = {
   form: {
     password: '',
@@ -44,4 +43,4 @@ export const resetPasswordReducer = (state = initialResetPasswordState, action: 
     default:
       return state;
   }
-}
+};

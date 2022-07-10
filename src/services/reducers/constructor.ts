@@ -5,9 +5,7 @@ import {
   RESET_CONSTRUCTOR,
   TConstructorActions
 } from '../actions/constructor';
-
 import { TIngredient } from '../types/data';
-
 
 interface IConstructorState {
   constructorItems: ReadonlyArray<TIngredient>;
@@ -54,4 +52,4 @@ export const constructorReducer = (state = initialConstructorState, action: TCon
     default:
       return state;
   }
-}
+};

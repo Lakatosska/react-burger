@@ -1,22 +1,16 @@
-//import { useSelector, useDispatch } from 'react-redux';
-import { useDrag, useDrop } from 'react-dnd';
-import { ConstructorElement, CurrencyIcon, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { FC } from 'react';
+import { useDrop } from 'react-dnd';
+import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from '../../services/types';
-import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
+import { addToConstructor } from '../../services/actions/constructor';
 import { ConstructorItem } from '../constructor-item/constructor-item';
 import { TIngredient } from '../../services/types/data';
 import construtorItemsStyles from './constructor-items.module.css';
 
-export const ConstructorItems = () => {
+export const ConstructorItems: FC = () => {
 
   const dispatch = useDispatch();
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
-
-  //const constructs = useSelector(store => store.constructorItems);
-  const { ingredients } = useSelector(store => store.ingredients);
-
-  //const ingredientsBun = ingredients.filter(item => item._id === bun);
-
 
   const [, dropTarget] = useDrop(() => ({
     accept: 'ingredient',
@@ -68,4 +62,4 @@ export const ConstructorItems = () => {
       </li>
     </ul>
   );
-}
+};

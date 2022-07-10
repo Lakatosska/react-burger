@@ -25,8 +25,8 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
     if (this.state.hasError) {
       return (
         <section>
-          <h1 className="text text_type_main-large">Что-то пошло не так :</h1>
-          <p className="text text_type_main-medium">
+          <h1 className="text text_type_main-large pl-10 pr-10 pt-20 pb-10">Что-то пошло не так :</h1>
+          <p className="text text_type_main-medium pl-10 pr-10 pt-10 pb-20">
             В приложении произошла ошибка. Пожалуйста, перезагрузите страницу.
           </p>
         </section>

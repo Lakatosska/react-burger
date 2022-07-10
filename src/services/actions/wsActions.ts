@@ -8,24 +8,24 @@ export const WS_GET_MESSAGE: 'WS_GET_MESSAGE' = 'WS_GET_MESSAGE';
 
 export interface IWSConectionStartAction {
   readonly type: typeof WS_CONNECTION_START;
-}
+};
 
 export interface IWSConectionSuccessAction {
   readonly type: typeof WS_CONNECTION_SUCCESS;
-}
+};
 
 export interface IWSConectionErrorAction {
   readonly type: typeof WS_CONNECTION_ERROR;
-}
+};
 
 export interface IWSConectionClosedAction {
   readonly type: typeof WS_CONNECTION_CLOSED;
-}
+};
 
 export interface IWSGetMessageAction {
   readonly type: typeof WS_GET_MESSAGE;
   payload: TOrdersStatus;
-}
+};
 
 export type TWSActions =
   | IWSConectionStartAction

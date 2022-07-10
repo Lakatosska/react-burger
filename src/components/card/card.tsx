@@ -1,4 +1,4 @@
-import { useState, useMemo, FC } from 'react';
+import { useState, FC } from 'react';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Modal } from '../modal/modal';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';

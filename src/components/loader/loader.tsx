@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { Oval } from 'react-loader-spinner';
 import { ModalOverlay } from '../modal-overlay/modal-overlay';
 import styles from './loader.module.css';
 
-export const Loader = () => {
+export const Loader: FC = () => {
   return (
     <>
       <ModalOverlay />

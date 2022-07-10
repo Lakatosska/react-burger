@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import modalOverlayStyles from './modal-overlay.module.css';
 
-
 interface IModalOverlay {
   closing?: () => void;
 }

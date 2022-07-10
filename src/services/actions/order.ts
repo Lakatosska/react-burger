@@ -29,7 +29,6 @@ export type TOrderActions =
   | IGetOrderFailedAction
   | IResetOrderAction;
 
-
 export const postOrder: AppThunk = (Ids: string) => {
 
   return function(dispatch: AppDispatch) {

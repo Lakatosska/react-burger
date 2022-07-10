@@ -10,7 +10,7 @@ interface IOrderState {
   order: number | null;
   orderRequest: boolean;
   orderFailed: boolean;
-}
+};
 
 const initialOrderState: IOrderState = {
   order: null,
@@ -53,4 +53,4 @@ export const orderReducer = (state = initialOrderState, action: TOrderActions): 
     default:
       return state;
   }
-}
+};

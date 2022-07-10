@@ -3,14 +3,11 @@ import {
   OPEN_MODAL,
   TModalActions
 } from '../actions/currentIngredient';
-
 import { TIngredient } from '../types/data';
-
 
 interface ICurrentIngredientState {
   currentIngredient: TIngredient | null;
-}
-
+};
 
 const initialCurrentIngredientState: ICurrentIngredientState = {
   currentIngredient: null, 
@@ -34,4 +31,4 @@ export const currentIngredientReducer = (state = initialCurrentIngredientState, 
     default:
       return state;
   }
-}
+};

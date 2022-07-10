@@ -5,7 +5,6 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-
 import { store } from '../store';
 import { TIngredientsActions } from '../actions/ingredients';
 import { TConstructorActions } from '../actions/constructor';
@@ -28,7 +27,6 @@ type TApplicationActions =
 | TResetPasswordActions
 | TAuthActions
 | TWSActions;
-
 
 // Типизация thunk
 export type AppThunk<TReturn = void> = ActionCreator<

@@ -48,4 +48,4 @@ export const forgotPasswordReducer = (state = initialForgotPasswordState, action
     default:
       return state;
   }
-}
+};

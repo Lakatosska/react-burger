@@ -1,11 +1,10 @@
 import { useRef, FC, MutableRefObject } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelector, useDispatch } from '../../services/types';
-import { addToConstructor, deleteIngredient, sortIngredient } from '../../services/actions/constructor';
+import { useDispatch } from '../../services/types';
+import { deleteIngredient, sortIngredient } from '../../services/actions/constructor';
 import { TIngredient } from '../../services/types/data';
 import constructorItemStyles from './constructor-item.module.css';
-
 
 interface IConstructorItemProps {
   cardData: TIngredient;
@@ -52,4 +51,4 @@ export const ConstructorItem: FC<IConstructorItemProps> = ({ cardData, index }) 
         />
     </div> 
   )
-}
+};

@@ -1,11 +1,8 @@
 import { useEffect, FC} from 'react';
 import ReactDOM from 'react-dom';
-
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ModalOverlay } from '../modal-overlay/modal-overlay';
-
 import modalStyles from './modal.module.css';
-
 
 const modalRoot = document.getElementById('react-modals') as HTMLElement;
 
@@ -29,7 +26,6 @@ export const Modal: FC<IModalProps> = ({ showModal, closing, children }) => {
 
     return () =>
     document.removeEventListener('keydown', closeEsc); 
-
   });
 
   return ReactDOM.createPortal(
@@ -45,9 +41,8 @@ export const Modal: FC<IModalProps> = ({ showModal, closing, children }) => {
           {children}
 
         </div>
-        
       </>
     ), 
     modalRoot
     );
-} 
+};

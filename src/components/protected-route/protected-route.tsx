@@ -1,8 +1,6 @@
-import { useState, useEffect, FC } from "react";
+import { useEffect, FC } from "react";
 import { Redirect, Route } from 'react-router-dom';
-//import { RouteProps } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/types';
-
 import { getUser } from '../../services/actions/auth';
 import { Loader } from '../loader/loader';
 
@@ -15,9 +13,7 @@ export interface IProtectedRoute {
 export const ProtectedRoute: FC<IProtectedRoute> = ({ children, ...rest }) => {
 
   const { isAuth } = useSelector(store => store.user);
-
   const dispatch = useDispatch();
-
   const isAuthChecked = useSelector(store => store.user.isAuthChecked);
 
   useEffect(() => {
@@ -29,7 +25,6 @@ export const ProtectedRoute: FC<IProtectedRoute> = ({ children, ...rest }) => {
   if (!isAuthChecked) {
     return <Loader />;
   }
- 
 
   return (
     <Route {...rest} render={({ location }) => 
@@ -49,4 +44,3 @@ export const ProtectedRoute: FC<IProtectedRoute> = ({ children, ...rest }) => {
     }/>
   )
 };
-

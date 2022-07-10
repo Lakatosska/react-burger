@@ -1,13 +1,11 @@
+import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from '../../services/types';
 import { CardOrder } from '../card-order/card-order';
 import { Loader } from '../loader/loader';
-
-
 import ordersFeedStyles from './orders-feed.module.css';
 
-
-export const OrdersFeed = () => {
+export const OrdersFeed: FC = () => {
 
   const location = useLocation();
   const { orders } = useSelector(store => store.ws);

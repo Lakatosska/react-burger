@@ -2,7 +2,6 @@ import { Middleware, MiddlewareAPI, AnyAction } from 'redux';
 import { getCookie } from "../../utils/constants";
 import { TWsActions } from '../store';
 
-
 export const socketMiddleware = (wsUrl: string, wsActions: TWsActions): Middleware => {
   return (store: MiddlewareAPI) => {
     let socket: WebSocket | null = null;

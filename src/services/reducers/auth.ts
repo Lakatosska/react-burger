@@ -52,8 +52,7 @@ interface IAuthState {
 
   updateTokenRequest: boolean,
   updateTokenFailed: boolean,
-}
-
+};
 
 const initialUserState: IAuthState = {
   form: {
@@ -80,7 +79,6 @@ const initialUserState: IAuthState = {
   updateTokenRequest: false,
   updateTokenFailed: false,
 };
-
 
 export const userReducer = (state = initialUserState, action: TAuthActions): IAuthState => {
 
@@ -231,4 +229,4 @@ export const userReducer = (state = initialUserState, action: TAuthActions): IAu
     default:
       return state;
   }
-}
+};

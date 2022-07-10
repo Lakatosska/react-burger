@@ -53,4 +53,4 @@ export const wsReducer = (state = initialWebSocketState, action: TWSActions): IW
     default:
       return state;
   }
-}
+};

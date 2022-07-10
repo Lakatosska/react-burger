@@ -45,7 +45,6 @@ export const CardOrder: FC<ICardOrderProps> = ({ card }) => {
       default:
   }
 
-
   return (
     <article className={`${cardOrderStyles.card} mr-2`}>
       <div className={cardOrderStyles.info}>
@@ -83,4 +82,4 @@ export const CardOrder: FC<ICardOrderProps> = ({ card }) => {
       </div>
     </article>
   )
-}
+};

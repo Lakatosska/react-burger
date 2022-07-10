@@ -1,7 +1,6 @@
 import { format, formatDistanceToNowStrict, isToday, isYesterday } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-
 export const BASEURL = 'https://norma.nomoreparties.space/api';
 export const wsUrl = 'wss://norma.nomoreparties.space/orders';
 

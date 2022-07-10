@@ -8,7 +8,6 @@ import { postOrder, RESET_ORDER } from '../../services/actions/order';
 import { Loader } from '../loader/loader';
 import orderTotalStyles from './order-total.module.css';
 
-
 export const OrderTotal: FC = () => {
 
   const { constructorItems, bun } = useSelector(store => store.constructorItems);
@@ -78,4 +77,4 @@ export const OrderTotal: FC = () => {
       {order && modalActive && modalOrder}
     </>
   );
-}
+};

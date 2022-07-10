@@ -1,5 +1,5 @@
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { 
   Logo, 
   BurgerIcon, 
@@ -9,7 +9,7 @@ import {
 
 import appHeaderStyles from './app-header.module.css';
 
-export const AppHeader = () => {
+export const AppHeader: FC = () => {
 
   return(
     <header className={appHeaderStyles.header}>

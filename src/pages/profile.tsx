@@ -1,30 +1,20 @@
 import { FC } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { logout } from '../services/actions/auth';
-import { ProfileForm } from "../components/profile-form/profile-form";
+import { ProfileForm } from '../components/profile-form/profile-form';
 import styles from './style.module.css';
 
 
 export const ProfilePage: FC = () => {
 
   const dispatch = useDispatch();
-  //const { isAuth } = useSelector(store => store.user);
 
-  /*
-  if (!isAuth) {
-    return (
-      <Redirect to={{ pathname: '/login' }} />
-    );
-  }  
-  */
- 
   const handleLogout = () =>
     dispatch(
       logout()
   );
   
-
   return (
     <main className={`${styles.main} mt-30`}>
       <section >

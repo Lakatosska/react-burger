@@ -1,11 +1,10 @@
+import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from '../../services/types';
-
 import { CardOrder } from '../card-order/card-order';
-
 import orderHistoryStyles from './order-history.module.css';
 
-export const OrderHistory = () => {
+export const OrderHistory: FC = () => {
 
   const location = useLocation();
   const { orders } = useSelector(store => store.ws);
@@ -25,4 +24,4 @@ export const OrderHistory = () => {
         )).reverse()}
       </ul>
   )
-}
+};

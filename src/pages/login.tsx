@@ -1,18 +1,16 @@
-import { useCallback, useState, useEffect, FormEvent, ChangeEvent, FC  } from "react";
+import { useCallback, FormEvent, ChangeEvent, FC  } from "react";
 import { Link, Redirect, useLocation } from 'react-router-dom';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from "../services/types";
 import { SET_LOGIN_USER, login } from '../services/actions/auth';
-import { ILocationState } from "../services/types/data";
+import { ILocationState } from '../services/types/data';
 import styles from './style.module.css';
-
 
 export const LoginPage: FC = () => {
 
   const dispatch = useDispatch();
   const { form, isAuth } = useSelector(store => store.user);
   const { state } = useLocation<ILocationState>();
-
 
   const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -36,12 +34,6 @@ export const LoginPage: FC = () => {
       />
     );
   }
-
-  /*
-  if (getStorageItem('refreshToken')) {
-    return <Redirect to={state?.from || "/"} />;
-  }
-  */
   
   return (
     <main className={styles.container}>

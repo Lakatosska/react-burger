@@ -1,5 +1,4 @@
 import { TIngredient } from '../types/data';
-
 import {
   GET_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,
@@ -11,7 +10,7 @@ interface IIngredientsState {
   ingredients: ReadonlyArray<TIngredient>;
   ingredientsRequest: boolean,
   ingredientsFailed: boolean,
-}
+};
 
 const initialIngredientsState: IIngredientsState = {
   ingredients: [],
@@ -45,4 +44,4 @@ export const ingredientsReducer = (state = initialIngredientsState, action: TIng
     default:
       return state;
   }
-}
+};

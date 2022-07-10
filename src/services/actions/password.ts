@@ -14,39 +14,39 @@ export const SET_NEW_PASSWORD = 'SET_NEW_PASSWORD';
 
 export interface IForgotPasswordAction {
   readonly type: typeof FORGOT_PASSWORD_REQUEST;
-}
+};
 
 export interface IForgotPasswordSuccessAction {
   readonly type: typeof FORGOT_PASSWORD_SUCCESS;
   form: TUser;
-}
+};
 
 export interface IForgotPasswordFailedAction {
   readonly type: typeof FORGOT_PASSWORD_FAILED;
-}
+};
 
 export interface ISetForgotPasswordAction {
   readonly type: typeof SET_FORGOT_PASSWORD;
   payload: TUser;
-}
+};
 
 export interface IResetPasswordAction {
   readonly type: typeof RESET_PASSWORD_REQUEST;
-}
+};
 
 export interface IResetPasswordSuccessAction {
   readonly type: typeof RESET_PASSWORD_SUCCESS;
   form: TUser;
-}
+};
 
 export interface IResetPasswordFailedAction {
   readonly type: typeof RESET_PASSWORD_FAILED;
-}
+};
 
 export interface ISetNewPasswordAction {
   readonly type: typeof SET_NEW_PASSWORD;
   payload: TUser;
-}
+};
 
 export type TForgotPasswordActions =
   | IForgotPasswordAction

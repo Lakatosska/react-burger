@@ -1,11 +1,10 @@
 import { useEffect, FormEvent, ChangeEvent, FC  } from "react";
 import { Link, Redirect, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from "../services/types";
+import { useSelector, useDispatch } from '../services/types';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { SET_FORGOT_PASSWORD, forgotPassword } from '../services/actions/password';
-import { ILocationState } from "../services/types/data";
+import { ILocationState } from '../services/types/data';
 import styles from './style.module.css';
-
 
 export const ForgotPasswordPage: FC = () => {
 

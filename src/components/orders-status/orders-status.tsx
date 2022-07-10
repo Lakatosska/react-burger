@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import { useSelector } from '../../services/types';
 import ordersStatusStyles from './orders-status.module.css';
 
-export const OrdersStatus = () => {
+export const OrdersStatus: FC = () => {
 
   const { orders, total, totalToday } = useSelector(store => store.ws);
 
